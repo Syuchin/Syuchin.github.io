@@ -1,138 +1,153 @@
 <!DOCTYPE html>
-<html>
-<!-- 中文编码 -->
-<meta charset="utf-8">
+<html lang="zh">
 <head>
+  <meta charset="UTF-8">
   <title>Chenghao Yang (杨城昊)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="static/w3.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 新的主样式 -->
+  <link rel="stylesheet" href="static/modern.css">
+  <!-- 图标（可选） -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- 网页图标 -->
   <link rel="icon" href="data/logos/Logo.png" type="image/x-icon">
-  <style>
-      body,h1,h2,h3,h4,h5,h6 {font-family: sans-serif}
-  </style>
 </head>
 
-<body class="w3-light-grey w3-content" style="max-width:1600px">
+<body>
 
-  <!-- Sidebar/menu -->
-  <nav class="w3-light-grey w3-sidebar w3-collapse w3-animate-left w3-center" style="z-index:3;width:350px;" id="mySidebar"><br>
-    <div class="w3-container">
-      <img src="data/profile.jpg" style="width:50%;" class="w3-round"><br><br>
-      <h2><b>Chenghao Yang</b></h2>
-      <p><b>Last update: 2024.09.09</b></p>
-    </div>
-    <div class="w3-bar-block w3-center">
-      <a href="#biography" class="w3-bar-item w3-button">Biography</a>
-      <a href="#education" class="w3-bar-item w3-button">Education</a>
-      <a href="#publications" class="w3-bar-item w3-button">Publications</a>
-      <a href="#awards" class="w3-bar-item w3-button">Awards</a>
-      <a href="#internships" class="w3-bar-item w3-button">Internships</a>
-    </div>
-  </nav>
-
-
-  <!-- !PAGE CONTENT! -->
-  <div class="w3-main" style="margin-left:350px">
-
-    
-    <div class="w3-container w3-card w3-white w3-margin-bottom" id="biography">
-      <img src="data/profile.jpg" style="width:75px;" class="w3-circle w3-right w3-margin w3-hide-large">
-      <h2><b>Biography</b></h2>
-      <p>I am a final year undergraduate student at <a style="color: #0088cc" href="https://www.ustc.edu.cn/">University of Science and Technology of China (USTC)</a>, supervised by Prof. <a style="color: #0088cc" href="https://scholar.google.com/citations?hl=en&user=7620QAMAAAAJ">Nenghai Yu</a> and Prof. <a style="color: #0088cc" href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ">Qi Chu</a>.</p> 
-      <b>Research Interests:</b> Artificial Intelligence Security, Multimodal Agent, Multimodal LLM hallucination.
-      <br><br>
-      <b>Feel free to reach out to me for any form of communication or collaboration! 😊</b>
-      <br>
-      <b><br>Email:</b>&nbsp; <span style="background: #d6eef8"> yangchenghao@mail.ustc.edu.cn </span>
-      <br>
-      <b><br>
-        <a style="color: #0088cc" href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en">Google Scholar</a> &emsp;&emsp;
-        <a style="color: #0088cc" href="https://github.com/Syuchin">Github</a> &emsp;&emsp; 
-      </b>
-      <br>
-      <br>
+  <!-- 侧边栏 -->
+  <div class="sidebar">
+    <div class="profile">
+      <img src="data/profile.jpg" alt="profile" class="profile-img">
+      <h2>Chenghao Yang</h2>
+      <p class="update-time"><b>Last update: 2024.09.09</b></p>
     </div>
 
+    <nav class="nav-menu">
+      <a href="#biography">Biography</a>
+      <a href="#education">Education</a>
+      <a href="#publications">Publications</a>
+      <a href="#awards">Awards</a>
+      <a href="#internships">Internships</a>
+    </nav>
+  </div>
 
-    <div class="w3-container w3-card w3-white w3-margin-bottom" id="education">
-        <h2><b>Education</b></h2>
-        <table width="100%" align="left" border="0" cellpadding="15">
-            <tbody>
-                <tr>
-                    <td style="padding:5px" width="100px" align="center"><img src="data/logos/ustc.png" width="100%"></td>
-                    <td>
-                        <b>University of Science and Technology of China</b>
-                        <br><span class="w3-text-black"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sep, 2021 - Jun, 2025 (Expected)</span>
-                        <br> B.Eng. in Information Security 
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <!-- 主内容区 -->
+  <div class="main">
+    <!-- Biography -->
+    <div class="card" id="biography">
+      <h2>Biography</h2>
+      <p>
+        I am a final year undergraduate student at 
+        <a href="https://www.ustc.edu.cn/">University of Science and Technology of China (USTC)</a>, 
+        supervised by Prof. 
+        <a href="https://scholar.google.com/citations?hl=en&user=7620QAMAAAAJ">Nenghai Yu</a> 
+        and Prof. 
+        <a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ">Qi Chu</a>.
+      </p>
+      <p><b>Research Interests:</b> Artificial Intelligence Security, Multimodal Agent, Multimodal LLM hallucination.</p>
+      <p><b>Feel free to reach out to me for any form of communication or collaboration! 😊</b></p>
+      <p><b>Email:</b> <span class="highlight">yangchenghao@mail.ustc.edu.cn</span></p>
+      <p>
+        <b>
+          <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en">Google Scholar</a> &emsp;&emsp;
+          <a href="https://github.com/Syuchin">Github</a>
+        </b>
+      </p>
     </div>
 
-
-    <div class="w3-container w3-card w3-white w3-margin-bottom" id="publications">
-        <h2><b>Selected Publications</b></h2>
-        <font size="4"><b>First Author & Co-first Author</b></font> ( <font color=#bf0000><b>*</b></font> equal contribution, <font color=#bf0000><b>&dagger;</b></font> corresponding authors)
-        <table width="100%" align="left" border="0" cellpadding="15">
-          <tbody>
-            <tr>
-                <td style="padding:5px" width="150px" align="center"><img src="data/paper/LDAgent.png" width="100%"></td>
-                <td>
-                  <b><font size= "4">Hello Again! LLM-powered Personalized Agent for Long-term Dialogue</font></b>
-                  <br>
-                  <i>Hao Li<font color=#bf0000><b>*</b></font>, <b><u>Chenghao Yang<font color=#bf0000><b>*</b></font></u></b>, An Zhang<font color=#bf0000><b><sup>&dagger;</sup></b></font>, Yang Deng, Xiang Wang, Tat-Seng Chua</i>
-                  <br>
-                  <i>arXiv Preprint, 2024</i> | 
-                  <a style="color: #0088cc" href="https://arxiv.org/abs/2406.05925v1">Paper</a> | 
-                  <b>Code: </b><a style="color: #0088cc" href='https://github.com/leolee99/LD-Agent'> Github </a> 
-            </tr>
-            
-          </tbody>
+    <!-- Education -->
+    <div class="card" id="education">
+      <h2>Education</h2>
+      <table class="edu-table">
+        <tr>
+          <td class="logo-cell">
+            <img src="data/logos/ustc.png" alt="ustc">
+          </td>
+          <td>
+            <b>University of Science and Technology of China</b><br>
+            <span class="calendar">
+              <i class="fa fa-calendar"></i> Sep, 2021 - Jun, 2025 (Expected)
+            </span><br>
+            B.Eng. in Information Security
+          </td>
+        </tr>
       </table>
     </div>
 
-
-    <div class="w3-container w3-card w3-white w3-margin-bottom" id="awards">
-        <h2><b>Selected Awards</b></h2>
-        <table width="100%" border="0" cellpadding="5">
-          <tbody>
-            <tr>
-              <td width="80%" align="left">◆ Endeavor Scholarship, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
-              <td align="right">2022</td>
-            </tr>
-            <tr>
-              <td width="80%" align="left">◆ <b>Wang Xiaomo Talent Program in Cyber Science and Technology Scholarship <font color=#bf0000><b>× 4</b></font>, <i><a href="https://www.ustc.edu.cn">USTC</a></i></b></td>
-              <td align="right"><b>2021, 2022, 2023, 2024</b></td>
-            </tr>
-            <tr>
-              <td width="80%" align="left">◆ Longfor Scholarship, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
-              <td align="right">2023</td>
-          </tbody>
-      </table>
-      <br>
-    </div>
-
-
-    <div class="w3-container w3-card w3-white w3-margin-bottom" id="internships">
-        <h2><b>Internships</b></h2>
-        <table width="100%" border="0" cellpadding="15">
-          <tbody>
-            <tr>
-                <td style="padding:5px" width="100px" align="center"><img src="data/logos/nus.jpg" width="100%"></td>
-                <td>
-                    <b>National University of Singapore</b>
-                    <br><span class="w3-text-black"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2023 - Jun 2024</span>
-                    <br> Multi-Modal Agent Research Intern (Remote)
-                    <br> Supervised by Research Fellow <a style="color: #0088cc" href="https://github.com/anzhang314">An Zhang</a>
-                </td>
-            </tr>
-          </tbody>
+    <!-- Publications -->
+    <div class="card" id="publications">
+      <h2>Selected Publications</h2>
+      <p>
+        <font size="4"><b>First Author &amp; Co-first Author</b></font>
+        (<font color="#bf0000"><b>*</b></font> equal contribution, 
+         <font color="#bf0000"><b>†</b></font> corresponding authors)
+      </p>
+      <table class="pub-table">
+        <tr>
+          <td class="logo-cell" style="width:150px;">
+            <img src="data/paper/LDAgent.png" alt="LDAgent">
+          </td>
+          <td>
+            <b class="pub-title">Hello Again! LLM-powered Personalized Agent for Long-term Dialogue</b><br>
+            <i>
+              Hao Li<font color="#bf0000"><b>*</b></font>, 
+              <b><u>Chenghao Yang<font color="#bf0000"><b>*</b></font></u></b>, 
+              An Zhang<font color="#bf0000"><b><sup>†</sup></b></font>, 
+              Yang Deng, Xiang Wang, Tat-Seng Chua
+            </i><br>
+            <i>arXiv Preprint, 2024</i> | 
+            <a href="https://arxiv.org/abs/2406.05925v1">Paper</a> | 
+            <b>Code:</b> <a href='https://github.com/leolee99/LD-Agent'>Github</a>
+          </td>
+        </tr>
       </table>
     </div>
 
-</div>
-  
+    <!-- Awards -->
+    <div class="card" id="awards">
+      <h2>Selected Awards</h2>
+      <table class="award-table">
+        <tr>
+          <td>◆ Endeavor Scholarship, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
+          <td class="right-align">2022</td>
+        </tr>
+        <tr>
+          <td>
+            ◆ <b>Wang Xiaomo Talent Program in Cyber Science and Technology Scholarship 
+            <font color="#bf0000"><b>× 4</b></font>, 
+            <i><a href="https://www.ustc.edu.cn">USTC</a></i></b>
+          </td>
+          <td class="right-align"><b>2021, 2022, 2023, 2024</b></td>
+        </tr>
+        <tr>
+          <td>◆ Longfor Scholarship, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
+          <td class="right-align">2023</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Internships -->
+    <div class="card" id="internships">
+      <h2>Internships</h2>
+      <table class="intern-table">
+        <tr>
+          <td class="logo-cell" style="width:100px;">
+            <img src="data/logos/nus.jpg" alt="nus">
+          </td>
+          <td>
+            <b>National University of Singapore</b><br>
+            <span class="calendar">
+              <i class="fa fa-calendar"></i> Dec 2023 - Jun 2024
+            </span><br>
+            Multi-Modal Agent Research Intern (Remote)<br>
+            Supervised by Research Fellow 
+            <a href="https://github.com/anzhang314">An Zhang</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
 </body>
 </html>

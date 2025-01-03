@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Chenghao Yang (杨城昊) - CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 若有站点图标，可在此处添加 -->
+  <link rel="icon" href="data/logos/Logo.png" type="image/x-icon">
+
+  <style>
+    /* 通用初始化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: "Microsoft YaHei", sans-serif;
+      background-color: #F5F5F5;  /* 主体浅灰 */
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      color: #0077B6;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    a:hover {
+      color: #005f8a;
+      text-decoration: underline;
+    }
+
+    /* ====== 顶部导航栏，和首页相似，方便跳转 ====== */
+    header {
+      width: 100%;
+      background-color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .navbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+    }
+    .navbar .brand {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .navbar nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+    }
+    .navbar nav ul li a {
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.2s ease;
+    }
+    .navbar nav ul li a:hover {
+      background-color: #E0E0E0;
+    }
+
+    /* 容器与卡片布局 */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .section-card {
+      background-color: #FFFFFF;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .section-card h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #0077B6; /* 左侧色条 */
+      padding-left: 0.5rem;
+    }
+    .section-card p,
+    .section-card li {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+    }
+    ul {
+      list-style: disc;
+      margin-left: 1.5rem;
+    }
+    .subsection {
+      margin-bottom: 1.5rem;
+    }
+    .subtitle {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .small-text {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .highlight {
+      color: #ED6702;
+      font-weight: bold;
+    }
+    /* 日期/时间行对齐 */
+    .date-line {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 响应式支持 */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-wrap: wrap;
+      }
+      .navbar nav ul {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .container {
+        padding: 1rem;
+      }
+      .section-card {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+      }
+      .section-card h2 {
+        font-size: 1.3rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- 顶部导航栏，与首页类似，方便回到主页等 -->
+  <header>
+    <div class="navbar">
+      <div class="brand">Chenghao Yang (杨城昊) - CV</div>
+      <nav>
+        <ul>
+          <!-- 你可以根据需要，把"首页"链接改为你的index.html路径 -->
+          <li><a href="index.html">首页</a></li>
+          <li><a href="#cv">简历内容</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 主体内容 -->
+  <div class="container" id="cv">
+
+    <!-- 基本信息/概述 -->
+    <div class="section-card">
+      <h2>基本信息</h2>
+      <p><b>姓名：</b>杨城昊</p>
+      <ul>
+        <li>Email：<a href="mailto:yangchenghao@mail.ustc.edu.cn">yangchenghao@mail.ustc.edu.cn</a></li>
+        <li>Github：<a href="https://github.com/syuchin">syuchin</a></li>
+        <li>学校：<span class="highlight">中国科学技术大学</span></li>
+        <li>专业：信息安全</li>
+        <li>所在地：安徽·合肥</li>
+      </ul>
+      <p class="small-text">© 2024, 安徽 合肥 — 最后修改日期：<span id="updateDate"></span></p>
+    </div>
+
+    <!-- 教育经历 -->
+    <div class="section-card">
+      <h2>教育经历</h2>
+      <ul>
+        <li>
+          <span class="subtitle">中国科学技术大学 （2021.09 - 至今）</span><br>
+          网络空间安全学院 · 信息安全 · 学士
+        </li>
+      </ul>
+    </div>
+
+    <!-- 技能 -->
+    <div class="section-card">
+      <h2>技能</h2>
+      <ul>
+        <li>掌握Python语言，熟练掌握 LLM Agent 的相关框架设计经验和思想。</li>
+        <li>精通数据分析和可视化工具，如 Pandas、NumPy 和 Matplotlib。</li>
+        <li>具备良好的团队合作和项目管理能力，曾负责项目的主导工作。</li>
+      </ul>
+    </div>
+
+    <!-- 研究经历 -->
+    <div class="section-card">
+      <h2>研究经历</h2>
+
+      <!-- 研究项目1 -->
+      <div class="subsection">
+        <div class="subtitle">LLM-powered Personalized Agent for Long-term Dialogue</div>
+        <div class="date-line">2023年11月 - 2024年5月 &emsp; 指导老师：研究员 张岸 （新加坡国立大学）</div>
+        <ul>
+          <li>开发了一个模型无关的框架（LD-Agent），集成三个可调模块：事件感知、人格提取、回应生成。</li>
+          <li>为事件记忆模块实现了长短期记忆库，并采用基于主题的检索机制来提高记忆检索的准确性。</li>
+          <li>在人格模块中进行了用户和代理的动态人格建模，整合检索到的记忆和提取的人格信息以生成恰当的回应。</li>
+          <li>通过多种基准测试展示了 LD-Agent 在通用性和跨领域上的有效性。</li>
+          <li>作为共同第一作者，该工作目前正在审查中。</li>
+        </ul>
+      </div>
+
+      <!-- 研究项目2 -->
+      <div class="subsection">
+        <div class="subtitle">基于深度学习的虚假新闻检测系统</div>
+        <div class="date-line">2023年4月 - 2023年8月 &emsp; 指导老师：研究员 周文柏 （中国科学技术大学）</div>
+        <ul>
+          <li>开发了一个多功能假新闻检测系统，用于跨图文对、单张图片和纯文本新闻的真实性评估。</li>
+          <li>系统注重泛化性和敏感性设计，集成了三大模块：多模态篡改检测、单图像检测（自混合模型）、以及大模型微调的真实性检测。</li>
+          <li>作为团队成员之一，参与该项目并在第十六届全国大学生信息安全竞赛作品赛中获全国二等奖。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 荣誉奖项 -->
+    <div class="section-card">
+      <h2>荣誉奖项</h2>
+      <ul>
+        <li>2022 — 中国科学技术大学校优秀共青团员</li>
+        <li>2022 — 中国科学技术大学奋进奖学金</li>
+        <li>2023 — 第十六届全国大学生信息安全作品赛全国二等奖</li>
+        <li>2023 — 龙湖奖学金</li>
+        <li>2024 — 中国科学技术大学优秀学生奖学金</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 自动更新时间脚本，可选 -->
+  <script>
+    const dateEl = document.getElementById("updateDate");
+    if (dateEl) {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth()+1).padStart(2,"0");
+      const dd = String(today.getDate()).padStart(2,"0");
+      dateEl.textContent = `${yyyy}-${mm}-${dd}`;
+    }
+  </script>
+
+</body>
+</html>
