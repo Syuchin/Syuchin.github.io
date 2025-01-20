@@ -85,7 +85,7 @@
     <div class="section-card" id="news">
       <h2>News</h2>
       <p style="color: #666; font-size: 0.9rem; opacity: 0.6;">
-        <!-- 自动更新时间 -->
+        <!-- 自动更新修改时间 -->
         Last updated: <span id="updateDate"></span>
       </p>
       <p class="news-announcement">Keep an eye on this space for the latest news or announcements.</p>
@@ -149,6 +149,8 @@ Our paper <b>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue
           <td>
             <b>ByteDance</b><br>
             <span class="calendar" style="color: #555; font-size: 0.9rem;">Nov 2024 - Present</span><br>
+            <!-- 地点 -->
+            <span style="color: #777; font-size: 0.9rem;">Beijing, China</span><br>
             <span style="font-weight: 600;">Seed-LLM-Evaluation</span><br>
             <span style="color: #777;">Algorithm Intern</span>
           </td>
@@ -161,6 +163,8 @@ Our paper <b>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue
             <b>National University of Singapore</b><br>
             <span class="calendar" style="color: #555; font-size: 0.9rem;">Dec 2023 - Jun 2024</span><br>
             <span style="font-weight: 600;">Multi-Modal Agent Research Intern (Remote)</span><br>
+            <!-- 地点 -->
+            <span style="color: #777; font-size: 0.9rem;">Singapore</span><br>
             <span style="color: #777;">Supervised by Research Fellow 
               <a href="https://github.com/anzhang314" target="_blank" rel="noopener" style="color: #0077b6;">An Zhang</a>
             </span>
@@ -238,14 +242,14 @@ Our paper <b>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue
 
   </div><!-- /.container -->
 </body>
-<!-- 自动更新时间脚本，可选 -->
+<!-- 显示最后修改时间脚本 -->
 <script>
   const dateEl = document.getElementById("updateDate");
   if (dateEl) {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth()+1).padStart(2,"0");
-    const dd = String(today.getDate()).padStart(2,"0");
+    const lastModified = new Date(document.lastModified);
+    const yyyy = lastModified.getFullYear();
+    const mm = String(lastModified.getMonth()+1).padStart(2,"0"); 
+    const dd = String(lastModified.getDate()).padStart(2,"0");
     dateEl.textContent = `${yyyy}-${mm}-${dd}`;
   }
 </script>
