@@ -361,7 +361,10 @@
       <i class="fas fa-eye" style="color: #4a5568;"></i>
       <span style="font-size: 0.95rem;">
         Total Visitors: 
-        <span id="busuanzi_value_site_pv" style="font-weight: 600; color: #4a5568; margin-left: 4px;"></span>
+        <span id="busuanzi_container_site_uv" style="display: none;">
+          <span id="busuanzi_value_site_uv" style="font-weight: 600; color: #4a5568; margin-left: 4px;">0</span>
+        </span>
+        <span id="visitor-loading" style="font-weight: 600; color: #4a5568; margin-left: 4px;">...</span>
       </span>
     </div>
   </div>
@@ -377,6 +380,17 @@
   <!-- Firebase SDK -->
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script>
+    // 处理访问计数加载
+    function checkBusuanzi() {
+      if (typeof document.getElementById("busuanzi_container_site_uv").style !== "undefined") {
+        document.getElementById("busuanzi_container_site_uv").style.display = "inline";
+        document.getElementById("visitor-loading").style.display = "none";
+      } else {
+        setTimeout(checkBusuanzi, 300);
+      }
+    }
+    checkBusuanzi();
+
     // 为日期徽章设置随机背景色
     document.querySelectorAll('.date-badge').forEach(badge => {
       const r = Math.floor(Math.random() * 55) + 180;  // 180-235
