@@ -362,10 +362,14 @@
       <span style="font-size: 0.9rem; color: #4a5568;">
         Total Visitors: 
         <span style="margin-left: 4px;">
-          <span style="font-weight: 600; color: #000000;">
-            <script async src="https://hits.seeyoufarm.com/api/count/incr/count.svg?url=https%3A%2F%2Fsyuchin.github.io"></script>
-            <noscript>0</noscript>
-          </span>
+          <span id="visits" style="font-weight: 600; color: #000000;">0</span>
+          <script>
+            fetch('https://hits.sh/syuchin.github.io.json')
+              .then(response => response.json())
+              .then(data => {
+                document.getElementById('visits').textContent = data.hits;
+              });
+          </script>
         </span>
       </span>
     </div>
