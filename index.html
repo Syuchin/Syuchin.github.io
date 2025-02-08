@@ -361,7 +361,7 @@
       <i class="fas fa-eye" style="color: #4a5568;"></i>
       <span style="font-size: 0.95rem;">
         Total Visitors: 
-        <span id="visitor-count" style="font-weight: 600; color: #4a5568; margin-left: 4px;">--</span>
+        <span id="busuanzi_value_site_pv" style="font-weight: 600; color: #4a5568; margin-left: 4px;"></span>
       </span>
     </div>
   </div>
@@ -375,8 +375,7 @@
   </div>
 
   <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script>
     // 为日期徽章设置随机背景色
     document.querySelectorAll('.date-badge').forEach(badge => {
@@ -409,30 +408,6 @@
       if (e.target === modal) {
         modal.style.display = 'none';
       }
-    });
-
-    // Firebase 配置
-    const firebaseConfig = {
-      apiKey: "AIzaSyDZjMqyOaFj-toUrGjSG-cIQm0I0WHOkzU",
-      authDomain: "personal-website-counter.firebaseapp.com",
-      databaseURL: "https://personal-website-counter-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "personal-website-counter",
-      storageBucket: "personal-website-counter.firebasestorage.app",
-      messagingSenderId: "625964880278",
-      appId: "1:625964880278:web:b27e049065bcffbc340db7",
-      measurementId: "G-0T1N7YSWLB"
-    };
-
-    // 初始化 Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    // 更新访问计数
-    const visitorRef = firebase.database().ref('visitors');
-    visitorRef.transaction(currentCount => (currentCount || 0) + 1);
-
-    // 监听计数更新
-    visitorRef.on('value', snapshot => {
-      document.getElementById('visitor-count').textContent = snapshot.val() || 0;
     });
   </script>
 
