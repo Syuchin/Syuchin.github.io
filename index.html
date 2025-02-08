@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Chenghao Yang (杨城昊)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <!-- 网页图标（可选） -->
   <link rel="icon" href="data/logos/Logo.png" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
@@ -11,6 +12,51 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- 导入style -->
   <link rel="stylesheet" href="static/w3.css">
+  <style>
+    /* 访问计数器悬停效果 */
+    .container > div:last-child > div:last-child:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    u {
+      text-underline-offset: 4px;
+    }
+    .date-badge {
+      border-radius: 6px;
+      padding: 1px 4px;
+      margin-right: 1px;
+      display: inline-block;
+    }
+    /* Modal 样式 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -25,7 +71,7 @@
           <li><a href="#biography">Biography</a></li>
           <li><a href="#publications">Publications</a></li>
           <li><a href="#internships">Internships</a></li>
-          <li><a href="cv.html">CV</a></li>
+          <!-- <li><a href="cv.html">CV</a></li> -->
         </ul>
       </nav>
     </div>
@@ -58,30 +104,53 @@
     <!-- Biography -->
     <div class="section-card" id="biography">
       <h2>Biography</h2>
-      <h3>Hello! I'm CHYang.</h3>
+      <h3 style="color: #2d3748; margin-bottom: 20px;">Hello! I'm CHYang.</h3>
       <p>
-        I am a final-year undergraduate student at 
+        I am a final-year undergraduate student at the 
         <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">University of Science and Technology of China (USTC)</a>, 
-        under the guidance of 
+        where I am fortunate to be advised by 
         <a href="https://scholar.google.com/citations?hl=en&user=7620QAMAAAAJ" target="_blank" rel="noopener">Prof. Nenghai Yu</a> 
         and 
-        <a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ" target="_blank" rel="noopener">Prof. Qi Chu</a>.
+        <a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ" target="_blank" rel="noopener">Prof. Qi Chu</a>. 
+        My academic journey is driven by a deep curiosity for artificial intelligence and its transformative potential.
       </p>
-      <p>
-        <b>Research Interests:</b> My primary focus lies in 
-        <span class="highlight">Artificial Intelligence Security</span>, 
-        <span class="highlight">Multimodal Agents</span>, and 
-        <span class="highlight">Hallucination Mitigation in Multimodal LLMs</span>. 
-        I am particularly passionate about exploring the intersection of AI safety and multimodal systems.
-      </p>
-      <p>
-        <b>Collaborations:</b> I am always open to meaningful discussions, collaborations, or opportunities to contribute to impactful projects. Let's connect and explore ideas together! 
-      </p>
-      <p>
-        <b>Email:</b> <a href="mailto:yangchenghao@mail.ustc.edu.cn" class="highlight">yangchenghao@mail.ustc.edu.cn</a> &emsp;&emsp;
-        <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en" target="_blank" rel="noopener"><b>Google Scholar</b></a> &emsp;&emsp;
-        <a href="https://github.com/Syuchin" target="_blank" rel="noopener"><b>GitHub</b></a>
-      </p>
+      <div style="margin: 25px 0;">
+        <h4 style="color: #4a5568; margin-bottom: 10px;">Research Interests</h4>
+        <ul style="list-style: none; padding-left: 20px; margin-top: 15px;">
+          <li style="margin-bottom: 10px;">
+            <span class="highlight" style="font-size: 1.1em;">🔒 AI Security</span> – Ensuring the robustness and trustworthiness of AI systems.
+          </li>
+          <li style="margin-bottom: 10px;">
+            <span class="highlight" style="font-size: 1.1em;">🤖 Multimodal Agents</span> – Developing intelligent systems that integrate multiple modalities for richer interactions.
+          </li>
+          <li style="margin-bottom: 10px;">
+            <span class="highlight" style="font-size: 1.1em;">🎯 LLMs Evaluation</span> – Developing benchmarks to assess the performance and reliability of LLMs.
+          </li>
+        </ul>
+        <p style="margin-left: 20px; margin-top: 15px; color: #666;">
+          My work particularly focuses on the intersection of AI security and LLMs evaluation, aiming to address critical challenges in deploying AI systems responsibly.
+        </p>
+      </div>
+      <div style="margin: 25px 0;">
+        <h4 style="color: #4a5568; margin-bottom: 10px;">Collaborations</h4>
+        <p style="margin-left: 20px; line-height: 1.6;">
+          I am enthusiastic about collaborating on innovative projects and engaging in meaningful discussions. If you share similar interests or have ideas to explore, feel free to reach out—I'd love to connect and work together!
+        </p>
+      </div>
+      <div style="margin: 25px 0;">
+        <h4 style="color: #4a5568; margin-bottom: 10px;">Contact</h4>
+        <p style="margin-left: 20px; line-height: 1.6;">
+          <a href="mailto:yangchenghao@mail.ustc.edu.cn" class="highlight">yangchenghao@mail.ustc.edu.cn</a>
+          &emsp;&emsp;
+          <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en" target="_blank" rel="noopener">
+            <b>Google Scholar</b>
+          </a>
+          &emsp;&emsp;
+          <a href="https://github.com/Syuchin" target="_blank" rel="noopener">
+            <b>GitHub</b>
+          </a>
+        </p>
+      </div>
     </div>
     <!-- News -->
     <div class="section-card" id="news">
@@ -94,21 +163,18 @@
       <!-- 可以在这里放置近期动态，例如： -->
       
       <ul>
-        <!-- <li>
-          
-          [2024-09-14] 
-          Won the 2nd Prize in the 5th Cybersecurity Summer Camp CTF Competition.
-          <a href="https://cybersec.ustc.edu.cn/2024/0914/c23847a653617/page.htm" target="_blank" rel="noopener">[Link]
-          </a>
-        </li> -->
         <li>
-          [2025-01-23] 🎉 Our Paper <b>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</b> has been accepted by NAACL 2025 Main Conference. <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> 
+          <span class="date-badge">2025-02-08</span> The paper I contributed to <i>"CryptoX: Compositional Reasoning Evaluation of Large Language Models"</i> has been published on arXiv! <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/weimo3221/CryptoX" target="_blank" rel="noopener">[Code]</a>
+        </li>
+        <li>
+          <span class="date-badge">2025-01-23</span> 🎉 Our Paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been accepted by 
+          <span style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #4a5568;">2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics</span> (<b>NAACL 2025</b>).
+          <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> 
           <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener">[Code]</a>
         </li>
         <li>
-          [2024-06-09]  
-Our paper <b>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</b> has been published on arXiv. 
-<a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> 
+          <span class="date-badge">2024-06-09</span> Our paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been published on arXiv. 
+          <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> 
 <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener">[Code]</a>
         </li>
       </ul>
@@ -117,15 +183,14 @@ Our paper <b>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue
     <!-- Publications -->
     <div class="section-card" id="publications">
       <h2>Publications</h2>
-      <p style="margin-bottom: 0.5rem;">
-        <b>First Author &amp; Co-first Author</b>
-        (<span style="color:#bf0000;"><b>*</b></span> equal contribution, 
-         <span style="color:#bf0000;"><b>†</b></span> corresponding authors)
+      <p style="color: #666; font-size: 0.8rem; text-align: right; margin-top: -10px; margin-bottom: 15px;">
+        <span style="color:#bf0000;"><b>*</b></span> equal contribution&nbsp;&nbsp;
+        <span style="color:#bf0000;"><b>†</b></span> corresponding authors
       </p>
       <table>
         <tr>
-          <td class="logo-cell" style="width:150px;">
-            <img src="data/paper/LDAgent.png" alt="LDAgent Paper">
+          <td class="logo-cell" style="width:250px;">
+            <img src="data/paper/LDAgent.png" alt="LDAgent Paper" class="enlargeable" style="cursor: zoom-in;">
           </td>
           <td>
             <div class="pub-title">
@@ -142,6 +207,34 @@ Our paper <b>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue
             <b>Code:</b> <a href="https://github.com/leolee99/LD-Agent">Github</a>
           </td>
         </tr>
+        <tr>
+          <td class="logo-cell" style="width:250px;">
+            <img src="data/paper/CryptoX.png" alt="CryptoX Paper" class="enlargeable" style="cursor: zoom-in;">
+          </td>
+          <td>
+            <div class="pub-title">
+              CryptoX: Compositional Reasoning Evaluation of Large Language Models
+            </div>
+            <!-- # Jiajun Shi, Chaoren Wei, Liqun Yang, Zekun Moore Wang, Chenghao Yang, Ge Zhang, Stephen Huang, Tao Peng, Jian Yang, Zhoufutu Wen -->
+            <i>
+              Jiajun Shi<span style="color:#bf0000;"><b>*</b></span>, 
+              Chaoren Wei<span style="color:#bf0000;"><b>*</b></span>, 
+              Liqun Yang, 
+              Zekun Moore Wang, 
+              <b><u>Chenghao Yang</u></b>, 
+              Ge Zhang, 
+              Stephen Huang, 
+              Tao Peng, 
+              Jian Yang, 
+              Zhoufutu Wen
+            </i><br>
+            <font style="color: gray; font-weight: bold;">arXiv</font> | 
+            <a href="https://arxiv.org/abs/2406.05925v1">Paper</a> | 
+            <b>Code:</b> <a href="https://github.com/weimo3221/CryptoX">Github</a>
+          </td>
+           
+        </tr>
+        
       </table>
     </div>
     <!-- Internships -->
@@ -259,20 +352,100 @@ Our paper <b>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue
         </tr>
       </table>
     </div>
-
+         <!-- Visitor Counter -->
+  <div style="text-align: center; padding: 10px 20px; margin-top: 10px; color: #666;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.8); 
+         padding: 8px 16px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+         transition: all 0.3s ease;
+         cursor: default;">
+      <i class="fas fa-eye" style="color: #4a5568;"></i>
+      <span style="font-size: 0.95rem;">
+        Total Visitors: 
+        <span id="visitor-count" style="font-weight: 600; color: #4a5568; margin-left: 4px;">--</span>
+      </span>
     </div>
+  </div>
+    </div>
+</div><!-- /.container -->
 
-  </div><!-- /.container -->
+  <!-- Modal for enlargeable images -->
+  <div id="imgModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img">
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+  <script>
+    // 为日期徽章设置随机背景色
+    document.querySelectorAll('.date-badge').forEach(badge => {
+      const r = Math.floor(Math.random() * 55) + 180;  // 180-235
+      const g = Math.floor(Math.random() * 55) + 180;  // 180-235
+      const b = Math.floor(Math.random() * 55) + 180;  // 180-235
+      badge.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.35)`;  // 降低不透明度
+    });
+
+    // 获取 Modal 元素
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modal-img');
+    const closeBtn = document.querySelector('#imgModal .close');
+    
+    // 为所有带有 "enlargeable" 类的图片添加点击事件
+    document.querySelectorAll('.enlargeable').forEach(img => {
+      img.addEventListener('click', function() {
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+      });
+    });
+
+    // 点击 (×) 按钮关闭 Modal
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+
+    // 点击 Modal 背景关闭
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Firebase 配置
+    const firebaseConfig = {
+      apiKey: "AIzaSyDZjMqyOaFj-toUrGjSG-cIQm0I0WHOkzU",
+      authDomain: "personal-website-counter.firebaseapp.com",
+      databaseURL: "https://personal-website-counter-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "personal-website-counter",
+      storageBucket: "personal-website-counter.firebasestorage.app",
+      messagingSenderId: "625964880278",
+      appId: "1:625964880278:web:b27e049065bcffbc340db7",
+      measurementId: "G-0T1N7YSWLB"
+    };
+
+    // 初始化 Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // 更新访问计数
+    const visitorRef = firebase.database().ref('visitors');
+    visitorRef.transaction(currentCount => (currentCount || 0) + 1);
+
+    // 监听计数更新
+    visitorRef.on('value', snapshot => {
+      document.getElementById('visitor-count').textContent = snapshot.val() || 0;
+    });
+  </script>
+
+  <!-- 显示最后修改时间脚本 -->
+  <script>
+    const dateEl = document.getElementById("updateDate");
+    if (dateEl) {
+      const lastModified = new Date(document.lastModified);
+      const yyyy = lastModified.getFullYear();
+      const mm = String(lastModified.getMonth()+1).padStart(2,"0"); 
+      const dd = String(lastModified.getDate()).padStart(2,"0");
+      dateEl.textContent = `${yyyy}-${mm}-${dd}`;
+    }
+  </script>
 </body>
-<!-- 显示最后修改时间脚本 -->
-<script>
-  const dateEl = document.getElementById("updateDate");
-  if (dateEl) {
-    const lastModified = new Date(document.lastModified);
-    const yyyy = lastModified.getFullYear();
-    const mm = String(lastModified.getMonth()+1).padStart(2,"0"); 
-    const dd = String(lastModified.getDate()).padStart(2,"0");
-    dateEl.textContent = `${yyyy}-${mm}-${dd}`;
-  }
-</script>
 </html>
