@@ -2,61 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chenghao Yang (杨城昊)</title>
+  <title>Chenghao Yang @USTC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <!-- 网页图标（可选） -->
-  <link rel="icon" href="data/logos/Logo.png" type="image/x-icon">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/11820/11820511.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <!-- 添加 Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- 导入style -->
   <link rel="stylesheet" href="static/w3.css">
-  <style>
-    /* 访问计数器悬停效果 */
-    .container > div:last-child > div:last-child:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    u {
-      text-underline-offset: 4px;
-    }
-    .date-badge {
-      border-radius: 6px;
-      padding: 1px 4px;
-      margin-right: 1px;
-      display: inline-block;
-    }
-    /* Modal 样式 */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      padding-top: 60px;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9);
-    }
-
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 80%;
-    }
-
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #fff;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
+  <meta name="icons-source" content="Icons by Freepik, prettycons, Tomas Knop, Becris, and wanicon from www.flaticon.com">
 </head>
 
 <body>
@@ -64,11 +20,11 @@
   <!-- 顶部导航条 -->
   <header>
     <div class="navbar">
-      <div class="brand">Chenghao Yang (杨城昊)</div>
+      <div class="brand">Chenghao Yang @USTC</div>
       <nav>
         <ul>
-          <li><a href="#news">News</a></li>
           <li><a href="#biography">Biography</a></li>
+          <li><a href="#news">News</a></li>
           <li><a href="#publications">Publications</a></li>
           <li><a href="#internships">Internships</a></li>
           <!-- <li><a href="cv.html">CV</a></li> -->
@@ -86,7 +42,6 @@
         <h1>Chenghao Yang</h1>
         <p class="email">yangchenghao@mail.ustc.edu.cn</p>
         <p class="quote">If you get tangled up, you just tango on.</p>
-        <p class="small-text">---Scent of a Woman</p>
       </div>
       <!-- 右侧头像 
            图片优化1: 若有WebP版本可使用 <source> 或直接改为 .webp
@@ -104,7 +59,7 @@
     <!-- Biography -->
     <div class="section-card" id="biography">
       <h2>Biography</h2>
-      <h3 style="color: #2d3748; margin-bottom: 20px;">Hello! I'm CHYang.</h3>
+      <h3 style="color: #2d3748; margin-bottom: 20px;">Hello! I'm chyang.</h3>
       <p>
         I am a final-year undergraduate student at the 
         <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">University of Science and Technology of China (USTC)</a>, 
@@ -118,13 +73,13 @@
         <h4 style="color: #4a5568; margin-bottom: 10px;">Research Interests</h4>
         <ul style="list-style: none; padding-left: 20px; margin-top: 15px;">
           <li style="margin-bottom: 10px;">
-            <span class="highlight" style="font-size: 1.1em;">🔒 AI Security</span> – Ensuring the robustness and trustworthiness of AI systems.
+            <span class="highlight" style="font-size: 0.9em;">🔒 AI Security</span> – Ensuring the robustness and trustworthiness of AI systems.
           </li>
           <li style="margin-bottom: 10px;">
-            <span class="highlight" style="font-size: 1.1em;">🤖 Multimodal Agents</span> – Developing intelligent systems that integrate multiple modalities for richer interactions.
+            <span class="highlight" style="font-size: 0.9em;">🤖 Multimodal Agents</span> – Developing intelligent systems that integrate multiple modalities for richer interactions.
           </li>
           <li style="margin-bottom: 10px;">
-            <span class="highlight" style="font-size: 1.1em;">🎯 LLMs Evaluation</span> – Developing benchmarks to assess the performance and reliability of LLMs.
+            <span class="highlight" style="font-size: 0.9em;">🎯 LLMs Evaluation</span> – Developing benchmarks to assess the performance and reliability of LLMs.
           </li>
         </ul>
         <p style="margin-left: 20px; margin-top: 15px; color: #666;">
@@ -139,17 +94,30 @@
       </div>
       <div style="margin: 25px 0;">
         <h4 style="color: #4a5568; margin-bottom: 10px;">Contact</h4>
-        <p style="margin-left: 20px; line-height: 1.6;">
-          <a href="mailto:yangchenghao@mail.ustc.edu.cn" class="highlight">yangchenghao@mail.ustc.edu.cn</a>
-          &emsp;&emsp;
-          <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en" target="_blank" rel="noopener">
-            <b>Google Scholar</b>
-          </a>
-          &emsp;&emsp;
-          <a href="https://github.com/Syuchin" target="_blank" rel="noopener">
-            <b>GitHub</b>
-          </a>
-        </p>
+        <div style="margin-left: 20px;">
+          <!-- 第一行：邮箱、Google Scholar、GitHub -->
+          <div style="display: flex; gap: 24px; margin-bottom: 12px;">
+            <a href="mailto:yangchenghao@mail.ustc.edu.cn" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+              <i class="fas fa-envelope"></i>
+              <span>yangchenghao@mail.ustc.edu.cn</span>
+            </a>
+            <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/12000/12000492.png" alt="Google Scholar" style="width: 16px; height: 16px;">
+              <span><b>Google Scholar</b></span>
+            </a>
+            <a href="https://github.com/Syuchin" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 16px; height: 16px;">
+              <span><b>GitHub</b></span>
+            </a>
+          </div>
+          <!-- 第二行：CV -->
+          <!-- <div>
+            <a href="data/cv.pdf" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/8304/8304411.png" alt="PDF" style="width: 16px; height: 16px;">
+              <span><b>CV</b></span>
+            </a>
+          </div> -->
+        </div>
       </div>
     </div>
     <!-- News -->
@@ -164,10 +132,10 @@
       
       <ul>
         <li>
-          <span class="date-badge">2025-02-08</span> The paper I contributed to <i>"CryptoX: Compositional Reasoning Evaluation of Large Language Models"</i> has been published on arXiv! <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/weimo3221/CryptoX" target="_blank" rel="noopener">[Code]</a>
+          <span class="date-badge">2025-02-09</span> The paper I contributed to <i>"CryptoX: Compositional Reasoning Evaluation of Large Language Models"</i> has been published on arXiv! <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/multimodal-art-projection/CryptoX" target="_blank" rel="noopener">[Code]</a>
         </li>
         <li>
-          <span class="date-badge">2025-01-23</span> 🎉 Our Paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been accepted by 
+          <span class="date-badge">2025-01-23</span>  🎉 Our Paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been accepted by 
           <span style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #4a5568;">2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics</span> (<b>NAACL 2025</b>).
           <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> 
           <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener">[Code]</a>
@@ -196,15 +164,40 @@
             <div class="pub-title">
               Hello Again! LLM-powered Personalized Agent for Long-term Dialogue
             </div>
+            <div class="paper-metrics">
+              <span class="metric">
+                <i class="fas fa-quote-right"></i>
+                <a href="https://scholar.google.com/scholar?hl=en&cites=10848223836082559000" 
+                   target="_blank" 
+                   rel="noopener" 
+                   class="citation-link">
+                  <span id="ldagent-citations">9 citations</span>
+                </a>
+              </span>
+              <span class="metric">
+                <i class="fas fa-star"></i>
+                <span id="ldagent-stars">29 stars</span>
+              </span>
+            </div>
+            <br>
             <i>
               Hao Li<span style="color:#bf0000;"><b>*</b></span>, 
               <b><u>Chenghao Yang<span style="color:#bf0000;"><b>*</b></span></u></b>, 
               An Zhang<span style="color:#bf0000;"><b><sup>†</sup></b></span>, 
               Yang Deng, Xiang Wang, Tat-Seng Chua
             </i><br>
-            <font style="color: gray; font-weight: bold;">NAACL 2025 Main Conference</font> | 
-            <a href="https://arxiv.org/abs/2406.05925v1">Paper</a> | 
-            <b>Code:</b> <a href="https://github.com/leolee99/LD-Agent">Github</a>
+            <span style="display: inline-flex; align-items: center; gap: 4px;">
+              <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="Conference" style="width: 16px;">
+              <font style="color: gray; font-weight: bold;">NAACL 2025 (Main)</font>
+            </span> · 
+            <a href="https://arxiv.org/abs/2406.05925v1" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/8304/8304411.png" alt="PDF" style="width: 16px">
+              <span>Paper</span>
+            </a> · 
+            <a href="https://github.com/leolee99/LD-Agent" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 16px;">
+              <span>Github</span>
+            </a>
           </td>
         </tr>
         <tr>
@@ -215,22 +208,47 @@
             <div class="pub-title">
               CryptoX: Compositional Reasoning Evaluation of Large Language Models
             </div>
+            <div class="paper-metrics">
+              <span class="metric">
+                <i class="fas fa-quote-right"></i>
+                <a href="https://scholar.google.com/scholar?q=CryptoX:+Compositional+Reasoning+Evaluation+of+Large+Language+Models" 
+                   target="_blank" 
+                   rel="noopener" 
+                   class="citation-link">
+                  <span id="cryptox-citations">0 citations</span>
+                </a>
+              </span>
+              <span class="metric">
+                <i class="fas fa-star"></i>
+                <span id="cryptox-stars">0 stars</span>
+              </span>
+            </div>
+            <br>
             <!-- # Jiajun Shi, Chaoren Wei, Liqun Yang, Zekun Moore Wang, Chenghao Yang, Ge Zhang, Stephen Huang, Tao Peng, Jian Yang, Zhoufutu Wen -->
             <i>
               Jiajun Shi<span style="color:#bf0000;"><b>*</b></span>, 
               Chaoren Wei<span style="color:#bf0000;"><b>*</b></span>, 
-              Liqun Yang, 
+              Liqun Yang<span style="color:#bf0000;"><b>*</b></span>, 
               Zekun Moore Wang, 
               <b><u>Chenghao Yang</u></b>, 
               Ge Zhang, 
               Stephen Huang, 
               Tao Peng, 
-              Jian Yang, 
-              Zhoufutu Wen
+              Jian Yang<span style="color:#bf0000;"><sup>†</sup></span>, 
+              Zhoufutu Wen<span style="color:#bf0000;"><sup>†</sup></span>
             </i><br>
-            <font style="color: gray; font-weight: bold;">arXiv</font> | 
-            <a href="https://arxiv.org/abs/2406.05925v1">Paper</a> | 
-            <b>Code:</b> <a href="https://github.com/weimo3221/CryptoX">Github</a>
+            <span style="display: inline-flex; align-items: center; gap: 4px;">
+              <img src="https://cdn-icons-png.flaticon.com/512/11987/11987382.png" alt="arXiv" style="width: 16px;">
+              <font style="color: gray; font-weight: bold;">arXiv</font>
+            </span> · 
+            <a href="https://arxiv.org/abs/2406.05925v1" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/8304/8304411.png" alt="PDF" style="width: 16px">
+              <span>Paper</span>
+            </a> · 
+            <a href="https://github.com/multimodal-art-projection/CryptoX" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 16px;">
+              <span>Github</span>
+            </a>
           </td>
            
         </tr>
@@ -242,8 +260,8 @@
       <h2>Internships</h2>
       <table>
         <tr>
-          <td class="logo-cell" style="width: 100px;">
-            <img src="data/logos/ByteDance.svg" alt="ByteDance Logo" style="width: 100px; height: 100px; object-fit: contain;">
+          <td class="logo-cell" style="width: 150px;">
+            <img src="data/logos/ByteDance.svg" alt="ByteDance Logo" style="width: 150px; height: 150px; object-fit: contain;">
           </td>
           <td style="padding-left: 20px;">
             <h3 style="margin: 0; font-size: 1.2rem; color: #2d3748;">ByteDance</h3>
@@ -260,8 +278,8 @@
         </tr>
 
         <tr style="margin-top: 24px;">
-          <td class="logo-cell" style="width: 100px;">
-            <img src="data/logos/nus.jpg" alt="NUS Logo" style="width: 100px; height: 100px; object-fit: contain;">
+          <td class="logo-cell" style="width: 150px;">
+            <img src="data/logos/nus.jpg" alt="NUS Logo" style="width: 150px; height: 150px; object-fit: contain;">
           </td>
           <td style="padding-left: 20px;">
             <h3 style="margin: 0; font-size: 1.2rem; color: #2d3748;">National University of Singapore</h3>
@@ -296,7 +314,7 @@
       <table>
         <!-- 本科 -->
         <tr>
-          <td class="logo-cell" style="width: 100px;">
+          <td class="logo-cell" style="width: 150px;">
             <img src="data/logos/ustc.png" alt="USTC Logo" style="max-width: 100%; height: auto; border-radius: 4px;">
           </td>
           <td>
@@ -309,7 +327,7 @@
         </tr>
         <!-- 研究生 -->
         <tr>
-          <td class="logo-cell" style="width: 100px;">
+          <td class="logo-cell" style="width: 150px;">
             <img src="data/logos/ustc.png" alt="USTC Logo" style="max-width: 100%; height: auto; border-radius: 4px;">
           </td>
           <td>
@@ -362,14 +380,9 @@
       <span style="font-size: 0.9rem; color: #4a5568;">
         Total Visitors: 
         <span style="margin-left: 4px;">
-          <span id="visits" style="font-weight: 600; color: #000000;">0</span>
-          <script>
-            fetch('https://hits.sh/syuchin.github.io.json')
-              .then(response => response.json())
-              .then(data => {
-                document.getElementById('visits').textContent = data.hits;
-              });
-          </script>
+          <span id="visits" style="font-weight: 600; color: #000000;">
+            <span id="page_pv">0</span>
+          </span>
         </span>
       </span>
     </div>
@@ -382,27 +395,19 @@
     <span class="close">&times;</span>
     <img class="modal-content" id="modal-img">
   </div>
-
+  <!-- Visitor Counter -->
+  <script async src="//webviso.yestool.org/js/index.min.js"></script>
   <!-- Firebase SDK -->
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script>
-    // 处理访问计数加载
-    function checkBusuanzi() {
-      if (typeof document.getElementById("busuanzi_container_site_uv").style !== "undefined") {
-        document.getElementById("busuanzi_container_site_uv").style.display = "inline";
-        document.getElementById("visitor-loading").style.display = "none";
-      } else {
-        setTimeout(checkBusuanzi, 300);
-      }
-    }
-    checkBusuanzi();
-
     // 为日期徽章设置随机背景色
     document.querySelectorAll('.date-badge').forEach(badge => {
-      const r = Math.floor(Math.random() * 55) + 180;  // 180-235
-      const g = Math.floor(Math.random() * 55) + 180;  // 180-235
-      const b = Math.floor(Math.random() * 55) + 180;  // 180-235
-      badge.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.35)`;  // 降低不透明度
+      // 使用更柔和的颜色范围：200-235
+      const r = Math.floor(Math.random() * 35) + 200;  // 200-235
+      const g = Math.floor(Math.random() * 35) + 200;  // 200-235
+      const b = Math.floor(Math.random() * 35) + 200;  // 200-235
+      badge.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.2)`;  // 降低不透明度到0.2
+      badge.style.border = '1px solid rgba(0, 0, 0, 0.05)';  // 添加淡淡的边框
     });
 
     // 获取 Modal 元素
@@ -441,6 +446,94 @@
       const dd = String(lastModified.getDate()).padStart(2,"0");
       dateEl.textContent = `${yyyy}-${mm}-${dd}`;
     }
+  </script>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 10) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+  <script>
+    // 为每个section添加延迟动画
+    document.querySelectorAll('.section-card').forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.2}s`;
+    });
+  </script>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const scrolled = document.documentElement.scrollTop;
+      const maxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = scrolled / maxHeight;
+      document.documentElement.style.setProperty('--scroll', scrollPercent);
+    });
+  </script>
+
+  <script>
+    // 获取 GitHub 仓库星标数
+    async function getGitHubStars(owner, repo) {
+      try {
+        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+        const data = await response.json();
+        return data.stargazers_count;
+      } catch (error) {
+        console.error('Error fetching GitHub stars:', error);
+        return null;
+      }
+    }
+
+    // 只保留 GitHub stars 的自动更新
+    async function updateMetrics() {
+      // 更新 GitHub stars
+      const ldAgentStars = await getGitHubStars('leolee99', 'LD-Agent');
+      if (ldAgentStars !== null) {
+        document.querySelector('#ldagent-stars').textContent = `${ldAgentStars} stars`;
+      }
+
+      const cryptoXStars = await getGitHubStars('multimodal-art-projection', 'CryptoX');
+      if (cryptoXStars !== null) {
+        document.querySelector('#cryptox-stars').textContent = `${cryptoXStars} stars`;
+      }
+
+      // 每天更新一次
+      setTimeout(updateMetrics, 24 * 60 * 60 * 1000);
+    }
+
+    // 页面加载时开始更新
+    updateMetrics();
+  </script>
+
+  <script>
+    async function updateCitations() {
+      try {
+        const response = await fetch('data/scholar_data.json');
+        const data = await response.json();
+        
+        // 更新 LD-Agent 论文引用数
+        const ldAgentPaper = data.papers['Hello Again! LLM-powered Personalized Agent for Long-term Dialogue'];
+        if (ldAgentPaper) {
+          document.querySelector('#ldagent-citations').textContent = `${ldAgentPaper.citations} citations`;
+        }
+        
+        // 更新 CryptoX 论文引用数
+        const cryptoXPaper = data.papers['CryptoX: Compositional Reasoning Evaluation of Large Language Models'];
+        document.querySelector('#cryptox-citations').textContent = 
+          cryptoXPaper ? `${cryptoXPaper.citations} citations` : '0 citations';
+      } catch (error) {
+        console.error('Error loading citation data:', error);
+        // 在加载失败时显示 0 引用
+        document.querySelector('#cryptox-citations').textContent = '0 citations';
+      }
+    }
+
+    // 页面加载时更新引用数
+    updateCitations();
   </script>
 </body>
 </html>

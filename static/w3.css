@@ -52,10 +52,9 @@
   }
 
   .section-card h2 {
-    font-size: 2rem; /* 标题字体大小 */
-    color: #0077b6; /* 标题颜色 */
-    display: inline-block; /* 下划线紧贴文字 */
-    margin-bottom: 1rem; /* 下方间距 */
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 1rem;
   }
 
   .section-card p {
@@ -99,6 +98,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border-bottom: 1px solid rgba(209, 213, 219, 0.3);
   }
   .navbar .brand {
     font-size: 1.2rem;
@@ -172,11 +175,31 @@
 
   /* ====== 其他样式 ====== */
   .highlight {
-    background-color: #D6EEF8;
-    border-radius: 4px;
-    padding: 0 4px;
-    font-family: monospace;
+    background: linear-gradient(120deg, rgba(214, 239, 248, 0.6), rgba(214, 239, 248, 0.2));
+    border-radius: 8px;
+    padding: 6px 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(66, 153, 225, 0.1);
   }
+
+  .highlight:hover {
+    background: linear-gradient(120deg, rgba(214, 239, 248, 0.8), rgba(214, 239, 248, 0.4));
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .pub-title {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .pub-title:hover {
+    background: linear-gradient(90deg, rgba(66, 153, 225, 0.1), transparent);
+    padding: 0 8px;
+    border-radius: 4px;
+  }
+
   .pub-title {
     font-weight: 600;
     font-size: 1.1rem;
@@ -253,4 +276,427 @@
     text-align: center;
     opacity: 0.6;
     font-style: italic;
+  }
+
+  /* 访问计数器悬停效果 */
+  .container > div:last-child > div:last-child:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* 下划线偏移 */
+  u {
+    text-underline-offset: 4px;
+  }
+
+  /* 日期徽章样式 */
+  .date-badge {
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.85em;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+    background: rgba(66, 153, 225, 0.08);
+    color: #3182ce;
+    border: 1px solid rgba(66, 153, 225, 0.15);
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Modal 样式 */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* 页面背景和动画 */
+  body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  /* 卡片动画和样式 */
+  .section-card {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  /* 链接悬停效果 */
+  .pub-title, .navbar a, .contact a {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .pub-title::after, .navbar a::after, .contact a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #4299e1;
+    transition: width 0.3s ease;
+  }
+
+  .pub-title:hover::after, .navbar a:hover::after, .contact a:hover::after {
+    width: 100%;
+  }
+
+  /* 头像悬停效果 */
+  .profile-img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .profile-img:hover {
+    transform: scale(1.02) rotate(2deg);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+
+  /* 访问计数器样式 */
+  .visitor-counter {
+    transition: all 0.3s ease;
+  }
+
+  .visitor-counter:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .visitor-counter i {
+    transition: transform 0.3s ease;
+  }
+
+  .visitor-counter:hover i {
+    transform: rotate(360deg);
+  }
+
+  /* 论文图片样式 */
+  .logo-cell img {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .logo-cell img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  /* 导航栏样式 */
+  .navbar {
+    transition: box-shadow 0.3s ease;
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+  }
+
+  .navbar.scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 动画关键帧 */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 锚点偏移 */
+  html {
+    scroll-padding-top: 60px;
+    scroll-behavior: smooth;
+  }
+
+  .section-card {
+    scroll-margin-top: 60px;
+  }
+
+  .section-card#awards td:first-child {
+    position: relative;
+    padding-left: 24px;
+  }
+
+  .section-card#awards td:first-child::before {
+    content: '🏆';
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .section-card#awards tr:hover td:first-child::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #0077B6, #00B4D8);
+    transform-origin: 0 50%;
+    transform: scaleX(var(--scroll));
+    z-index: 1001;
+  }
+
+  .paper-metrics {
+    display: inline-flex;
+    gap: 12px;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  .metric {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+  }
+
+  .metric:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+  }
+
+  .interest-icon {
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .highlight:hover .interest-icon {
+    transform: scale(1.2) rotate(10deg);
+  }
+
+  .contact-link {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .contact-link:hover::before {
+    transform: translateX(0);
+  }
+
+  .scroll-indicator {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1000;
+  }
+
+  .scroll-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 119, 182, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .scroll-dot.active {
+    background: #0077B6;
+    transform: scale(1.5);
+  }
+
+  .award-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: linear-gradient(120deg, rgba(0, 119, 182, 0.1), rgba(0, 180, 216, 0.1));
+    transition: all 0.3s ease;
+  }
+
+  .award-badge:hover {
+    background: linear-gradient(120deg, rgba(0, 119, 182, 0.2), rgba(0, 180, 216, 0.2));
+    transform: translateX(5px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #1a1a1a;
+      --text-color: #e0e0e0;
+      --card-bg: #2d2d2d;
+      --link-color: #5caddf;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    .section-card {
+      background: var(--card-bg);
+    }
+
+    a {
+      color: var(--link-color);
+    }
+  }
+
+  /* Internships 时间轴样式 */
+  .section-card#internships table {
+    position: relative;
+  }
+
+  .section-card#internships table::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #61b8e6, transparent);
+  }
+
+  .section-card#internships tr {
+    position: relative;
+  }
+
+  .section-card#internships tr::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6dccff;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+  }
+
+  /* 当前实习的点会更大一些 */
+  .section-card#internships tr:first-child::before {
+    width: 14px;
+    height: 14px;
+    left: 4px;
+    background: #6dccff;
+    box-shadow: 0 0 0 4px rgba(112, 205, 255, 0.2);
+  }
+
+  /* 为 logo 添加左边距 */
+  .section-card#internships .logo-cell {
+    padding-left: 30px;
+  }
+
+  /* 通用时间轴样式 */
+  .timeline-base {
+    position: relative;
+  }
+
+  .timeline-base::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, 
+      rgba(66, 153, 225, 0), 
+      rgba(66, 153, 225, 0.2),  /* 更淡的线条颜色 */
+      rgba(66, 153, 225, 0)
+    );
+  }
+
+  .timeline-base tr {
+    position: relative;
+  }
+
+  .timeline-base tr::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(66, 153, 225, 0.15);  /* 已结束的点使用更淡的颜色 */
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+  }
+
+  /* 为 logo 添加统一的间距 */
+  .timeline-base .logo-cell {
+    padding-left: 45px;
+  }
+
+  /* 当前进行中的项目（第一个）特殊样式 */
+  .timeline-base tr:first-child::before {
+    width: 8px;
+    height: 8px;
+    left: 20px;
+    background: rgba(66, 153, 225, 0.3);  /* 当前项目的点使用稍深的颜色 */
+    box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.1);
+  }
+
+  /* 应用时间轴样式到相关表格 */
+  .section-card#internships table {
+    composes: timeline-base;
   }
