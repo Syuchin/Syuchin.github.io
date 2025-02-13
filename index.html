@@ -7,12 +7,59 @@
   <meta name="robots" content="noindex, nofollow">
   <!-- 网页图标（可选） -->
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/11820/11820511.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <!-- 添加 Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- 导入style -->
   <link rel="stylesheet" href="static/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Arial, sans-serif;
+    }
+    #news li i {
+      font-family: "Arial Rounded MT Bold", "Arial Rounded", Arial, sans-serif;
+      font-style: italic;
+    }
+    .quote {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5em;
+      font-weight: 500;
+      color: #4a5568;
+      line-height: 1.4;
+      letter-spacing: 0.5px;
+    }
+    .news-announcement {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 500;
+      font-size: 1.1em;
+      color: #2d3748;
+      line-height: 1.6;
+    }
+    .last-updated {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      color: #718096;
+      opacity: 0.8;
+      padding: 8px 0;
+      margin-bottom: 15px;
+      border-bottom: 1px dashed #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .last-updated i {
+      font-size: 0.8rem;
+      color: #a0aec0;
+    }
+  </style>
   <meta name="icons-source" content="Icons by Freepik, prettycons, Tomas Knop, Becris, and wanicon from www.flaticon.com">
+  <!-- 添加更多meta标签 -->
+  <meta name="description" content="Chenghao Yang's academic homepage - USTC student researching AI security and LLMs">
+  <meta name="keywords" content="Chenghao Yang, USTC, AI Security, LLMs, Machine Learning">
 </head>
 
 <body>
@@ -43,10 +90,6 @@
         <p class="email">yangchenghao@mail.ustc.edu.cn</p>
         <p class="quote">If you get tangled up, you just tango on.</p>
       </div>
-      <!-- 右侧头像 
-           图片优化1: 若有WebP版本可使用 <source> 或直接改为 .webp
-           图片优化2: 增加 width/height 属性, lazy loading
-        -->
       <img 
         src="data/profile.jpg"       
         alt="My Profile" 
@@ -123,16 +166,16 @@
     <!-- News -->
     <div class="section-card" id="news">
       <h2>News</h2>
-      <p style="color: #666; font-size: 0.9rem; opacity: 0.6;">
-        <!-- 自动更新修改时间 -->
+      <div class="last-updated">
+        <i class="fas fa-clock"></i>
         Last updated: <span id="updateDate"></span>
-      </p>
+      </div>
       <p class="news-announcement">Keep an eye on this space for the latest news or announcements.</p>
       <!-- 可以在这里放置近期动态，例如： -->
       
       <ul>
         <li>
-          <span class="date-badge">2025-02-09</span> The paper I contributed to <i>"CryptoX: Compositional Reasoning Evaluation of Large Language Models"</i> has been published on arXiv! <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/multimodal-art-projection/CryptoX" target="_blank" rel="noopener">[Code]</a>
+          <span class="date-badge">2025-02-09</span> The paper I contributed to <i>"CryptoX: Compositional Reasoning Evaluation of Large Language Models"</i> has been published on arXiv! <a href="https://arxiv.org/abs/2502.07813" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/multimodal-art-projection/CryptoX" target="_blank" rel="noopener">[Code]</a>
         </li>
         <li>
           <span class="date-badge">2025-01-23</span>  🎉 Our Paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been accepted by 
@@ -164,6 +207,10 @@
             <div class="pub-title">
               Hello Again! LLM-powered Personalized Agent for Long-term Dialogue
             </div>
+            <div class="institution">
+              <i class="fas fa-university"></i>
+              National University of Singapore & University of Science and Technology of China
+            </div>
             <div class="paper-metrics">
               <span class="metric">
                 <i class="fas fa-quote-right"></i>
@@ -178,6 +225,13 @@
                 <i class="fas fa-star"></i>
                 <span id="ldagent-stars">29 stars</span>
               </span>
+              <!-- 添加摘要按钮 -->
+              <button class="abstract-btn" 
+                      onclick="toggleAbstract('ldagent-abstract')"
+                      aria-label="Toggle abstract visibility">
+                <i class="fas fa-align-left"></i>
+                Abstract
+              </button>
             </div>
             <br>
             <i>
@@ -200,6 +254,16 @@
             </a>
           </td>
         </tr>
+      </table>
+      
+      <!-- 将摘要容器移到表格外面 -->
+      <div id="ldagent-abstract" class="abstract-container">
+        <p>
+          Open-domain dialogue systems have seen remarkable advancements with the development of large language models (LLMs). Nonetheless, most existing dialogue systems predominantly focus on brief single-session interactions, neglecting the real-world demands for long-term companionship and personalized interactions with chatbots. Crucial to addressing this real-world need are event summary and persona management, which enable reasoning for appropriate long-term dialogue responses. Recent progress in the human-like cognitive and reasoning capabilities of LLMs suggests that LLM-based agents could significantly enhance automated perception, decision-making, and problem-solving. In response to this potential, we introduce a model-agnostic framework, the Long-term Dialogue Agent (LD-Agent), which incorporates three independently tunable modules dedicated to event perception, persona extraction, and response generation. For the event memory module, long and short-term memory banks are employed to separately focus on historical and ongoing sessions, while a topic-based retrieval mechanism is introduced to enhance the accuracy of memory retrieval. Furthermore, the persona module conducts dynamic persona modeling for both users and agents. The integration of retrieved memories and extracted personas is subsequently fed into the generator to induce appropriate responses. The effectiveness, generality, and cross-domain capabilities of LD-Agent are empirically demonstrated across various illustrative benchmarks, models, and tasks. The code is released at this URL: <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener">https://github.com/leolee99/LD-Agent</a> 
+        </p>
+      </div>
+
+      <table>
         <tr>
           <td class="logo-cell" style="width:250px;">
             <img src="data/paper/CryptoX.png" alt="CryptoX Paper" class="enlargeable" style="cursor: zoom-in;">
@@ -207,6 +271,10 @@
           <td>
             <div class="pub-title">
               CryptoX: Compositional Reasoning Evaluation of Large Language Models
+            </div>
+            <div class="institution">
+              <i class="fas fa-university"></i>
+              Beihang University & M-A-P Lab & ByteDance Inc.
             </div>
             <div class="paper-metrics">
               <span class="metric">
@@ -222,6 +290,11 @@
                 <i class="fas fa-star"></i>
                 <span id="cryptox-stars">0 stars</span>
               </span>
+              <!-- 添加摘要按钮 -->
+              <button class="abstract-btn" onclick="toggleAbstract('cryptox-abstract')">
+                <i class="fas fa-align-left"></i>
+                Abstract
+              </button>
             </div>
             <br>
             <!-- # Jiajun Shi, Chaoren Wei, Liqun Yang, Zekun Moore Wang, Chenghao Yang, Ge Zhang, Stephen Huang, Tao Peng, Jian Yang, Zhoufutu Wen -->
@@ -241,7 +314,7 @@
               <img src="https://cdn-icons-png.flaticon.com/512/11987/11987382.png" alt="arXiv" style="width: 16px;">
               <font style="color: gray; font-weight: bold;">arXiv</font>
             </span> · 
-            <a href="https://arxiv.org/abs/2406.05925v1" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
+            <a href="https://arxiv.org/abs/2502.07813" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
               <img src="https://cdn-icons-png.flaticon.com/512/8304/8304411.png" alt="PDF" style="width: 16px">
               <span>Paper</span>
             </a> · 
@@ -252,19 +325,24 @@
           </td>
            
         </tr>
-        
       </table>
+      <!-- CryptoX的摘要容器 -->
+      <div id="cryptox-abstract" class="abstract-container">
+        <p>
+          The compositional reasoning ability has long been regarded as critical to the generalization and intelligence emergence of large language models (LLMs). However, despite numerous reasoning-related benchmarks, the compositional reasoning capacity of LLMs is rarely studied or quantified in the existing benchmarks. In this paper, we introduce CryptoX, an evaluation framework that, for the first time, combines existing benchmarks and cryptographic principles to quantify the compositional reasoning capacity of LLMs. Building upon CryptoX, we construct CryptoBench, which integrates these principles into several benchmarks for systematic evaluation. We conduct detailed experiments on widely used open-source and closed-source LLMs using CryptoBench, revealing a huge gap between open-source and closed-source LLMs. We further conduct thorough mechanistic interpretability experiments to reveal the inner mechanism of LLMs' compositional reasoning, involving subproblem decomposition, subproblem inference, and summarizing subproblem conclusions. Through analysis based on CryptoBench, we highlight the value of independently studying compositional reasoning and emphasize the need to enhance the compositional reasoning abilities of LLMs.
+        </p>
+      </div>
     </div>
     <!-- Internships -->
     <div class="section-card" id="internships">
       <h2>Internships</h2>
       <table>
         <tr>
-          <td class="logo-cell" style="width: 150px;">
+          <td class="logo-cell" style="width: 200px;">
             <img src="data/logos/ByteDance.svg" alt="ByteDance Logo" style="width: 150px; height: 150px; object-fit: contain;">
           </td>
           <td style="padding-left: 20px;">
-            <h3 style="margin: 0; font-size: 1.2rem; color: #2d3748;">ByteDance</h3>
+            <h3 style="margin: 0; font-size: 1.2rem; color: #2d3748;">ByteDance Inc.</h3>
             <div style="margin: 4px 0;">
               <span style="color: #718096; font-size: 0.9rem;">Nov 2024 - Present</span>
             </div>
@@ -278,7 +356,7 @@
         </tr>
 
         <tr style="margin-top: 24px;">
-          <td class="logo-cell" style="width: 150px;">
+          <td class="logo-cell" style="width: 200px;">
             <img src="data/logos/nus.jpg" alt="NUS Logo" style="width: 150px; height: 150px; object-fit: contain;">
           </td>
           <td style="padding-left: 20px;">
@@ -534,6 +612,24 @@
 
     // 页面加载时更新引用数
     updateCitations();
+  </script>
+
+  <script>
+    function toggleAbstract(abstractId) {
+      const container = document.getElementById(abstractId);
+      const button = event.currentTarget;
+      
+      // 切换摘要显示状态
+      container.classList.toggle('show');
+      button.classList.toggle('active');
+      
+      // 更新按钮文本
+      if (container.classList.contains('show')) {
+        button.innerHTML = '<i class="fas fa-align-left"></i> Hide Abstract';
+      } else {
+        button.innerHTML = '<i class="fas fa-align-left"></i> Abstract';
+      }
+    }
   </script>
 </body>
 </html>
