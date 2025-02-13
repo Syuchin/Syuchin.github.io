@@ -1,0 +1,12 @@
+{
+  "total_citations": 9,
+  "h_index": 1,
+  "papers": {
+    "Hello Again! LLM-powered Personalized Agent for Long-term Dialogue": {
+      "citations": 9,
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2406.05925"
+    }
+  },
+  "last_updated": ""
+}
