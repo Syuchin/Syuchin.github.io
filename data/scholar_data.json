@@ -1,12 +1,70 @@
 {
-  "total_citations": 9,
+  "total_citations": 10,
   "h_index": 1,
   "papers": {
     "Hello Again! LLM-powered Personalized Agent for Long-term Dialogue": {
-      "citations": 9,
+      "citations": 10,
       "year": 2024,
       "url": ""
     }
   },
-  "last_updated": ""
+  "citation_trend": [
+    {
+      "date": "2024-01",
+      "citations": 10
+    },
+    {
+      "date": "2024-02",
+      "citations": 10
+    },
+    {
+      "date": "2024-03",
+      "citations": 10
+    },
+    {
+      "date": "2024-04",
+      "citations": 10
+    },
+    {
+      "date": "2024-05",
+      "citations": 10
+    },
+    {
+      "date": "2024-06",
+      "citations": 10
+    },
+    {
+      "date": "2024-07",
+      "citations": 1
+    },
+    {
+      "date": "2024-08",
+      "citations": 10
+    },
+    {
+      "date": "2024-09",
+      "citations": 10
+    },
+    {
+      "date": "2024-10",
+      "citations": 5
+    },
+    {
+      "date": "2024-11",
+      "citations": 10
+    },
+    {
+      "date": "2024-12",
+      "citations": 10
+    },
+    {
+      "date": "2025-01",
+      "citations": 9
+    },
+    {
+      "date": "2025-02",
+      "citations": 10
+    }
+  ],
+  "last_updated": "2025-02-14T07:00:54.926290"
 }
