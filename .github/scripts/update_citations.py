@@ -7,8 +7,12 @@ import traceback
 # 定义历史基准数据
 HISTORICAL_CITATIONS = [
     {"date": "2024-07", "citations": 1},
-    {"date": "2024-10", "citations": 5},
-    {"date": "2025-01", "citations": 9}
+    {"date": "2024-08", "citations": 2},
+    {"date": "2024-09", "citations": 3},
+    {"date": "2024-10", "citations": 7},
+    {"date": "2024-11", "citations": 7},
+    {"date": "2024-12", "citations": 7},
+    {"date": "2025-01", "citations": 9},
 ]
 
 def update_scholar_stats():
@@ -33,7 +37,7 @@ def update_scholar_stats():
         print(f"Total citations: {data['total_citations']}")
         print(f"H-index: {data['h_index']}")
 
-        # 获取论文信息
+        # 获取论文信息和总引用数
         for pub in author_info['publications']:
             pub_filled = scholarly.fill(pub)
             print(f"\nProcessing paper: {pub_filled['bib']['title']}")
@@ -45,24 +49,17 @@ def update_scholar_stats():
                 "url": pub_filled.get('pub_url', '')
             }
 
-        # 获取引用趋势
+        # 使用实际的月度引用数据
         current_month = datetime.now().strftime('%Y-%m')
         citations_by_month = {}
         
-        # 添加历史基准数据
+        # 如果需要保持历史数据，可以添加
         for historical in HISTORICAL_CITATIONS:
-            citations_by_month[historical['date']] = historical['citations']
-        
-        # 添加当前月份的数据
-        for pub in data["papers"].values():
-            # 获取从论文发表到现在的所有月份
-            pub_date = datetime(pub['year'], 1, 1)
-            current_date = datetime.now()
-            while pub_date <= current_date:
-                month = pub_date.strftime('%Y-%m')
-                if month not in citations_by_month:  # 不覆盖历史数据
-                    citations_by_month[month] = citations_by_month.get(month, 0) + pub['citations']
-                pub_date = datetime(pub_date.year, pub_date.month % 12 + 1, 1) if pub_date.month < 12 else datetime(pub_date.year + 1, 1, 1)
+            if historical['date'] <= current_month:
+                citations_by_month[historical['date']] = historical['citations']
+
+        # 添加最新的引用数据
+        citations_by_month[current_month] = data['total_citations']
 
         # 转换为列表格式并按日期排序
         data["citation_trend"] = [

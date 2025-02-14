@@ -10,52 +10,28 @@
   },
   "citation_trend": [
     {
-      "date": "2024-01",
-      "citations": 10
-    },
-    {
-      "date": "2024-02",
-      "citations": 10
-    },
-    {
-      "date": "2024-03",
-      "citations": 10
-    },
-    {
-      "date": "2024-04",
-      "citations": 10
-    },
-    {
-      "date": "2024-05",
-      "citations": 10
-    },
-    {
-      "date": "2024-06",
-      "citations": 10
-    },
-    {
       "date": "2024-07",
       "citations": 1
     },
     {
       "date": "2024-08",
-      "citations": 10
+      "citations": 2
     },
     {
       "date": "2024-09",
-      "citations": 10
+      "citations": 3
     },
     {
       "date": "2024-10",
-      "citations": 5
+      "citations": 7
     },
     {
       "date": "2024-11",
-      "citations": 10
+      "citations": 7
     },
     {
       "date": "2024-12",
-      "citations": 10
+      "citations": 7
     },
     {
       "date": "2025-01",
@@ -66,5 +42,5 @@
       "citations": 10
     }
   ],
-  "last_updated": "2025-02-14T07:05:03.048493"
+  "last_updated": "2025-02-14T15:11:49.025534"
 }
