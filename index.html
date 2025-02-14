@@ -75,6 +75,7 @@
           <li><a href="#publications">Publications</a></li>
           <li><a href="#internships">Internships</a></li>
           <!-- <li><a href="cv.html">CV</a></li> -->
+          <li><a href="#trends">Trends</a></li>
         </ul>
       </nav>
     </div>
@@ -556,12 +557,32 @@
     // 获取 GitHub 仓库星标数
     async function getGitHubStars(owner, repo) {
       try {
+        // 先尝试从本地缓存获取数据
+        const cacheKey = `${owner}-${repo}-stars`;
+        const cachedData = localStorage.getItem(cacheKey);
+        const cacheTime = localStorage.getItem(`${cacheKey}-time`);
+        
+        // 如果缓存存在且未过期（24小时内）
+        if (cachedData && cacheTime && (Date.now() - parseInt(cacheTime)) < 24 * 60 * 60 * 1000) {
+          return parseInt(cachedData);
+        }
+
         const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
+        
+        // 更新缓存
+        localStorage.setItem(cacheKey, data.stargazers_count.toString());
+        localStorage.setItem(`${cacheKey}-time`, Date.now().toString());
+        
         return data.stargazers_count;
       } catch (error) {
         console.error('Error fetching GitHub stars:', error);
-        return null;
+        // 如果有缓存数据，在请求失败时使用缓存
+        const cachedData = localStorage.getItem(`${owner}-${repo}-stars`);
+        return cachedData ? parseInt(cachedData) : 0;
       }
     }
 
@@ -569,17 +590,13 @@
     async function updateMetrics() {
       // 更新 GitHub stars
       const ldAgentStars = await getGitHubStars('leolee99', 'LD-Agent');
-      if (ldAgentStars !== null) {
-        document.querySelector('#ldagent-stars').textContent = `${ldAgentStars} stars`;
-      }
+      document.querySelector('#ldagent-stars').textContent = `${ldAgentStars || 0} stars`;
 
       const cryptoXStars = await getGitHubStars('multimodal-art-projection', 'CryptoX');
-      if (cryptoXStars !== null) {
-        document.querySelector('#cryptox-stars').textContent = `${cryptoXStars} stars`;
-      }
+      document.querySelector('#cryptox-stars').textContent = `${cryptoXStars || 0} stars`;
 
-      // 每天更新一次
-      setTimeout(updateMetrics, 1 * 60 * 60 * 1000);
+      // 每小时更新一次
+      setTimeout(updateMetrics, 60 * 60 * 1000);
     }
 
     // 页面加载时开始更新

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Citation Trends - Chenghao Yang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- 网页图标 -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/11820/11820511.png" type="image/png">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- 导入共享样式 -->
+  <link rel="stylesheet" href="static/w3.css">
+  
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background: #f7fafc;  /* 浅灰色背景 */
+    }
+
+    .trends-container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+      min-height: calc(100vh - 64px); /* 减去导航栏高度 */
+      align-items: center;
+    }
+
+    /* 添加背景填充 */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #f7fafc;
+      z-index: 0;
+    }
+
+    .chart-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      padding: 1.8rem;
+      margin: 0;
+      flex: 1;
+      min-width: 320px;
+      transition: all 0.3s ease;
+      height: 500px;
+    }
+
+    .chart-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .chart-header {
+      margin-bottom: 1.8rem;
+    }
+
+    .header-content {
+      position: relative;
+      padding-bottom: 2.5rem;  /* 为 last-updated 留出空间 */
+    }
+
+    .chart-title {
+      font-size: 1.5rem;
+      color: #2d3748;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .chart-subtitle {
+      color: #718096;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr;  /* 改为单列布局 */
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    /* 引用数指标卡片 - 深蓝色 */
+    .metric-card:nth-child(1) {
+      background: linear-gradient(135deg, rgba(227, 242, 253, 0.4), rgba(248, 250, 252, 0.4));
+      border-left: 4px solid rgba(66, 153, 225, 0.6);  /* 降低蓝色不透明度 */
+      padding: 1rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    /* 下方指标容器 */
+    .secondary-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;  /* 两列布局 */
+      gap: 0.8rem;
+    }
+
+    /* h-index指标卡片 - 青色 */
+    .secondary-metrics .metric-card:nth-child(1) {
+      background: linear-gradient(135deg, rgba(224, 247, 250, 0.4), rgba(248, 250, 252, 0.4));
+      border-left: 4px solid rgba(0, 172, 193, 0.6);  /* 降低青色不透明度 */
+      padding: 1rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    /* Publications指标卡片 - 紫色 */
+    .secondary-metrics .metric-card:nth-child(2) {
+      background: linear-gradient(135deg, rgba(232, 234, 246, 0.4), rgba(248, 250, 252, 0.4));
+      border-left: 4px solid rgba(92, 107, 192, 0.6);  /* 降低紫色不透明度 */
+      padding: 1rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    /* 悬停效果 */
+    .metric-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 相应更新数值颜色 */
+    .metric-card:nth-child(1) .metric-value {
+      color: rgba(66, 153, 225, 0.8);  /* 降低数值颜色不透明度 */
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-left: auto;
+    }
+
+    .secondary-metrics .metric-card:nth-child(1) .metric-value {
+      color: rgba(0, 172, 193, 0.8);  /* 降低数值颜色不透明度 */
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-left: auto;
+    }
+
+    .secondary-metrics .metric-card:nth-child(2) .metric-value {
+      color: rgba(92, 107, 192, 0.8);  /* 降低数值颜色不透明度 */
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-left: auto;
+    }
+
+    /* 标签样式 */
+    .metric-label {
+      color: #718096;
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      height: 280px;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    #last-updated {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    #last-updated i {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 1024px) {
+      .trends-container {
+        flex-direction: column;
+        margin: auto;
+        padding: 2rem 1rem;
+      }
+      
+      .chart-card {
+        width: 100%;
+        min-width: unset;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .chart-wrapper {
+        height: 250px;
+      }
+      
+      .metrics-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .growth-stats {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .growth-item {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .growth-item:hover {
+      background: #f1f5f9;
+    }
+
+    .growth-item i {
+      color: #4299e168;
+      font-size: 1.2rem;
+    }
+
+    .growth-item span {
+      color: #718096;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .growth-item strong {
+      color: #2d3748;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* 导航栏样式优化 */
+    header {
+      background: white;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      height: 64px;          /* 固定高度 */
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .navbar {
+      margin: 0 auto;
+      padding: 0 2rem;       /* 修改：移除上下padding，只保留左右padding */
+      width: 100%;
+      height: 100%;         /* 新增：确保navbar填满header的高度 */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .brand {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2d3748;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .brand:hover {
+      color: #4299e1;
+    }
+
+    .navbar nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar nav ul li a {
+      color: #4a5568;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+    }
+
+    .navbar nav ul li a.active {
+      color: #4299e1;
+      background: rgba(66, 153, 225, 0.08);
+    }
+
+    .navbar nav ul li a:hover {
+      color: #4299e1;
+      background: rgba(66, 153, 225, 0.08);
+      text-decoration: none;
+    }
+
+    /* 模态框样式 */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: white;
+      margin: 2% auto;
+      padding: 2rem;
+      width: 90%;
+      max-width: 1200px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-header h2 {
+      font-size: 1.8rem;
+      color: #2d3748;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .modal-header p {
+      color: #718096;
+      margin: 0;
+    }
+
+    .modal-chart-wrapper {
+      height: 600px;
+      width: 100%;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 1.5rem;
+      top: 1rem;
+      font-size: 1.8rem;
+      color: #718096;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: #2d3748;
+    }
+
+    /* 让原趋势图可点击 */
+    .chart-wrapper {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .chart-wrapper:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 顶部导航条 -->
+  <header>
+    <div class="navbar">
+      <a href="index.html" class="brand">Citation Trends</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="trends.html" class="active">Trends</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="trends-container">
+    <!-- 总体指标 -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="header-content">
+          <div class="chart-title">Metrics</div>
+          <div class="chart-subtitle">Academic Impact</div>
+          <div id="last-updated">
+            <i class="fas fa-clock"></i>
+            Last updated: <span id="updateDate"></span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="metrics-grid">
+        <!-- 总引用数 -->
+        <div class="metric-card">
+          <div class="metric-label">Total Citations</div>
+          <div class="metric-value" id="total-citations">10</div>
+        </div>
+        
+        <!-- h-index 和 Publications 并排显示 -->
+        <div class="secondary-metrics">
+          <div class="metric-card">
+            <div class="metric-label">h-index</div>
+            <div class="metric-value" id="h-index">1</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Publications</div>
+            <div class="metric-value" id="total-papers">1</div>
+          </div>
+        </div>
+      </div>
+      <div class="growth-stats">
+        <div class="growth-item">
+          <i class="fas fa-chart-line"></i>
+          <span>Monthly Growth Rate</span>
+          <strong id="growth-rate">+11.1%</strong>
+        </div>
+        <div class="growth-item">
+          <i class="fas fa-clock-rotate-left"></i>
+          <span>Most Active Month</span>
+          <strong id="peak-month">2025-01</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- 引用趋势图 -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Trends</div>
+          <div class="chart-subtitle">Time Series</div>
+        </div>
+      </div>
+      <div class="chart-wrapper">
+        <canvas id="citationTrends"></canvas>
+      </div>
+    </div>
+
+    <!-- 论文引用分布 -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Distribution</div>
+          <div class="chart-subtitle">By Paper</div>
+        </div>
+      </div>
+      <div class="chart-wrapper">
+        <canvas id="citationDistribution"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- 在body末尾添加模态框 -->
+  <div id="trendModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="modal-chart-wrapper">
+        <canvas id="largeTrendChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 更新日期
+    document.getElementById('updateDate').textContent = 'Loading...';
+
+    // 声明全局变量
+    let chartData = null;
+    let largeTrendChart = null;
+
+    // 格式化日期函数
+    function formatDate(dateString) {
+      return dateString.split('T')[0];  // 只保留 T 之前的日期部分
+    }
+
+    // 本地测试数据
+    const testData = {
+      "total_citations": 100,
+      "h_index": 5,
+      "last_updated": "2025/2/14",
+      "papers": {
+        "Hello Again! LLM-powered Personal AI Assistant": {
+          "citations": 10,
+          "url": "https://example.com/paper1"
+        },
+        "Deep Learning in Natural Language Processing": {
+          "citations": 25,
+          "url": "https://example.com/paper2"
+        },
+        "Advanced Machine Learning Techniques": {
+          "citations": 18,
+          "url": "https://example.com/paper3"
+        },
+        "Artificial Intelligence in Healthcare": {
+          "citations": 15,
+          "url": "https://example.com/paper4"
+        },
+        "Neural Networks for Computer Vision": {
+          "citations": 12,
+          "url": "https://example.com/paper5"
+        },
+        "Reinforcement Learning Applications": {
+          "citations": 8,
+          "url": "https://example.com/paper6"
+        },
+        "Transformer Models in NLP": {
+          "citations": 5,
+          "url": "https://example.com/paper7"
+        },
+        "Machine Learning Ethics": {
+          "citations": 3,
+          "url": "https://example.com/paper8"
+        },
+        "AI in Education": {
+          "citations": 2,
+          "url": "https://example.com/paper9"
+        },
+        "Future of Artificial Intelligence": {
+          "citations": 2,
+          "url": "https://example.com/paper10"
+        }
+      },
+      "citation_trend": [
+        { "date": "2024-07", "citations": 20 },
+        { "date": "2024-08", "citations": 35 },
+        { "date": "2024-09", "citations": 45 },
+        { "date": "2024-10", "citations": 60 },
+        { "date": "2024-11", "citations": 70 },
+        { "date": "2024-12", "citations": 80 },
+        { "date": "2025-01", "citations": 90 },
+        { "date": "2025-02", "citations": 100 }
+      ]
+    };
+
+    // 初始化模态框事件
+    function initializeModalEvents() {
+      const trendChartWrapper = document.querySelector('.chart-card:nth-child(2) .chart-wrapper');
+      const modal = document.getElementById('trendModal');
+      const closeBtn = document.querySelector('.close-btn');
+      
+      if (trendChartWrapper) {
+        trendChartWrapper.addEventListener('click', () => {
+          console.log('Chart clicked');
+          modal.style.display = 'block';
+          if (largeTrendChart) {
+            largeTrendChart.destroy();
+          }
+          createLargeChart();
+        });
+      }
+      
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          console.log('Close clicked');
+          modal.style.display = 'none';
+        });
+      }
+      
+      window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+
+    // 创建大图表
+    function createLargeChart() {
+      console.log('Creating large chart');
+      const ctx = document.getElementById('largeTrendChart');
+      
+      if (!ctx || !chartData) {
+        console.error('Cannot find canvas or data');
+        return;
+      }
+      
+      largeTrendChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: chartData.citation_trend.map(item => item.date),
+          datasets: [{
+            label: 'Citations',
+            data: chartData.citation_trend.map(item => item.citations),
+            borderColor: '#4299e1',
+            backgroundColor: 'rgba(66, 153, 225, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              titleColor: '#2d3748',
+              bodyColor: '#4a5568',
+              borderColor: '#e2e8f0',
+              borderWidth: 1,
+              padding: 12,
+              boxPadding: 6,
+              usePointStyle: true
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMax: Math.ceil(Math.max(...chartData.citation_trend.map(item => item.citations)) * 1.2),
+              ticks: {
+                stepSize: Math.max(1, Math.ceil(Math.max(...chartData.citation_trend.map(item => item.citations)) / 10)),
+                precision: 0
+              },
+              grid: {
+                color: 'rgba(0, 0, 0, 0.03)'
+              }
+            },
+            x: {
+              grid: {
+                display: false
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // 修改数据加载函数
+    async function loadCitationData() {
+      try {
+        console.log('Attempting to load citation data...');
+        const response = await fetch('data/scholar_data.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Successfully loaded data:', data);
+        
+        // 保存数据到全局变量
+        chartData = data;
+        
+        // 更新总体指标
+        document.getElementById('total-citations').textContent = data.total_citations || 0;
+        document.getElementById('h-index').textContent = data.h_index || 0;
+        document.getElementById('total-papers').textContent = Object.keys(data.papers).length || 0;
+        
+        // 更新日期显示 - 使用格式化函数
+        document.getElementById('updateDate').textContent = formatDate(data.last_updated);
+
+        // 计算增长率和高峰月份
+        const trends = data.citation_trend;
+        if (trends.length >= 2) {
+          const lastMonth = trends[trends.length - 1];
+          const prevMonth = trends[trends.length - 2];
+          const growthRate = ((lastMonth.citations - prevMonth.citations) / prevMonth.citations * 100).toFixed(1);
+          document.getElementById('growth-rate').textContent = `${growthRate > 0 ? '+' : ''}${growthRate}%`;
+          
+          // 找出引用量最高的月份
+          const peakMonth = trends.reduce((max, curr) => 
+            curr.citations > max.citations ? curr : max
+          );
+          document.getElementById('peak-month').textContent = peakMonth.date;
+        }
+
+        // 准备趋势图数据 - 只显示最近5个数据点
+        const recentTrends = data.citation_trend.slice(-5);  // 获取最后5个数据点
+        const trendData = {
+          labels: recentTrends.map(item => item.date),
+          datasets: [{
+            label: 'Citations',
+            data: recentTrends.map(item => item.citations),
+            borderColor: '#4299e1',
+            backgroundColor: 'rgba(66, 153, 225, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        };
+
+        console.log('Rendering citation trends chart...');
+        // 绘制小趋势图
+        new Chart(document.getElementById('citationTrends'), {
+          type: 'line',
+          data: trendData,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                suggestedMax: Math.ceil(Math.max(...recentTrends.map(item => item.citations)) * 1.2),
+                ticks: {
+                  stepSize: Math.max(1, Math.ceil(Math.max(...recentTrends.map(item => item.citations)) / 10)),
+                  precision: 0
+                },
+                grid: {
+                  color: 'rgba(0, 0, 0, 0.03)'
+                }
+              },
+              x: {
+                grid: {
+                  display: false
+                }
+              }
+            }
+          }
+        });
+
+        // 准备分布图数据
+        console.log('Preparing distribution data...');
+        const papers = Object.entries(data.papers).map(([title, info]) => ({
+          title: title,
+          citations: info.citations
+        })).sort((a, b) => b.citations - a.citations);
+
+        // 生成清新的颜色数组
+        const softColors = [
+          'rgba(100, 170, 255, 0.7)',  // 清新的蓝色
+          'rgba(255, 130, 130, 0.7)',  // 清新的粉色
+          'rgba(130, 210, 130, 0.7)',  // 清新的绿色
+          'rgba(180, 130, 255, 0.7)',  // 清新的紫色
+          'rgba(255, 180, 130, 0.7)',  // 清新的橙色
+          'rgba(130, 210, 210, 0.7)',  // 清新的青色
+          'rgba(255, 200, 130, 0.7)',  // 清新的杏色
+          'rgba(160, 160, 255, 0.7)',  // 清新的淡紫色
+          'rgba(255, 160, 200, 0.7)',  // 清新的玫红色
+          'rgba(130, 230, 180, 0.7)'   // 清新的薄荷色
+        ];
+
+        const distributionData = {
+          labels: papers.map(paper => ''),
+          datasets: [{
+            label: 'Citations',
+            data: papers.map(paper => paper.citations),
+            backgroundColor: papers.map((_, index) => softColors[index % softColors.length]),
+            borderRadius: 8,
+            maxBarThickness: 60,  // 增加最大宽度
+            borderColor: 'transparent',
+            borderWidth: 0
+          }]
+        };
+
+        console.log('Rendering citation distribution chart...');
+        // 绘制分布图
+        new Chart(document.getElementById('citationDistribution'), {
+          type: 'bar',
+          data: distributionData,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                callbacks: {
+                  title: function(context) {
+                    return papers[context[0].dataIndex].title;
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                suggestedMax: Math.ceil(Math.max(...papers.map(paper => paper.citations)) * 1.2),
+                ticks: {
+                  stepSize: Math.max(1, Math.ceil(Math.max(...papers.map(paper => paper.citations)) / 10)),
+                  precision: 0
+                },
+                grid: {
+                  color: 'rgba(0, 0, 0, 0.05)'
+                }
+              },
+              x: {
+                display: false,
+                grid: {
+                  display: false
+                }
+              }
+            },
+            barPercentage: 0.7,    // 增加柱状图宽度占比
+            categoryPercentage: 0.9 // 增加类别间距占比
+          }
+        });
+
+        // 在数据加载完成后初始化事件监听
+        initializeModalEvents();
+        
+      } catch (error) {
+        console.error('Error loading citation data:', error.message);
+        document.getElementById('updateDate').textContent = 'Failed to load data';
+      }
+    }
+
+    // 确保在 DOM 加载完成后初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCitationData();
+    });
+  </script>
+</body>
+</html> 
