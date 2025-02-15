@@ -6,6 +6,11 @@
       "citations": 10,
       "year": 2024,
       "url": "https://arxiv.org/abs/2406.05925"
+    },
+    "CryptoX: Compositional Reasoning Evaluation of Large Language Models": {
+      "citations": 0,
+      "year": 2025,
+      "url": "https://arxiv.org/abs/2502.07813"
     }
   },
   "citation_trend": [
@@ -42,5 +47,5 @@
       "citations": 10
     }
   ],
-  "last_updated": "2025-02-15T10:45:00.751990"
+  "last_updated": "2025-02-15T10:46:30.538189"
 }
