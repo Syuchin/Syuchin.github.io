@@ -663,6 +663,12 @@
       });
     }
 
+    // 添加一个截断文本的函数
+    function truncateText(text, maxLength = 25) {
+      if (text.length <= maxLength) return text;
+      return text.substring(0, maxLength) + '...';
+    }
+
     // 修改数据加载函数
     async function loadCitationData() {
       try {
@@ -748,12 +754,14 @@
           }
         });
 
-        // 准备分布图数据
+        // 修改分布图数据准备部分
         console.log('Preparing distribution data...');
-        const papers = Object.entries(data.papers).map(([title, info]) => ({
-          title: title,
-          citations: info.citations
-        })).sort((a, b) => b.citations - a.citations);
+        const papers = Object.entries(data.papers)
+          .map(([title, info]) => ({
+            title: title,
+            citations: info.citations || 0  // 确保 citations 为 0 时也会显示
+          }))
+          .sort((a, b) => b.citations - a.citations);  // 按引用数从高到低排序
 
         // 生成清新的颜色数组
         const softColors = [
@@ -770,20 +778,19 @@
         ];
 
         const distributionData = {
-          labels: papers.map(paper => ''),
+          labels: papers.map(paper => ''),  // 保持空标签
           datasets: [{
             label: 'Citations',
-            data: papers.map(paper => paper.citations),
+            data: papers.map(paper => Math.max(0.1, paper.citations)), // 给0引用设置最小值0.1
             backgroundColor: papers.map((_, index) => softColors[index % softColors.length]),
             borderRadius: 8,
-            maxBarThickness: 60,  // 增加最大宽度
+            maxBarThickness: 60,
             borderColor: 'transparent',
             borderWidth: 0
           }]
         };
 
-        console.log('Rendering citation distribution chart...');
-        // 绘制分布图
+        // 修改分布图配置
         new Chart(document.getElementById('citationDistribution'), {
           type: 'bar',
           data: distributionData,
@@ -795,9 +802,26 @@
                 display: false
               },
               tooltip: {
+                enabled: true,
+                mode: 'nearest',
+                intersect: true,
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                titleColor: '#2d3748',
+                bodyColor: '#4a5568',
+                borderColor: '#e2e8f0',
+                borderWidth: 1,
+                padding: 12,
+                boxPadding: 6,
+                usePointStyle: true,
                 callbacks: {
                   title: function(context) {
-                    return papers[context[0].dataIndex].title;
+                    if (!context.length) return '';
+                    return truncateText(papers[context[0].dataIndex].title);
+                  },
+                  label: function(context) {
+                    if (!context.raw) return '';
+                    const actualCitations = papers[context.dataIndex].citations;
+                    return `Citations: ${actualCitations}`;
                   }
                 }
               }
@@ -805,10 +829,14 @@
             scales: {
               y: {
                 beginAtZero: true,
+                suggestedMin: 0,
                 suggestedMax: Math.ceil(Math.max(...papers.map(paper => paper.citations)) * 1.2),
                 ticks: {
                   stepSize: Math.max(1, Math.ceil(Math.max(...papers.map(paper => paper.citations)) / 10)),
-                  precision: 0
+                  precision: 0,
+                  callback: function(value) {
+                    return Math.floor(value);
+                  }
                 },
                 grid: {
                   color: 'rgba(0, 0, 0, 0.05)'
@@ -821,8 +849,12 @@
                 }
               }
             },
-            barPercentage: 0.7,    // 增加柱状图宽度占比
-            categoryPercentage: 0.9 // 增加类别间距占比
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
+            barPercentage: 0.7,
+            categoryPercentage: 0.9
           }
         });
 
