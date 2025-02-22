@@ -1,16 +1,16 @@
 {
-  "total_citations": 10,
+  "total_citations": 13,
   "h_index": 1,
   "papers": {
-    "Hello Again! LLM-powered Personalized Agent for Long-term Dialogue": {
-      "citations": 10,
+    "Hello again! llm-powered personalized agent for long-term dialogue": {
+      "citations": 13,
       "year": 2024,
-      "url": ""
+      "url": "https://arxiv.org/abs/2406.05925"
     },
     "CryptoX: Compositional Reasoning Evaluation of Large Language Models": {
       "citations": 0,
       "year": 2025,
-      "url": ""
+      "url": "https://arxiv.org/abs/2502.07813"
     }
   },
   "citation_trend": [
@@ -44,8 +44,8 @@
     },
     {
       "date": "2025-02",
-      "citations": 10
+      "citations": 13
     }
   ],
-  "last_updated": "2025-02-21T01:09:38.940267"
+  "last_updated": "2025-02-22T01:07:19.648165"
 }
