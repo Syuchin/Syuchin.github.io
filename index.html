@@ -613,24 +613,23 @@
         const data = await response.json();
         
         // 更新 LD-Agent 论文引用数
-        const ldAgentPaper = data.papers['Hello Again! LLM-powered Personalized Agent for Long-term Dialogue'];
+        const ldAgentPaper = data.papers['Hello again! llm-powered personalized agent for long-term dialogue'];
         if (ldAgentPaper) {
-          document.querySelector('#ldagent-citations').textContent = `${ldAgentPaper.citations} citations`;
+          document.getElementById('ldagent-citations').textContent = `${ldAgentPaper.citations} citations`;
         }
         
         // 更新 CryptoX 论文引用数
         const cryptoXPaper = data.papers['CryptoX: Compositional Reasoning Evaluation of Large Language Models'];
-        document.querySelector('#cryptox-citations').textContent = 
-          cryptoXPaper ? `${cryptoXPaper.citations} citations` : '0 citations';
+        if (cryptoXPaper) {
+          document.getElementById('cryptox-citations').textContent = `${cryptoXPaper.citations} citations`;
+        }
       } catch (error) {
         console.error('Error loading citation data:', error);
-        // 在加载失败时显示 0 引用
-        document.querySelector('#cryptox-citations').textContent = '0 citations';
       }
     }
 
-    // 页面加载时更新引用数
-    updateCitations();
+    // 页面加载时更新一次即可
+    document.addEventListener('DOMContentLoaded', updateCitations);
   </script>
 
   <script>
