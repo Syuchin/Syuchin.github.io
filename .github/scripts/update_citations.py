@@ -3,6 +3,7 @@ from datetime import datetime
 from scholarly import scholarly
 import os
 import traceback
+import requests
 
 # 定义历史基准数据
 HISTORICAL_CITATIONS = [
@@ -14,6 +15,20 @@ HISTORICAL_CITATIONS = [
     {"date": "2024-12", "citations": 7},
     {"date": "2025-01", "citations": 9},
 ]
+
+def get_github_stars(owner, repo):
+    """获取GitHub仓库的星标数"""
+    try:
+        response = requests.get(f"https://api.github.com/repos/{owner}/{repo}")
+        if response.status_code == 200:
+            stars = response.json()["stargazers_count"]
+            print(f"Successfully retrieved stars for {owner}/{repo}: {stars}")
+            return stars
+        print(f"Failed to get stars for {owner}/{repo}: Status code {response.status_code}")
+        return 0
+    except Exception as e:
+        print(f"Error fetching GitHub stars for {owner}/{repo}: {e}")
+        return 0
 
 def update_scholar_stats():
     # 获取 Google Scholar ID
@@ -69,6 +84,13 @@ def update_scholar_stats():
         print("\nCitation trend:")
         for trend in data["citation_trend"]:
             print(f"{trend['date']}: {trend['citations']} citations")
+
+        # 获取 GitHub 星标数并添加到数据中
+        print("\nFetching GitHub stars...")
+        data["github_stars"] = {
+            "leolee99/LD-Agent": get_github_stars("leolee99", "LD-Agent"),
+            "multimodal-art-projection/CryptoX": get_github_stars("multimodal-art-projection", "CryptoX")
+        }
 
         # 添加最后更新时间
         data["last_updated"] = datetime.now().isoformat()

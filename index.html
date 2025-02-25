@@ -557,79 +557,39 @@
   </script>
 
   <script>
-    // 获取 GitHub 仓库星标数
-    async function getGitHubStars(owner, repo) {
-      try {
-        // 先尝试从本地缓存获取数据
-        const cacheKey = `${owner}-${repo}-stars`;
-        const cachedData = localStorage.getItem(cacheKey);
-        const cacheTime = localStorage.getItem(`${cacheKey}-time`);
-        
-        // 如果缓存存在且未过期（24小时内）
-        if (cachedData && cacheTime && (Date.now() - parseInt(cacheTime)) < 24 * 60 * 60 * 1000) {
-          return parseInt(cachedData);
-        }
-
-        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        
-        // 更新缓存
-        localStorage.setItem(cacheKey, data.stargazers_count.toString());
-        localStorage.setItem(`${cacheKey}-time`, Date.now().toString());
-        
-        return data.stargazers_count;
-      } catch (error) {
-        console.error('Error fetching GitHub stars:', error);
-        // 如果有缓存数据，在请求失败时使用缓存
-        const cachedData = localStorage.getItem(`${owner}-${repo}-stars`);
-        return cachedData ? parseInt(cachedData) : 0;
-      }
-    }
-
-    // 只保留 GitHub stars 的自动更新
+    // 合并之前的 updateCitations 和 updateMetrics 函数
     async function updateMetrics() {
-      // 更新 GitHub stars
-      const ldAgentStars = await getGitHubStars('leolee99', 'LD-Agent');
-      document.querySelector('#ldagent-stars').textContent = `${ldAgentStars || 0} stars`;
-
-      const cryptoXStars = await getGitHubStars('multimodal-art-projection', 'CryptoX');
-      document.querySelector('#cryptox-stars').textContent = `${cryptoXStars || 0} stars`;
-
-      // 每小时更新一次
-      setTimeout(updateMetrics, 60 * 60 * 1000);
-    }
-
-    // 页面加载时开始更新
-    updateMetrics();
-  </script>
-
-  <script>
-    async function updateCitations() {
       try {
         const response = await fetch('data/scholar_data.json');
         const data = await response.json();
         
-        // 更新 LD-Agent 论文引用数
+        // 更新 LD-Agent 论文引用数和星标数
         const ldAgentPaper = data.papers['Hello again! llm-powered personalized agent for long-term dialogue'];
         if (ldAgentPaper) {
           document.getElementById('ldagent-citations').textContent = `${ldAgentPaper.citations} citations`;
         }
         
-        // 更新 CryptoX 论文引用数
+        // 更新 CryptoX 论文引用数和星标数
         const cryptoXPaper = data.papers['CryptoX: Compositional Reasoning Evaluation of Large Language Models'];
         if (cryptoXPaper) {
           document.getElementById('cryptox-citations').textContent = `${cryptoXPaper.citations} citations`;
         }
+        
+        // 更新 GitHub 星标数
+        if (data.github_stars) {
+          document.getElementById('ldagent-stars').textContent = 
+            `${data.github_stars["leolee99/LD-Agent"] || 0} stars`;
+          
+          document.getElementById('cryptox-stars').textContent = 
+            `${data.github_stars["multimodal-art-projection/CryptoX"] || 0} stars`;
+        }
       } catch (error) {
-        console.error('Error loading citation data:', error);
+        console.error('Error loading metrics data:', error);
       }
     }
 
     // 页面加载时更新一次即可
-    document.addEventListener('DOMContentLoaded', updateCitations);
+    document.addEventListener('DOMContentLoaded', updateMetrics);
   </script>
 
   <script>
