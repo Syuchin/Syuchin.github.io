@@ -64,22 +64,51 @@ def update_scholar_stats():
                 "url": pub_filled.get('pub_url', '')
             }
 
-        # 使用实际的月度引用数据
-        current_month = datetime.now().strftime('%Y-%m')
-        citations_by_month = {}
-        
-        # 如果需要保持历史数据，可以添加
-        for historical in HISTORICAL_CITATIONS:
-            if historical['date'] <= current_month:
-                citations_by_month[historical['date']] = historical['citations']
+        # 读取现有的数据文件，以保留历史趋势数据
+        try:
+            with open('data/scholar_data.json', 'r', encoding='utf-8') as f:
+                existing_data = json.load(f)
+                # 保留现有的趋势数据
+                if 'citation_trend' in existing_data:
+                    existing_trends = {item['date']: item['citations'] for item in existing_data['citation_trend']}
+                else:
+                    existing_trends = {}
+        except (FileNotFoundError, json.JSONDecodeError):
+            print("No existing data file found or file is corrupted. Creating new data.")
+            existing_trends = {}
 
-        # 添加最新的引用数据
-        citations_by_month[current_month] = data['total_citations']
+        # 获取当前月份
+        current_month = datetime.now().strftime('%Y-%m')
+        
+        # 更新当前月份的引用数据
+        existing_trends[current_month] = data['total_citations']
+        
+        # 检查是否是月末，如果是则创建一个历史记录
+        today = datetime.now()
+        is_month_end = today.day == get_last_day_of_month(today.year, today.month)
+        
+        if is_month_end:
+            print(f"Today is the last day of {current_month}. Creating historical record.")
+            # 创建历史记录目录（如果不存在）
+            os.makedirs('data/history', exist_ok=True)
+            
+            # 保存当月数据的历史记录
+            history_file = f'data/history/scholar_data_{current_month}.json'
+            with open(history_file, 'w', encoding='utf-8') as f:
+                # 复制当前数据并添加时间戳
+                history_data = data.copy()
+                history_data['snapshot_date'] = today.isoformat()
+                history_data['citation_trend'] = [
+                    {"date": month, "citations": count}
+                    for month, count in sorted(existing_trends.items())
+                ]
+                json.dump(history_data, f, ensure_ascii=False, indent=2)
+            print(f"Historical data saved to {history_file}")
 
         # 转换为列表格式并按日期排序
         data["citation_trend"] = [
             {"date": month, "citations": count}
-            for month, count in sorted(citations_by_month.items())
+            for month, count in sorted(existing_trends.items())
         ]
         print("\nCitation trend:")
         for trend in data["citation_trend"]:
@@ -105,6 +134,14 @@ def update_scholar_stats():
         print("\nFull traceback:")
         traceback.print_exc()
         raise
+
+def get_last_day_of_month(year, month):
+    """获取指定年月的最后一天"""
+    if month == 12:
+        next_month = datetime(year + 1, 1, 1)
+    else:
+        next_month = datetime(year, month + 1, 1)
+    return (next_month - datetime.timedelta(days=1)).day
 
 def test_scholar_stats():
     """测试函数，使用特定的 Scholar ID 进行验证"""
