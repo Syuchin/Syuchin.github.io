@@ -49,11 +49,15 @@
     {
       "date": "2025-03",
       "citations": 21
+    },
+    {
+      "date": "2025-04",
+      "citations": 21
     }
   ],
   "github_stars": {
-    "leolee99/LD-Agent": 33,
+    "leolee99/LD-Agent": 36,
     "multimodal-art-projection/CryptoX": 5
   },
-  "last_updated": "2025-03-31T01:17:37.617937"
+  "last_updated": "2025-04-01T01:22:28.729632"
 }
