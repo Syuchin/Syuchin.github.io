@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chenghao Yang @USTC</title>
+  <title>Chenghao Yang@USTC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <!-- 网页图标（可选） -->
@@ -55,6 +55,262 @@
       font-size: 0.8rem;
       color: #a0aec0;
     }
+    /* 部门信息样式 */
+    .department-info {
+      position: relative;
+      cursor: default;
+    }
+    
+    .dept-history-container {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      margin: 0;
+      background: rgba(66, 153, 225, 0.05);
+      border-radius: 8px;
+      transform: translateY(-10px) translateZ(0);
+      will-change: transform, max-height;
+      width: 100%;
+      position: relative;
+      backface-visibility: hidden;
+    }
+    
+    .dept-history-container.show {
+      max-height: 200px;
+      opacity: 1;
+      margin: 1rem 0;
+      padding: 0;
+      border-left: 3px solid var(--accent-color, #4299e1);
+      transform: translateY(0) translateZ(0);
+    }
+    
+    .history-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      color: #718096;
+      cursor: pointer;
+      border: none;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    
+    .history-btn i {
+      font-size: 0.8rem;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    
+    .history-btn:hover {
+      background: rgba(0, 0, 0, 0.05);
+      transform: translateY(-1px);
+    }
+    
+    .history-btn.active {
+      background: rgba(0, 0, 0, 0.07);
+    }
+    
+    .history-btn.active i {
+      transform: rotate(180deg);
+    }
+    
+    .history-header {
+      background-color: #f8f9fa;
+      padding: 8px 12px;
+      font-weight: 600;
+      color: #2d3748;
+      border-bottom: 1px solid #edf2f7;
+    }
+    
+    .history-content {
+      padding: 0;
+    }
+    
+    .department-change {
+      padding: 10px 15px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      border-bottom: 1px solid #f0f0f0;
+      transition: all 0.3s ease;
+    }
+    
+    .department-change:last-child {
+      border-bottom: none;
+    }
+    
+    .department-change.current {
+      background-color: #ebf8ff;
+      padding: 14px 15px;
+    }
+    
+    .department-change:not(.current) {
+      opacity: 0.7;
+    }
+    
+    .department-change .date {
+      color: #718096;
+      font-size: 0.85em;
+      padding-right: 15px;
+    }
+    
+    .department-change .dept {
+      color: #2d3748;
+      font-weight: 500;
+      font-size: 0.9em;
+      text-align: right;
+    }
+    
+    .department-change.current .dept {
+      font-weight: 600;
+      color: #2c5282;
+    }
+    
+    /* 响应式布局调整 */
+    @media (max-width: 1200px) {
+      .dept-change-box {
+        position: relative;
+        right: 0;
+        top: 0;
+        margin-top: 15px;
+        width: 100%;
+      }
+    }
+    /* Biography可视化样式 */
+    .bio-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    /* 研究兴趣卡片 */
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .interest-card {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+      text-align: center;
+      border: 1px solid #f0f0f0;
+    }
+    
+    .interest-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 7px 15px rgba(0,0,0,0.07);
+      border-color: #e2e8f0;
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+    }
+    
+    .interest-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .interest-title {
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+    
+    .interest-desc {
+      font-size: 0.9rem;
+      color: #718096;
+      line-height: 1.4;
+    }
+    
+    .interest-focus {
+      color: #4a5568;
+      font-size: 0.95rem;
+      border-left: 3px solid #3182ce;
+      padding-left: 15px;
+      margin-top: 10px;
+    }
+    
+    .bio-footer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 10px;
+      background: #f9fafc;
+      border-radius: 8px;
+      padding: 15px;
+      border: 1px solid #edf2f7;
+    }
+    
+    .collab-section p, .contact-section p {
+      color: #4a5568;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    
+    .contact-link, .email-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      gap: 8px;
+      background: #f7fafc;
+      border-radius: 8px;
+      color: #4a5568;
+      font-size: 0.9rem;
+      border: 1px solid #edf2f7;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+    
+    /* 为 a 标签设置特定样式 */
+    a.contact-link {
+      padding: 8px 15px;
+      line-height: normal;
+    }
+    
+    /* 为 button 标签设置特定样式 */
+    button.contact-link.email-copy-btn {
+      padding: 10px 15px;
+      line-height: normal;
+      /* 添加 appearance 重置 */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      /* 如果需要，可以在这里微调 button 的 padding */
+    }
+    
+    .contact-link i, .email-copy-btn i {
+      font-size: 1rem;
+    }
+    
+    .contact-link:hover, .email-copy-btn:hover {
+      background: #edf2f7;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      color: #3182ce;
+      border-color: #bee3f8;
+      text-decoration: none !important;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .bio-footer {
+        grid-template-columns: 1fr;
+      }
+      
+      .interest-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
   <meta name="icons-source" content="Icons by Freepik, prettycons, Tomas Knop, Becris, and wanicon from www.flaticon.com">
   <!-- 添加更多meta标签 -->
@@ -67,7 +323,7 @@
   <!-- 顶部导航条 -->
   <header>
     <div class="navbar">
-      <div class="brand">Chenghao Yang @USTC</div>
+      <div class="brand">Chenghao Yang@USTC</div>
       <nav>
         <ul>
           <li><a href="#biography">Biography</a></li>
@@ -103,64 +359,63 @@
     <!-- Biography -->
     <div class="section-card" id="biography">
       <h2>Biography</h2>
-      <h3 style="color: #2d3748; margin-bottom: 20px;">Hello! I'm chyang.</h3>
-      <p>
-        I am a final-year undergraduate student at the 
-        <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">University of Science and Technology of China (USTC)</a>, 
-        where I am fortunate to be advised by 
-        <a href="https://scholar.google.com/citations?hl=en&user=7620QAMAAAAJ" target="_blank" rel="noopener">Prof. Nenghai Yu</a> 
-        and 
-        <a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ" target="_blank" rel="noopener">Prof. Qi Chu</a>. 
-        My academic journey is driven by a deep curiosity for artificial intelligence and its transformative potential.
-      </p>
-      <div style="margin: 25px 0;">
-        <h4 style="color: #4a5568; margin-bottom: 10px;">Research Interests</h4>
-        <ul style="list-style: none; padding-left: 20px; margin-top: 15px;">
-          <li style="margin-bottom: 10px;">
-            <span class="highlight" style="font-size: 0.9em;">🔒 AI Security</span> – Ensuring the robustness and trustworthiness of AI systems.
-          </li>
-          <li style="margin-bottom: 10px;">
-            <span class="highlight" style="font-size: 0.9em;">🤖 Multimodal Agents</span> – Developing intelligent systems that integrate multiple modalities for richer interactions.
-          </li>
-          <li style="margin-bottom: 10px;">
-            <span class="highlight" style="font-size: 0.9em;">🎯 LLMs Evaluation</span> – Developing benchmarks to assess the performance and reliability of LLMs.
-          </li>
-        </ul>
-        <p style="margin-left: 20px; margin-top: 15px; color: #666;">
-          My work particularly focuses on the intersection of AI security and LLMs evaluation, aiming to address critical challenges in deploying AI systems responsibly.
-        </p>
-      </div>
-      <div style="margin: 25px 0;">
-        <h4 style="color: #4a5568; margin-bottom: 10px;">Collaborations</h4>
-        <p style="margin-left: 20px; line-height: 1.6;">
-          I am enthusiastic about collaborating on innovative projects and engaging in meaningful discussions. If you share similar interests or have ideas to explore, feel free to reach out—I'd love to connect and work together!
-        </p>
-      </div>
-      <div style="margin: 25px 0;">
-        <h4 style="color: #4a5568; margin-bottom: 10px;">Contact</h4>
-        <div style="margin-left: 20px;">
-          <!-- 第一行：邮箱、Google Scholar、GitHub -->
-          <div style="display: flex; gap: 24px; margin-bottom: 12px;">
-            <a href="mailto:yangchenghao@mail.ustc.edu.cn" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-              <i class="fas fa-envelope"></i>
-              <span>yangchenghao@mail.ustc.edu.cn</span>
-            </a>
-            <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/12000/12000492.png" alt="Google Scholar" style="width: 16px; height: 16px;">
-              <span><b>Google Scholar</b></span>
-            </a>
-            <a href="https://github.com/Syuchin" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 16px; height: 16px;">
-              <span><b>GitHub</b></span>
-            </a>
+      <div class="bio-container">
+        <!-- 简介部分 -->
+        <div class="bio-intro">
+          <h3 style="color: #2d3748; margin-bottom: 15px;">Hello! I'm chyang.</h3>
+          <p>
+            I am a first-year Master's student at <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">University of Science and Technology of China</a>, 
+            advised by <a href="https://scholar.google.com/citations?hl=en&user=7620QAMAAAAJ" target="_blank" rel="noopener">Prof. Nenghai Yu</a> and 
+            <a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ" target="_blank" rel="noopener">Prof. Qi Chu</a>. 
+            My academic journey is driven by a deep curiosity for artificial intelligence and its transformative potential.
+          </p>
+        </div>
+        
+        <!-- 研究兴趣 -->
+        <div class="interest-cards">
+          <h4>Research Interests</h4>
+          <div class="interest-grid">
+            <div class="interest-card">
+              <div class="interest-icon">🔒</div>
+              <div class="interest-title">AI Security</div>
+              <div class="interest-desc">Ensure the robustness and trustworthiness of AI systems</div>
+            </div>
+            <div class="interest-card">
+              <div class="interest-icon">🤖</div>
+              <div class="interest-title">Multi-modal Intelligent Agents</div>
+              <div class="interest-desc">Develop integrated multi-modal intelligent systems</div>
+            </div>
+            <div class="interest-card">
+              <div class="interest-icon">🎯</div>
+              <div class="interest-title">Large Language Model Evaluation</div>
+              <div class="interest-desc">Develop benchmarks for evaluating LLMs performance</div>
+            </div>
           </div>
-          <!-- 第二行：CV -->
-          <!-- <div>
-            <a href="data/cv.pdf" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/8304/8304411.png" alt="PDF" style="width: 16px; height: 16px;">
-              <span><b>CV</b></span>
-            </a>
-          </div> -->
+          <p class="interest-focus">
+            My work particularly focuses on the intersection of AI security and LLMs evaluation, aiming to address critical challenges in deploying AI systems responsibly.
+          </p>
+        </div>
+        
+        <!-- 合作与联系 -->
+        <div class="bio-footer">
+          <!-- 合作意向 -->
+          <div class="collab-section">
+            <h4 style="color: #4a5568; margin-bottom: 10px;">Collaboration</h4>
+            <p>I'm enthusiastic about innovative projects and meaningful discussions. Feel free to reach out if you share similar interests!</p>
+          </div>
+          
+          <!-- 联系方式 -->
+          <div class="contact-section">
+            <h4 style="color: #4a5568; margin-bottom: 10px;">Contact</h4>
+            <div class="contact-links">
+              <button onclick="copyEmail()" class="contact-link email-copy-btn"><i class="fas fa-envelope"></i>Email</button>
+              <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en" target="_blank" rel="noopener" class="contact-link"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
+              <a href="https://github.com/Syuchin" target="_blank" rel="noopener" class="contact-link"><i class="fab fa-github"></i>GitHub</a>
+              <!-- <a href="data/cv.pdf" target="_blank" rel="noopener" class="contact-link">
+                <span><i class="fas fa-file-alt"></i>CV</span>
+              </a> -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -172,26 +427,267 @@
         Last updated: <span id="updateDate"></span>
       </div>
       <p class="news-announcement">Keep an eye on this space for the latest news or announcements.</p>
-      <!-- 可以在这里放置近期动态，例如： -->
       
-      <ul>
-        <li>
-          <span class="date-badge">2025-02-09</span> The paper I contributed to <i>"CryptoX: Compositional Reasoning Evaluation of Large Language Models"</i> has been published on arXiv! <a href="https://arxiv.org/abs/2502.07813" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/multimodal-art-projection/CryptoX" target="_blank" rel="noopener">[Code]</a>
-        </li>
-        <li>
-          <span class="date-badge">2025-01-23</span>  🎉 Our Paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been accepted by 
-          <span style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #4a5568;">2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics</span> (<b>NAACL 2025</b>).
-          <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> 
-          <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener">[Code]</a>
-        </li>
-        <li>
-          <span class="date-badge">2024-06-09</span> Our paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been published on arXiv. 
-          <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener">[Paper]</a> 
-<a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener">[Code]</a>
-        </li>
-      </ul>
-     
+      <div class="news-timeline">
+        <div class="visible-news">
+          <div class="timeline-item">
+            <div class="timeline-date">2025-02-09</div>
+            <div class="timeline-content">
+              The paper <i>"CryptoX: Compositional Reasoning Evaluation of Large Language Models"</i> has been published on arXiv!
+            </div>
+            <div class="timeline-links">
+              <a href="https://arxiv.org/abs/2502.07813" target="_blank" rel="noopener" class="icon-link paper-link" title="View Paper">
+                <i class="fa-regular fa-file-lines"></i>
+              </a> 
+              <a href="https://github.com/multimodal-art-projection/CryptoX" target="_blank" rel="noopener" class="icon-link code-link" title="View Code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-date">2025-01-23</div>
+            <div class="timeline-content">
+              🎉 Our Paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been accepted by 
+              <span style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #4a5568;">2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics</span> (<b>NAACL 2025</b>).
+            </div>
+            <div class="timeline-links">
+              <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener" class="icon-link paper-link" title="View Paper">
+                <i class="fa-regular fa-file-lines"></i>
+              </a> 
+              <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener" class="icon-link code-link" title="View Code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hidden-news">
+          <div class="timeline-item">
+            <div class="timeline-date">2024-06-09</div>
+            <div class="timeline-content">
+              Our paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been published on arXiv.
+            </div>
+            <div class="timeline-links">
+              <a href="https://arxiv.org/pdf/2406.05925v1" target="_blank" rel="noopener" class="icon-link paper-link" title="View Paper">
+                <i class="fa-regular fa-file-lines"></i>
+              </a> 
+              <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener" class="icon-link code-link" title="View Code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-date">2023-12-15</div>
+            <div class="timeline-content">
+            I embarked on my research journey at the LDS Laboratory, University of Science and Technology of China (USTC).
+            </div>
+            <div class="timeline-links">
+              <div class="icon-link-placeholder"></div>
+            </div>
+          </div>
+        </div>
+        
+        <button id="news-toggle-btn" class="news-toggle-btn" onclick="toggleNews()">
+          <span class="show-more">View More <i class="fas fa-chevron-down"></i></span>
+          <span class="show-less">View Less <i class="fas fa-chevron-up"></i></span>
+        </button>
+      </div>
     </div>
+    
+    <style>
+      /* News时间线样式 */
+      .news-timeline {
+        position: relative;
+        margin-left: 20px;
+        margin-top: 30px;
+      }
+      
+      .news-timeline::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(to bottom, 
+          rgba(59, 130, 246, 0), 
+          rgba(59, 130, 246, 0.2),
+          rgba(59, 130, 246, 0)
+        );
+      }
+      
+      .hidden-news {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.5s ease;
+      }
+      
+      .hidden-news.expanded {
+        max-height: 1000px;
+        opacity: 1;
+        margin-bottom: 20px;
+      }
+      
+      .news-toggle-btn {
+        background: transparent;
+        border: none;
+        padding: 8px 16px;
+        margin-left: 40px;
+        margin-top: 10px;
+        cursor: pointer;
+        color: #3b82f6;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+      
+      .news-toggle-btn:hover {
+        color: #2563eb;
+        transform: translateY(-2px);
+      }
+      
+      .news-toggle-btn .show-less {
+        display: none;
+      }
+      
+      .news-toggle-btn.expanded .show-more {
+        display: none;
+      }
+      
+      .news-toggle-btn.expanded .show-less {
+        display: inline-flex;
+        align-items: center;
+      }
+      
+      .news-toggle-btn i {
+        margin-left: 5px;
+        font-size: 0.8rem;
+      }
+      
+      .timeline-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 90px 1fr auto;
+        grid-gap: 8px;
+        margin-bottom: 30px;
+        padding-left: 40px;
+      }
+      
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 6px;
+        top: 8px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #3b82f6;
+        transition: all 0.3s ease;
+      }
+      
+      .timeline-item:hover::before {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      }
+      
+      .timeline-date {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #4b5563;
+        margin-bottom: 8px;
+        width: auto;
+      }
+      
+      .timeline-content {
+        font-family: 'Nunito', sans-serif;
+        font-size: 1rem;
+        color: #1f2937;
+        line-height: 1.6;
+      }
+      
+      .timeline-content i {
+        font-family: "Arial Rounded MT Bold", "Arial Rounded", Arial, sans-serif;
+        font-style: italic;
+      }
+      
+      .timeline-links {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      
+      /* 链接占位符样式 */
+      .icon-link-placeholder {
+        height: 0;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        visibility: hidden;
+        display: block;
+      }
+      
+      /* 链接图标样式 */
+      .icon-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        text-decoration: none;
+        width: 36px;
+        height: 36px;
+      }
+      
+      .paper-link {
+        background-color: rgba(234, 88, 12, 0.1);
+        color: #ea580c;
+      }
+      
+      .code-link {
+        background-color: rgba(37, 99, 235, 0.1);
+        color: #2563eb;
+      }
+      
+      .icon-link:hover {
+        transform: translateY(-2px);
+      }
+      
+      .paper-link:hover {
+        background-color: rgba(234, 88, 12, 0.2);
+      }
+      
+      .code-link:hover {
+        background-color: rgba(37, 99, 235, 0.2);
+      }
+      
+      /* 响应式设计 */
+      @media (max-width: 768px) {
+        .timeline-item {
+          grid-template-columns: 1fr;
+          grid-gap: 8px;
+        }
+        
+        .timeline-links {
+          flex-direction: row;
+          margin-top: 8px;
+          align-items: flex-start;
+        }
+        
+        .timeline-date {
+          margin-bottom: 4px;
+        }
+      }
+    </style>
     <!-- Publications -->
     <div class="section-card" id="publications">
       <h2>Publications</h2>
@@ -344,14 +840,37 @@
           <td class="logo-cell" style="width: 200px;">
             <img src="data/logos/ByteDance.svg" alt="ByteDance Logo" style="width: 150px; height: 150px; object-fit: contain;">
           </td>
-          <td style="padding-left: 20px;">
+          <td style="padding-left: 20px; position: relative;">
             <h3 style="margin: 0; font-size: 1.2rem; color: #2d3748;">ByteDance Inc.</h3>
             <div style="margin: 4px 0;">
               <span style="color: #718096; font-size: 0.9rem;">Nov 2024 - Present</span>
             </div>
             <div style="margin: 4px 0;">
-              <span style="color: #718096; font-size: 0.9rem;">Algorithm Intern, Research & Development | Seed-LLM-Evaluation</span>
+              <span style="color: #718096; font-size: 0.9rem;" class="department-info">
+               Algorithm Intern, Research & Development | Seed-Evaluation
+               <button class="history-btn" 
+                       onclick="toggleDeptHistory('dept-history')"
+                       aria-label="Toggle department history">
+                 <i class="fas fa-search"></i>
+                 History
+               </button>
+              </span>
             </div>
+            
+            <div id="dept-history" class="dept-history-container">
+              <div class="history-header">Department Change History</div>
+              <div class="history-content">
+                <div class="department-change current">
+                 <span class="date">Apr 2025 - Present</span>
+                  <span class="dept">Seed-Evaluation</span>
+                </div>
+                <div class="department-change">
+                 <span class="date">Nov 2024 - Apr 2025</span>
+                  <span class="dept">Seed-LLM-Evaluation</span>
+                </div>
+              </div>
+            </div>
+            
             <div style="margin: 4px 0;">
               <span style="color: #718096; font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> Beijing, China</span>
             </div>
@@ -393,6 +912,21 @@
     <div class="section-card" id="education">
       <h2>Education</h2>
       <table>
+        <!-- 研究生 -->
+        <tr>
+          <td class="logo-cell" style="width: 150px;">
+            <img src="data/logos/ustc.png" alt="USTC Logo" style="max-width: 100%; height: auto; border-radius: 4px;">
+          </td>
+          <td>
+            <b>University of Science and Technology of China</b><br>
+            <span class="calendar" style="color: #555; font-size: 0.9rem;">
+              Sep 2025 - Expected
+            </span><br>
+            M.Eng. in Cyberspace Security (0838)<br>
+            <span style="color: #777;">Research Focus: Large Language Model Security</span><br>
+            <span style="color: #718096; font-size: 0.9rem; font-style: italic;">Recommended for Graduate Admission</span>
+          </td>
+        </tr>
         <!-- 本科 -->
         <tr>
           <td class="logo-cell" style="width: 150px;">
@@ -406,20 +940,6 @@
             B.Eng. in Information Security
           </td>
         </tr>
-        <!-- 研究生 -->
-        <tr>
-          <td class="logo-cell" style="width: 150px;">
-            <img src="data/logos/ustc.png" alt="USTC Logo" style="max-width: 100%; height: auto; border-radius: 4px;">
-          </td>
-          <td>
-            <b>University of Science and Technology of China</b><br>
-            <span class="calendar" style="color: #555; font-size: 0.9rem;">
-              Recommended for Graduate Admission
-            </span><br>
-            M.Eng. in Cyberspace Security (0838)<br>
-            <span style="color: #777;">Research Focus: Large Language Model Security</span>
-          </td>
-        </tr>
       </table>
     </div>
 
@@ -427,6 +947,18 @@
     <div class="section-card" id="awards">
       <h2>Awards</h2>
       <table>
+        <tr>
+          <td>◆ University-level Outstanding Graduate Award, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
+          <td class="text-right">2025</td>
+        </tr>
+        <tr>
+          <td>◆ Outstanding Student Bronze Award , <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
+          <td class="text-right ">2024</td>
+        </tr>
+        <tr>
+          <td>◆ Longfor Scholarship, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
+          <td class="text-right">2023</td>
+        </tr>
         <tr>
           <td style="width:80%">◆ Endeavor Scholarship, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
           <td class="text-right">2022</td>
@@ -440,18 +972,6 @@
           <td class="text-right">
             2021 ～ 2024
           </td>
-        </tr>
-        <tr>
-          <td>◆ Longfor Scholarship, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
-          <td class="text-right">2023</td>
-        </tr>
-        <tr>
-          <td>◆ Outstanding Student Bronze Award , <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
-          <td class="text-right ">2024</td>
-        </tr>
-        <tr>
-          <td>◆ University-level Outstanding Graduate Award, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
-          <td class="text-right ">2025</td>
         </tr>
       </table>
     </div>
@@ -630,6 +1150,107 @@
       } else {
         button.innerHTML = '<i class="fas fa-align-left"></i> Abstract';
       }
+    }
+  </script>
+
+  <script>
+    function toggleDeptHistory(historyId) {
+      const container = document.getElementById(historyId);
+      const button = event.currentTarget;
+      
+      // 切换显示状态
+      container.classList.toggle('show');
+      button.classList.toggle('active');
+      
+      // 更新按钮文本
+      if (container.classList.contains('show')) {
+        button.innerHTML = '<i class="fas fa-search"></i> Hide';
+      } else {
+        button.innerHTML = '<i class="fas fa-search"></i> History';
+      }
+    }
+  </script>
+
+  <script>
+    function toggleNews() {
+      const hiddenNews = document.querySelector('.hidden-news');
+      const toggleBtn = document.getElementById('news-toggle-btn');
+      
+      hiddenNews.classList.toggle('expanded');
+      toggleBtn.classList.toggle('expanded');
+    }
+  </script>
+
+  <style>
+    /* Education 时间轴样式 */
+    .section-card#education table {
+      position: relative;
+    }
+    
+    .section-card#education table::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, 
+        rgba(0, 115, 177, 0), 
+        rgba(0, 115, 177, 0.2),
+        rgba(0, 115, 177, 0)
+      );
+    }
+    
+    .section-card#education tr {
+      position: relative;
+    }
+    
+    .section-card#education tr::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0073b1;
+      transform: translateY(-50%);
+      transition: all 0.3s ease;
+    }
+    
+    /* 当前学历的点会更大一些 */
+    .section-card#education tr:first-child::before {
+      width: 14px;
+      height: 14px;
+      left: 4px;
+      background: #0073b1;
+      box-shadow: 0 0 0 4px rgba(0, 115, 177, 0.2);
+    }
+    
+    /* 为 Education 的 logo 添加左边距 */
+    .section-card#education .logo-cell {
+      padding-left: 30px;
+    }
+  </style>
+
+  <script>
+    // Email copy to clipboard functionality
+    function copyEmail() {
+      const email = "yangchenghao@mail.ustc.edu.cn";
+      navigator.clipboard.writeText(email)
+        .then(() => {
+          const btn = document.querySelector('.email-copy-btn');
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+          
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+          }, 2000);
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+          alert('Failed to copy email. Please try again manually.');
+        });
     }
   </script>
 </body>

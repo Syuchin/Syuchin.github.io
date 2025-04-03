@@ -329,7 +329,6 @@ a:hover {
 
   .section-card a:hover {
     color: #005f8a;
-    text-decoration: underline;
   }
 
   .section-card .highlight {
@@ -739,13 +738,8 @@ a:hover {
   .contact-link::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
     background: currentColor;
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
   }
 
   .contact-link:hover::before {
@@ -1199,3 +1193,12 @@ a:hover {
     color: #888;
     font-size: 0.85rem;
   }
+
+/* 移除所有链接的默认下划线 */
+a {
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
