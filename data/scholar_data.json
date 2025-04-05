@@ -1,9 +1,9 @@
 {
-  "total_citations": 21,
+  "total_citations": 23,
   "h_index": 1,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 20,
+      "citations": 22,
       "year": 2024,
       "url": "https://arxiv.org/abs/2406.05925"
     },
@@ -52,12 +52,12 @@
     },
     {
       "date": "2025-04",
-      "citations": 21
+      "citations": 23
     }
   ],
   "github_stars": {
     "leolee99/LD-Agent": 38,
     "multimodal-art-projection/CryptoX": 5
   },
-  "last_updated": "2025-04-04T01:13:55.857311"
+  "last_updated": "2025-04-05T01:12:52.209762"
 }
