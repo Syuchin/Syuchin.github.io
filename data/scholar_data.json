@@ -27,33 +27,6 @@
       "scholar_url": ""
     }
   },
-  "citation_summary": {
-    "total_papers": 3,
-    "total_citations": 30,
-    "highly_cited_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 29,
-        "year": 2024
-      }
-    ],
-    "recent_papers": [
-      {
-        "title": "CryptoX: Compositional Reasoning Evaluation of Large Language Models",
-        "citations": 1,
-        "year": 2025
-      },
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 29,
-        "year": 2024
-      }
-    ],
-    "citation_distribution": {
-      "20+": 1,
-      "1-4": 1
-    }
-  },
   "citation_trend": [
     {
       "date": "2024-07",
@@ -102,8 +75,7 @@
   ],
   "github_stars": {
     "leolee99/LD-Agent": 40,
-    "multimodal-art-projection/CryptoX": 5,
-    "Syuchin/MARS-Bench": 0
+    "multimodal-art-projection/CryptoX": 5
   },
-  "last_updated": "2025-05-28T11:48:09.004352"
+  "last_updated": "2025-05-28T04:25:16.002976"
 }
