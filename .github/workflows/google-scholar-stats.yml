@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install scholarly requests beautifulsoup4
+          pip install requests beautifulsoup4
           
       - name: Create data directory
         run: |
@@ -36,10 +36,25 @@ jobs:
       #   env:
       #     GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
           
-      - name: Update citation stats
+      - name: Update citation stats (main script)
+        id: main_script
         run: python .github/scripts/update_citations.py
         env:
           GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+        continue-on-error: true  # 即使失败也继续执行
+        
+      - name: Run fallback script if main script failed
+        if: steps.main_script.outcome == 'failure'
+        run: |
+          echo "Main script failed, running fallback script..."
+          python .github/scripts/fallback_update.py
+          
+      - name: Check if data file exists
+        run: |
+          if [ ! -f data/scholar_data.json ]; then
+            echo "Data file not found, running fallback script..."
+            python .github/scripts/fallback_update.py
+          fi
           
       - name: Commit and push if changed
         run: |

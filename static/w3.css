@@ -1140,65 +1140,85 @@ a:hover {
     table-layout: fixed;
   }
 
+  .section-card#publications tr {
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .section-card#publications tr:hover {
+    background: rgba(66, 153, 225, 0.02);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
   .section-card#publications td {
-    vertical-align: top;
+    vertical-align: middle;
     padding: 0.8rem;
+    transition: all 0.3s ease;
   }
 
   .section-card#publications .logo-cell {
     width: 250px !important;
     padding-left: 15px;
-  }
-
-  .section-card#publications .logo-cell img {
-    border-radius: 2px;
-    transition: transform 0.3s ease;
-  }
-
-  .section-card#publications .logo-cell img:hover {
-    transform: scale(1.1);
-  }
-
-  /* 恢复 Internships 原有样式 */
-  .section-card#internships table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.0rem;
-    line-height: 1.5;
-    position: relative;
-  }
-
-  .section-card#internships .logo-cell {
-    width: 200px !important;
-    min-width: 200px;
-    padding-left: 30px;
-  }
-
-  .section-card#internships td {
-    padding: 0.8rem;
     vertical-align: middle;
   }
 
-  /* 主要机构样式 */
-  .institution {
-    font-size: 0.9rem;
-    color: #666;
-    margin: 4px 0;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  .section-card#publications .logo-cell img {
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
-  .institution i {
-    color: #888;
-    font-size: 0.85rem;
+  .section-card#publications .logo-cell img:hover {
+    transform: scale(1.05);
   }
 
-/* 移除所有链接的默认下划线 */
-a {
-  text-decoration: none !important;
-}
+  /* 论文标题 */
+  .section-card#publications .pub-title {
+    transition: color 0.3s ease;
+  }
 
-a:hover {
-  text-decoration: none !important;
-}
+  .section-card#publications .pub-title:hover {
+    color: #4299e1;
+  }
+
+  /* 指标标签 */
+  .section-card#publications .metric {
+    transition: all 0.3s ease;
+  }
+
+  .section-card#publications .metric:hover {
+    background: rgba(66, 153, 225, 0.08);
+    transform: translateY(-1px);
+  }
+
+  /* Abstract 按钮 */
+  .section-card#publications .abstract-btn {
+    transition: all 0.3s ease;
+  }
+
+  .section-card#publications .abstract-btn:hover {
+    background: #3182ce;
+    transform: translateY(-1px);
+  }
+
+  /* 链接效果 */
+  .section-card#publications a {
+    transition: all 0.3s ease;
+  }
+
+  .section-card#publications a:hover {
+    color: #4299e1;
+  }
+
+  /* 响应式优化 */
+  @media (max-width: 768px) {
+    .section-card#publications .logo-cell::after {
+      display: none;
+    }
+    
+    .section-card#publications tr:hover::before {
+      display: none;
+    }
+  }

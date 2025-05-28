@@ -1,16 +1,57 @@
 {
-  "total_citations": 26,
+  "total_citations": 30,
   "h_index": 1,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 25,
+      "citations": 29,
       "year": 2024,
-      "url": "https://arxiv.org/abs/2406.05925"
+      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
+      "versions_url": "",
+      "scholar_url": ""
     },
     "CryptoX: Compositional Reasoning Evaluation of Large Language Models": {
       "citations": 1,
       "year": 2025,
-      "url": "https://arxiv.org/abs/2502.07813"
+      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:u-x6o8ySG0sC",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6500763536884533109",
+      "versions_url": "",
+      "scholar_url": ""
+    },
+    "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation": {
+      "citations": 0,
+      "year": 2025,
+      "url": "",
+      "citation_url": "",
+      "versions_url": "",
+      "scholar_url": ""
+    }
+  },
+  "citation_summary": {
+    "total_papers": 3,
+    "total_citations": 30,
+    "highly_cited_papers": [
+      {
+        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
+        "citations": 29,
+        "year": 2024
+      }
+    ],
+    "recent_papers": [
+      {
+        "title": "CryptoX: Compositional Reasoning Evaluation of Large Language Models",
+        "citations": 1,
+        "year": 2025
+      },
+      {
+        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
+        "citations": 29,
+        "year": 2024
+      }
+    ],
+    "citation_distribution": {
+      "20+": 1,
+      "1-4": 1
     }
   },
   "citation_trend": [
@@ -56,12 +97,13 @@
     },
     {
       "date": "2025-05",
-      "citations": 26
+      "citations": 30
     }
   ],
   "github_stars": {
-    "leolee99/LD-Agent": 39,
-    "multimodal-art-projection/CryptoX": 5
+    "leolee99/LD-Agent": 40,
+    "multimodal-art-projection/CryptoX": 5,
+    "Syuchin/MARS-Bench": 0
   },
-  "last_updated": "2025-05-02T07:49:54.337683"
+  "last_updated": "2025-05-28T11:48:09.004352"
 }
