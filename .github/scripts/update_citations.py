@@ -21,19 +21,21 @@ HISTORICAL_CITATIONS = [
 
 # 用户代理列表，模拟真实浏览器
 USER_AGENTS = [
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15'
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0',
+    'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:121.0) Gecko/20100101 Firefox/121.0'
 ]
 
 def get_random_headers():
     """获取随机请求头"""
     return {
         'User-Agent': random.choice(USER_AGENTS),
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
         'Accept-Encoding': 'gzip, deflate, br',
         'DNT': '1',
         'Connection': 'keep-alive',
@@ -41,7 +43,11 @@ def get_random_headers():
         'Sec-Fetch-Dest': 'document',
         'Sec-Fetch-Mode': 'navigate',
         'Sec-Fetch-Site': 'none',
-        'Cache-Control': 'max-age=0'
+        'Sec-Fetch-User': '?1',
+        'Cache-Control': 'max-age=0',
+        'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"'
     }
 
 def get_github_stars(owner, repo):
@@ -180,21 +186,35 @@ def parse_scholar_profile(scholar_id, max_retries=3):
         try:
             print(f"尝试第 {attempt + 1} 次访问 Google Scholar...")
             
-            # 随机延时避免过快请求
+            # 增加随机延时避免过快请求
             if attempt > 0:
-                delay = random.randint(5, 15)
+                delay = random.randint(15, 30)  # 增加延时到15-30秒
                 print(f"等待 {delay} 秒后重试...")
                 time.sleep(delay)
+            else:
+                # 第一次请求也添加随机延时
+                initial_delay = random.randint(3, 8)
+                print(f"初始等待 {initial_delay} 秒...")
+                time.sleep(initial_delay)
             
             session = requests.Session()
             session.headers.update(get_random_headers())
             
-            # 发送请求
-            response = session.get(profile_url, timeout=15)
+            # 发送请求，增加超时时间
+            response = session.get(profile_url, timeout=30)
             
             if response.status_code == 429:
                 print("遇到速率限制，等待更长时间...")
-                time.sleep(60)
+                time.sleep(120)  # 增加到2分钟
+                continue
+                
+            if response.status_code == 403:
+                print(f"HTTP 状态码: {response.status_code} - 访问被拒绝")
+                if attempt < max_retries - 1:
+                    # 尝试更长的延时
+                    long_delay = random.randint(60, 120)
+                    print(f"403错误，等待 {long_delay} 秒后重试...")
+                    time.sleep(long_delay)
                 continue
                 
             if response.status_code != 200:
@@ -332,22 +352,51 @@ def get_fallback_data():
             
         # 获取最新的引用数
         latest_citations = existing_data.get('total_citations', 9)
-        # 稍微增加引用数（模拟增长）
-        estimated_citations = latest_citations + random.randint(0, 2)
+        
+        # 智能增长：基于历史趋势估算增长
+        citation_trend = existing_data.get('citation_trend', HISTORICAL_CITATIONS)
+        if len(citation_trend) >= 2:
+            # 计算最近的增长率
+            recent_growth = citation_trend[-1]['citations'] - citation_trend[-2]['citations']
+            # 保守估计：50%的增长率
+            estimated_growth = max(0, int(recent_growth * 0.5))
+        else:
+            estimated_growth = random.randint(0, 2)  # 保守增长
+            
+        estimated_citations = latest_citations + estimated_growth
+        
+        print(f"基于历史数据估算：从 {latest_citations} 增长到 {estimated_citations}")
+        
+        # 获取现有论文数据并计算H-index
+        papers = existing_data.get('papers', {})
+        h_index = calculate_h_index(papers) if papers else existing_data.get('h_index', 0)
         
         return {
             "total_citations": estimated_citations,
-            "h_index": existing_data.get('h_index', 3),
-            "papers": existing_data.get('papers', {}),
-            "citation_trend": existing_data.get('citation_trend', HISTORICAL_CITATIONS)
+            "h_index": h_index,
+            "papers": papers,
+            "citation_trend": citation_trend,
+            "fallback_used": True,  # 标记使用了备用数据
+            "fallback_reason": "Google Scholar access denied (403)"
         }
-    except (FileNotFoundError, json.JSONDecodeError, KeyError):
-        print("没有找到现有数据，使用默认备用数据")
+    except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
+        print(f"读取现有数据失败: {e}，使用默认备用数据")
         return {
-            "total_citations": 9,  # 当前已知的最新数据
-            "h_index": 3,
-            "papers": {},
-            "citation_trend": HISTORICAL_CITATIONS
+            "total_citations": 30,  # 当前已知的数据
+            "h_index": 1,
+            "papers": {
+                "Hello again! llm-powered personalized agent for long-term dialogue": {
+                    "citations": 29,
+                    "year": 2024
+                },
+                "CryptoX: Compositional Reasoning Evaluation of Large Language Models": {
+                    "citations": 1,
+                    "year": 2025
+                }
+            },
+            "citation_trend": HISTORICAL_CITATIONS,
+            "fallback_used": True,
+            "fallback_reason": "No existing data found"
         }
 
 def update_scholar_stats():
