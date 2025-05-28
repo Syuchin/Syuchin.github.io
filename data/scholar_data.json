@@ -1,5 +1,5 @@
 {
-  "total_citations": 30,
+  "total_citations": 33,
   "h_index": 1,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
@@ -17,33 +17,6 @@
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6500763536884533109",
       "versions_url": "",
       "scholar_url": ""
-    }
-  },
-  "citation_summary": {
-    "total_papers": 2,
-    "total_citations": 30,
-    "highly_cited_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 29,
-        "year": 2024
-      }
-    ],
-    "recent_papers": [
-      {
-        "title": "CryptoX: Compositional Reasoning Evaluation of Large Language Models",
-        "citations": 1,
-        "year": 2025
-      },
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 29,
-        "year": 2024
-      }
-    ],
-    "citation_distribution": {
-      "20+": 1,
-      "1-4": 1
     }
   },
   "citation_trend": [
@@ -89,12 +62,14 @@
     },
     {
       "date": "2025-05",
-      "citations": 30
+      "citations": 33
     }
   ],
+  "fallback_used": true,
+  "fallback_reason": "Google Scholar access denied (403)",
   "github_stars": {
     "leolee99/LD-Agent": 40,
     "multimodal-art-projection/CryptoX": 5
   },
-  "last_updated": "2025-05-28T04:31:04.037793"
+  "last_updated": "2025-05-28T08:31:00.604001"
 }
