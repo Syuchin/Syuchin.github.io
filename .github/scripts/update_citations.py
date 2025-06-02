@@ -447,7 +447,8 @@ def update_scholar_stats():
         # 获取 GitHub 星标数
         data["github_stars"] = {
             "leolee99/LD-Agent": get_github_stars("leolee99", "LD-Agent"),
-            "multimodal-art-projection/CryptoX": get_github_stars("multimodal-art-projection", "CryptoX")
+            "multimodal-art-projection/CryptoX": get_github_stars("multimodal-art-projection", "CryptoX"),
+            "Syuchin/MARS-Bench": get_github_stars("Syuchin", "MARS-Bench")
         }
 
         # 添加最后更新时间
@@ -470,7 +471,8 @@ def update_scholar_stats():
             fallback_data["last_updated"] = datetime.now().isoformat()
             fallback_data["github_stars"] = {
                 "leolee99/LD-Agent": get_github_stars("leolee99", "LD-Agent"),
-                "multimodal-art-projection/CryptoX": get_github_stars("multimodal-art-projection", "CryptoX")
+                "multimodal-art-projection/CryptoX": get_github_stars("multimodal-art-projection", "CryptoX"),
+                "Syuchin/MARS-Bench": get_github_stars("Syuchin", "MARS-Bench")
             }
             
             os.makedirs('data', exist_ok=True)
