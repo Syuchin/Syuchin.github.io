@@ -21,34 +21,88 @@ HISTORICAL_CITATIONS = [
 
 # 用户代理列表，模拟真实浏览器
 USER_AGENTS = [
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0',
-    'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:121.0) Gecko/20100101 Firefox/121.0'
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:122.0) Gecko/20100101 Firefox/122.0',
+    'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 OPR/107.0.0.0',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Vivaldi/6.5.3206.63'
+]
+
+# 添加更多的浏览器特征
+BROWSER_FEATURES = [
+    {
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'accept_language': 'en-US,en;q=0.9',
+        'accept_encoding': 'gzip, deflate, br',
+        'sec_ch_ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+        'sec_ch_ua_platform': '"Windows"'
+    },
+    {
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'accept_language': 'en-US,en;q=0.5',
+        'accept_encoding': 'gzip, deflate, br',
+        'sec_ch_ua': '"Chromium";v="121", "Not A(Brand";v="99"',
+        'sec_ch_ua_platform': '"macOS"'
+    },
+    {
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'accept_language': 'en-US,en;q=0.9,zh-CN;q=0.8',
+        'accept_encoding': 'gzip, deflate, br',
+        'sec_ch_ua': '"Microsoft Edge";v="121", "Not A(Brand";v="99", "Chromium";v="121"',
+        'sec_ch_ua_platform': '"Linux"'
+    }
 ]
 
 def get_random_headers():
-    """获取随机请求头"""
-    return {
-        'User-Agent': random.choice(USER_AGENTS),
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-        'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'DNT': '1',
+    """获取随机请求头，模拟真实浏览器"""
+    user_agent = random.choice(USER_AGENTS)
+    features = random.choice(BROWSER_FEATURES)
+    
+    # 基于User-Agent判断浏览器类型，设置对应的特征
+    headers = {
+        'User-Agent': user_agent,
+        'Accept': features['accept'],
+        'Accept-Language': features['accept_language'],
+        'Accept-Encoding': features['accept_encoding'],
+        'DNT': str(random.choice([0, 1])),  # 随机化Do Not Track
         'Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
         'Sec-Fetch-Dest': 'document',
         'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-Site': random.choice(['none', 'same-origin', 'cross-site']),
         'Sec-Fetch-User': '?1',
-        'Cache-Control': 'max-age=0',
-        'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"'
+        'Cache-Control': random.choice(['no-cache', 'max-age=0', 'no-store']),
+        'Pragma': random.choice(['no-cache', '']),
     }
+    
+    # 只为Chrome/Edge浏览器添加sec-ch-ua头
+    if 'Chrome' in user_agent or 'Edge' in user_agent:
+        headers.update({
+            'sec-ch-ua': features['sec_ch_ua'],
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': features['sec_ch_ua_platform']
+        })
+    
+    # 随机添加一些可选头
+    if random.choice([True, False]):
+        headers['X-Requested-With'] = 'XMLHttpRequest'
+    
+    if random.choice([True, False]):
+        headers['Origin'] = 'https://scholar.google.com'
+        
+    if random.choice([True, False]):
+        headers['Referer'] = random.choice([
+            'https://www.google.com/',
+            'https://scholar.google.com/',
+            'https://www.google.com/search?q=citations'
+        ])
+    
+    return headers
 
 def get_github_stars(owner, repo):
     """获取GitHub仓库的星标数"""
@@ -177,42 +231,70 @@ def generate_citation_summary(papers):
     
     return summary
 
-def parse_scholar_profile(scholar_id, max_retries=3):
-    """直接解析Google Scholar个人资料页面"""
+def simulate_human_behavior():
+    """模拟人类浏览行为"""
+    # 随机滚动延时
+    time.sleep(random.uniform(0.5, 2.0))
+
+def parse_scholar_profile(scholar_id, max_retries=5):
+    """直接解析Google Scholar个人资料页面，使用更智能的反检测策略"""
     base_url = "https://scholar.google.com"
     profile_url = f"{base_url}/citations?user={scholar_id}&hl=en"
+    
+    # 首先访问主页建立session
+    main_url = "https://scholar.google.com"
     
     for attempt in range(max_retries):
         try:
             print(f"尝试第 {attempt + 1} 次访问 Google Scholar...")
             
-            # 增加随机延时避免过快请求
+            # 增加更长的随机延时
             if attempt > 0:
-                delay = random.randint(15, 30)  # 增加延时到15-30秒
+                delay = random.randint(60, 180)  # 1-3分钟延时
                 print(f"等待 {delay} 秒后重试...")
                 time.sleep(delay)
             else:
-                # 第一次请求也添加随机延时
-                initial_delay = random.randint(3, 8)
+                # 第一次请求的初始延时
+                initial_delay = random.randint(10, 20)
                 print(f"初始等待 {initial_delay} 秒...")
                 time.sleep(initial_delay)
             
+            # 创建新的session
             session = requests.Session()
-            session.headers.update(get_random_headers())
             
-            # 发送请求，增加超时时间
-            response = session.get(profile_url, timeout=30)
+            # 第一步：访问Google Scholar主页
+            print("正在访问 Google Scholar 主页...")
+            main_headers = get_random_headers()
+            main_response = session.get(main_url, headers=main_headers, timeout=30)
+            
+            if main_response.status_code != 200:
+                print(f"主页访问失败，状态码: {main_response.status_code}")
+                continue
+                
+            # 模拟人类行为延时
+            simulate_human_behavior()
+            
+            # 第二步：访问个人资料页面
+            print("正在访问个人资料页面...")
+            profile_headers = get_random_headers()
+            # 添加Referer表示从主页跳转
+            profile_headers['Referer'] = main_url
+            
+            response = session.get(profile_url, headers=profile_headers, timeout=45)
             
             if response.status_code == 429:
                 print("遇到速率限制，等待更长时间...")
-                time.sleep(120)  # 增加到2分钟
+                # 指数退避策略
+                backoff_time = min(300, 60 * (2 ** attempt))  # 最多5分钟
+                print(f"退避等待 {backoff_time} 秒...")
+                time.sleep(backoff_time)
                 continue
                 
             if response.status_code == 403:
                 print(f"HTTP 状态码: {response.status_code} - 访问被拒绝")
                 if attempt < max_retries - 1:
-                    # 尝试更长的延时
-                    long_delay = random.randint(60, 120)
+                    # 指数增长的延时策略
+                    long_delay = random.randint(120, 300) * (attempt + 1)  # 2-5分钟 * 尝试次数
                     print(f"403错误，等待 {long_delay} 秒后重试...")
                     time.sleep(long_delay)
                 continue
@@ -330,12 +412,23 @@ def parse_scholar_profile(scholar_id, max_retries=3):
             
         except requests.exceptions.Timeout:
             print(f"请求超时 (尝试 {attempt + 1})")
+            # 超时后增加额外延时
+            time.sleep(random.randint(30, 60))
+            continue
+        except requests.exceptions.ConnectionError as e:
+            print(f"连接错误 (尝试 {attempt + 1}): {e}")
+            # 连接错误可能是网络问题，等待更长时间
+            time.sleep(random.randint(60, 120))
             continue
         except requests.exceptions.RequestException as e:
             print(f"网络请求错误 (尝试 {attempt + 1}): {e}")
+            # 其他网络错误
+            time.sleep(random.randint(30, 90))
             continue
         except Exception as e:
             print(f"解析错误 (尝试 {attempt + 1}): {e}")
+            # 解析错误可能是页面结构变化
+            time.sleep(random.randint(20, 40))
             continue
     
     print("所有尝试都失败了，返回备用数据")
@@ -399,6 +492,26 @@ def get_fallback_data():
             "fallback_reason": "No existing data found"
         }
 
+def should_delay_execution():
+    """决定是否应该延迟执行以避免被检测"""
+    current_hour = datetime.now().hour
+    
+    # 避免在高峰时间（工作时间）执行
+    peak_hours = list(range(9, 18))  # 9am-6pm
+    
+    if current_hour in peak_hours:
+        # 在高峰时间添加额外延时
+        delay = random.randint(300, 900)  # 5-15分钟
+        print(f"检测到高峰时间，添加 {delay} 秒延时...")
+        time.sleep(delay)
+        return True
+    
+    # 随机延时防止规律性访问
+    random_delay = random.randint(60, 300)  # 1-5分钟
+    print(f"随机延时 {random_delay} 秒...")
+    time.sleep(random_delay)
+    return False
+
 def update_scholar_stats():
     try:
         scholar_id = os.getenv('GOOGLE_SCHOLAR_ID')
@@ -406,6 +519,9 @@ def update_scholar_stats():
             raise ValueError("环境变量中未找到 Google Scholar ID")
 
         print(f"开始更新 Scholar 统计数据 (ID: {scholar_id})")
+        
+        # 智能延时策略
+        should_delay_execution()
         
         # 尝试解析 Scholar 数据
         data = parse_scholar_profile(scholar_id)

@@ -2,7 +2,9 @@ name: Update Google Scholar Stats
 
 on:
   schedule:
-    - cron: '0 8 */3 * *'  # 每三天在中国时间 16:00 (UTC+8) 运行
+    # 在UTC时间的深夜/凌晨运行，避开工作时间
+    - cron: '0 2 */3 * *'   # 每三天在中国时间 10:00 (UTC+8) 运行
+    - cron: '30 18 */5 * *' # 每五天在中国时间 02:30 (UTC+8) 运行 (备用时间)
   workflow_dispatch: 
   push:
     branches:
