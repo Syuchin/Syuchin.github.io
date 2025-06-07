@@ -27,38 +27,6 @@
       "scholar_url": ""
     }
   },
-  "citation_summary": {
-    "total_papers": 3,
-    "total_citations": 32,
-    "highly_cited_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 31,
-        "year": 2025
-      }
-    ],
-    "recent_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 31,
-        "year": 2025
-      },
-      {
-        "title": "CryptoX: Compositional Reasoning Evaluation of Large Language Models",
-        "citations": 1,
-        "year": 2025
-      },
-      {
-        "title": "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation",
-        "citations": 0,
-        "year": 2025
-      }
-    ],
-    "citation_distribution": {
-      "20+": 1,
-      "1-4": 1
-    }
-  },
   "citation_trend": [
     {
       "date": "2024-07",
@@ -109,10 +77,12 @@
       "citations": 32
     }
   ],
+  "fallback_used": true,
+  "fallback_reason": "Google Scholar access denied (403)",
   "github_stars": {
     "leolee99/LD-Agent": 41,
     "multimodal-art-projection/CryptoX": 5,
     "Syuchin/MARS-Bench": 1
   },
-  "last_updated": "2025-06-06T18:58:38.421367"
+  "last_updated": "2025-06-07T02:49:57.300731"
 }
