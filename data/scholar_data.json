@@ -1,31 +1,13 @@
 {
-  "total_citations": 32,
-  "h_index": 1,
-  "papers": {
-    "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 31,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
-      "versions_url": "",
-      "scholar_url": ""
-    },
-    "CryptoX: Compositional Reasoning Evaluation of Large Language Models": {
-      "citations": 1,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:u-x6o8ySG0sC",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6500763536884533109",
-      "versions_url": "",
-      "scholar_url": ""
-    },
-    "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation": {
-      "citations": 0,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:qjMakFHDy7sC",
-      "citation_url": "",
-      "versions_url": "",
-      "scholar_url": ""
-    }
+  "total_citations": 9,
+  "h_index": 0,
+  "papers": {},
+  "citation_summary": {
+    "total_papers": 0,
+    "total_citations": 0,
+    "highly_cited_papers": [],
+    "recent_papers": [],
+    "citation_distribution": {}
   },
   "citation_trend": [
     {
@@ -74,15 +56,13 @@
     },
     {
       "date": "2025-06",
-      "citations": 32
+      "citations": 9
     }
   ],
-  "fallback_used": true,
-  "fallback_reason": "Google Scholar access denied (403)",
   "github_stars": {
     "leolee99/LD-Agent": 43,
     "multimodal-art-projection/CryptoX": 5,
     "Syuchin/MARS-Bench": 1
   },
-  "last_updated": "2025-06-16T03:31:40.654051"
+  "last_updated": "2025-06-16T18:54:16.015037"
 }
