@@ -2,13 +2,6 @@
   "total_citations": 9,
   "h_index": 0,
   "papers": {},
-  "citation_summary": {
-    "total_papers": 0,
-    "total_citations": 0,
-    "highly_cited_papers": [],
-    "recent_papers": [],
-    "citation_distribution": {}
-  },
   "citation_trend": [
     {
       "date": "2024-07",
@@ -59,10 +52,12 @@
       "citations": 9
     }
   ],
+  "fallback_used": true,
+  "fallback_reason": "Google Scholar access denied (403)",
   "github_stars": {
     "leolee99/LD-Agent": 43,
-    "multimodal-art-projection/CryptoX": 5,
+    "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 1
   },
-  "last_updated": "2025-06-16T18:54:16.015037"
+  "last_updated": "2025-06-19T02:59:52.501179"
 }
