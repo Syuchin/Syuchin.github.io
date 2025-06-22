@@ -19,91 +19,6 @@ HISTORICAL_CITATIONS = [
     {"date": "2025-01", "citations": 9},
 ]
 
-# 用户代理列表，模拟真实浏览器
-USER_AGENTS = [
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15',
-    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:122.0) Gecko/20100101 Firefox/122.0',
-    'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 OPR/107.0.0.0',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Vivaldi/6.5.3206.63'
-]
-
-# 添加更多的浏览器特征
-BROWSER_FEATURES = [
-    {
-        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-        'accept_language': 'en-US,en;q=0.9',
-        'accept_encoding': 'gzip, deflate, br',
-        'sec_ch_ua': '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
-        'sec_ch_ua_platform': '"Windows"'
-    },
-    {
-        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'accept_language': 'en-US,en;q=0.5',
-        'accept_encoding': 'gzip, deflate, br',
-        'sec_ch_ua': '"Chromium";v="121", "Not A(Brand";v="99"',
-        'sec_ch_ua_platform': '"macOS"'
-    },
-    {
-        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'accept_language': 'en-US,en;q=0.9,zh-CN;q=0.8',
-        'accept_encoding': 'gzip, deflate, br',
-        'sec_ch_ua': '"Microsoft Edge";v="121", "Not A(Brand";v="99", "Chromium";v="121"',
-        'sec_ch_ua_platform': '"Linux"'
-    }
-]
-
-def get_random_headers():
-    """获取随机请求头，模拟真实浏览器"""
-    user_agent = random.choice(USER_AGENTS)
-    features = random.choice(BROWSER_FEATURES)
-    
-    # 基于User-Agent判断浏览器类型，设置对应的特征
-    headers = {
-        'User-Agent': user_agent,
-        'Accept': features['accept'],
-        'Accept-Language': features['accept_language'],
-        'Accept-Encoding': features['accept_encoding'],
-        'DNT': str(random.choice([0, 1])),  # 随机化Do Not Track
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1',
-        'Sec-Fetch-Dest': 'document',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': random.choice(['none', 'same-origin', 'cross-site']),
-        'Sec-Fetch-User': '?1',
-        'Cache-Control': random.choice(['no-cache', 'max-age=0', 'no-store']),
-        'Pragma': random.choice(['no-cache', '']),
-    }
-    
-    # 只为Chrome/Edge浏览器添加sec-ch-ua头
-    if 'Chrome' in user_agent or 'Edge' in user_agent:
-        headers.update({
-            'sec-ch-ua': features['sec_ch_ua'],
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': features['sec_ch_ua_platform']
-        })
-    
-    # 随机添加一些可选头
-    if random.choice([True, False]):
-        headers['X-Requested-With'] = 'XMLHttpRequest'
-    
-    if random.choice([True, False]):
-        headers['Origin'] = 'https://scholar.google.com'
-        
-    if random.choice([True, False]):
-        headers['Referer'] = random.choice([
-            'https://www.google.com/',
-            'https://scholar.google.com/',
-            'https://www.google.com/search?q=citations'
-        ])
-    
-    return headers
-
 def get_github_stars(owner, repo):
     """获取GitHub仓库的星标数"""
     try:
@@ -231,211 +146,146 @@ def generate_citation_summary(papers):
     
     return summary
 
-def simulate_human_behavior():
-    """模拟人类浏览行为"""
-    # 随机滚动延时
-    time.sleep(random.uniform(0.5, 2.0))
+def parse_scholar_page(soup):
+    """解析Scholar页面内容"""
+    try:
+        citation_stats = {}
+        
+        # 查找引用统计表格
+        stats_table = soup.find('table', {'id': 'gsc_rsb_st'})
+        if stats_table:
+            rows = stats_table.find_all('tr')
+            for row in rows:
+                cells = row.find_all('td')
+                if len(cells) >= 2:
+                    label = cells[0].get_text(strip=True)
+                    value = cells[1].get_text(strip=True)
+                    if 'Citations' in label and 'All' in label:
+                        try:
+                            citation_stats['total_citations'] = int(value)
+                        except ValueError:
+                            pass
+                    elif 'h-index' in label and 'All' in label:
+                        try:
+                            citation_stats['h_index'] = int(value)
+                        except ValueError:
+                            pass
+        
+        # 如果没找到统计表格，尝试其他方法
+        if not citation_stats:
+            # 查找其他可能的引用数显示方式
+            citation_elements = soup.find_all(string=re.compile(r'Cited by \d+'))
+            if citation_elements:
+                # 提取最大的引用数
+                citations = []
+                for elem in citation_elements:
+                    match = re.search(r'Cited by (\d+)', elem)
+                    if match:
+                        citations.append(int(match.group(1)))
+                if citations:
+                    citation_stats['total_citations'] = max(citations)
+        
+        # 获取论文列表
+        papers = {}
+        paper_rows = soup.find_all('tr', class_='gsc_a_tr')[:10]  # 取前10篇论文
+        
+        for row in paper_rows:
+            try:
+                title_cell = row.find('td', class_='gsc_a_t')
+                if title_cell:
+                    title_link = title_cell.find('a')
+                    if title_link:
+                        title = title_link.get_text(strip=True)
+                        
+                        # 获取年份
+                        year_cell = row.find('td', class_='gsc_a_y')
+                        year = int(year_cell.get_text(strip=True)) if year_cell and year_cell.get_text(strip=True).isdigit() else 2024
+                        
+                        # 获取引用统计
+                        citation_stats_detail = get_paper_citation_stats(row, "https://scholar.google.com")
+                        
+                        papers[title] = {
+                            "citations": citation_stats_detail['count'],
+                            "year": year,
+                            "url": title_link.get('href', ''),
+                            "citation_url": citation_stats_detail['url'],
+                            "versions_url": citation_stats_detail.get('versions_url', ''),
+                            "scholar_url": citation_stats_detail.get('scholar_url', '')
+                        }
+                        
+            except Exception as e:
+                print(f"解析论文时出错: {e}")
+                continue
+        
+        # 设置默认值
+        if 'total_citations' not in citation_stats:
+            # 如果无法解析总引用数，使用论文引用数之和作为估算
+            total_from_papers = sum(paper.get('citations', 0) for paper in papers.values())
+            citation_stats['total_citations'] = max(total_from_papers, 9)
+            
+        if 'h_index' not in citation_stats:
+            # 如果无法解析H-index，根据论文引用数据计算
+            citation_stats['h_index'] = calculate_h_index(papers)
+        
+        # 生成引用摘要
+        citation_summary = generate_citation_summary(papers)
+        
+        print(f"成功解析 Scholar 数据:")
+        print(f"- 总引用数: {citation_stats.get('total_citations', 'N/A')}")
+        print(f"- H指数: {citation_stats.get('h_index', 'N/A')}")
+        print(f"- 论文数量: {len(papers)}")
+        
+        return {
+            "total_citations": citation_stats.get('total_citations', 9),
+            "h_index": citation_stats.get('h_index', 3),
+            "papers": papers,
+            "citation_summary": citation_summary
+        }
+        
+    except Exception as e:
+        print(f"解析Scholar页面时出错: {e}")
+        return None
 
-def parse_scholar_profile(scholar_id, max_retries=5):
-    """直接解析Google Scholar个人资料页面，使用更智能的反检测策略"""
-    base_url = "https://scholar.google.com"
-    profile_url = f"{base_url}/citations?user={scholar_id}&hl=en"
+def get_scholar_data_with_scrapingbee(scholar_id):
+    """使用ScrapingBee API获取Scholar数据"""
+    api_key = os.getenv('SCRAPINGBEE_API_KEY')
+    if not api_key:
+        print("未配置 ScrapingBee API Key")
+        return None
     
-    # 首先访问主页建立session
-    main_url = "https://scholar.google.com"
-    
-    for attempt in range(max_retries):
-        try:
-            print(f"尝试第 {attempt + 1} 次访问 Google Scholar...")
-            
-            # 增加更长的随机延时
-            if attempt > 0:
-                delay = random.randint(60, 180)  # 1-3分钟延时
-                print(f"等待 {delay} 秒后重试...")
-                time.sleep(delay)
-            else:
-                # 第一次请求的初始延时
-                initial_delay = random.randint(10, 20)
-                print(f"初始等待 {initial_delay} 秒...")
-                time.sleep(initial_delay)
-            
-            # 创建新的session
-            session = requests.Session()
-            
-            # 第一步：访问Google Scholar主页
-            print("正在访问 Google Scholar 主页...")
-            main_headers = get_random_headers()
-            main_response = session.get(main_url, headers=main_headers, timeout=30)
-            
-            if main_response.status_code != 200:
-                print(f"主页访问失败，状态码: {main_response.status_code}")
-                continue
-                
-            # 模拟人类行为延时
-            simulate_human_behavior()
-            
-            # 第二步：访问个人资料页面
-            print("正在访问个人资料页面...")
-            profile_headers = get_random_headers()
-            # 添加Referer表示从主页跳转
-            profile_headers['Referer'] = main_url
-            
-            response = session.get(profile_url, headers=profile_headers, timeout=45)
-            
-            if response.status_code == 429:
-                print("遇到速率限制，等待更长时间...")
-                # 指数退避策略
-                backoff_time = min(300, 60 * (2 ** attempt))  # 最多5分钟
-                print(f"退避等待 {backoff_time} 秒...")
-                time.sleep(backoff_time)
-                continue
-                
-            if response.status_code == 403:
-                print(f"HTTP 状态码: {response.status_code} - 访问被拒绝")
-                if attempt < max_retries - 1:
-                    # 指数增长的延时策略
-                    long_delay = random.randint(120, 300) * (attempt + 1)  # 2-5分钟 * 尝试次数
-                    print(f"403错误，等待 {long_delay} 秒后重试...")
-                    time.sleep(long_delay)
-                continue
-                
-            if response.status_code != 200:
-                print(f"HTTP 状态码: {response.status_code}")
-                continue
-                
+    try:
+        url = f"https://scholar.google.com/citations?user={scholar_id}&hl=en"
+        params = {
+            'api_key': api_key,
+            'url': url,
+            'render_js': 'false',
+            'premium_proxy': 'true',
+            'country_code': 'us',
+            'custom_google': 'true'  # 爬取Google网站必需的参数
+        }
+        
+        print("使用 ScrapingBee API 获取 Scholar 数据...")
+        response = requests.get('https://app.scrapingbee.com/api/v1/', params=params, timeout=60)
+        
+        if response.status_code == 200:
             soup = BeautifulSoup(response.content, 'html.parser')
+            return parse_scholar_page(soup)
+        else:
+            print(f"ScrapingBee API 失败: {response.status_code}")
+            if response.status_code == 422:
+                print("可能是 API 配额用完或参数错误")
+            elif response.status_code == 401:
+                print("API Key 无效")
+            elif response.status_code == 400:
+                print("请求参数错误")
+            return None
             
-            # 解析引用统计
-            citation_stats = {}
-            
-            # 查找引用统计表格
-            stats_table = soup.find('table', {'id': 'gsc_rsb_st'})
-            if stats_table:
-                rows = stats_table.find_all('tr')
-                for row in rows:
-                    cells = row.find_all('td')
-                    if len(cells) >= 2:
-                        label = cells[0].get_text(strip=True)
-                        value = cells[1].get_text(strip=True)
-                        if 'Citations' in label and 'All' in label:
-                            try:
-                                citation_stats['total_citations'] = int(value)
-                            except ValueError:
-                                pass
-                        elif 'h-index' in label and 'All' in label:
-                            try:
-                                citation_stats['h_index'] = int(value)
-                            except ValueError:
-                                pass
-            
-            # 如果没找到统计表格，尝试其他方法
-            if not citation_stats:
-                # 查找其他可能的引用数显示方式
-                citation_elements = soup.find_all(string=re.compile(r'Cited by \d+'))
-                if citation_elements:
-                    # 提取最大的引用数
-                    citations = []
-                    for elem in citation_elements:
-                        match = re.search(r'Cited by (\d+)', elem)
-                        if match:
-                            citations.append(int(match.group(1)))
-                    if citations:
-                        citation_stats['total_citations'] = max(citations)
-            
-            # 获取论文列表（限制数量避免过多请求）
-            papers = {}
-            paper_rows = soup.find_all('tr', class_='gsc_a_tr')[:5]  # 只取前5篇论文
-            
-            for row in paper_rows:
-                try:
-                    title_cell = row.find('td', class_='gsc_a_t')
-                    if title_cell:
-                        title_link = title_cell.find('a')
-                        if title_link:
-                            title = title_link.get_text(strip=True)
-                            
-                            # 获取年份
-                            year_cell = row.find('td', class_='gsc_a_y')
-                            year = int(year_cell.get_text(strip=True)) if year_cell and year_cell.get_text(strip=True).isdigit() else 2024
-                            
-                            # 获取引用统计
-                            citation_stats_detail = get_paper_citation_stats(row, base_url)
-                            
-                            papers[title] = {
-                                "citations": citation_stats_detail['count'],
-                                "year": year,
-                                "url": title_link.get('href', ''),
-                                "citation_url": citation_stats_detail['url'],
-                                "versions_url": citation_stats_detail.get('versions_url', ''),
-                                "scholar_url": citation_stats_detail.get('scholar_url', '')
-                            }
-                            
-                except Exception as e:
-                    print(f"解析论文时出错: {e}")
-                    continue
-            
-            # 设置默认值
-            if 'total_citations' not in citation_stats:
-                # 如果无法解析总引用数，使用论文引用数之和作为估算
-                total_from_papers = sum(paper.get('citations', 0) for paper in papers.values())
-                citation_stats['total_citations'] = max(total_from_papers, 9)  # 至少使用已知的最小值
-                
-            if 'h_index' not in citation_stats:
-                # 如果无法解析H-index，根据论文引用数据计算
-                citation_stats['h_index'] = calculate_h_index(papers)
-            
-            # 生成引用摘要
-            citation_summary = generate_citation_summary(papers)
-            
-            print(f"成功解析 Scholar 数据:")
-            print(f"- 总引用数: {citation_stats.get('total_citations', 'N/A')}")
-            print(f"- H指数: {citation_stats.get('h_index', 'N/A')}")
-            print(f"- 论文数量: {len(papers)}")
-            
-            # 显示引用摘要
-            if citation_summary['highly_cited_papers']:
-                print(f"\n高引用论文 (≥5引用):")
-                for paper in citation_summary['highly_cited_papers'][:3]:
-                    print(f"  • 《{paper['title'][:60]}...》- {paper['citations']} 引用 ({paper['year']})")
-            
-            if citation_summary['citation_distribution']:
-                print(f"\n引用分布:")
-                for category, count in citation_summary['citation_distribution'].items():
-                    print(f"  • {category} 引用: {count} 篇论文")
-            
-            return {
-                "total_citations": citation_stats.get('total_citations', 9),
-                "h_index": citation_stats.get('h_index', 3),
-                "papers": papers,
-                "citation_summary": citation_summary
-            }
-            
-        except requests.exceptions.Timeout:
-            print(f"请求超时 (尝试 {attempt + 1})")
-            # 超时后增加额外延时
-            time.sleep(random.randint(30, 60))
-            continue
-        except requests.exceptions.ConnectionError as e:
-            print(f"连接错误 (尝试 {attempt + 1}): {e}")
-            # 连接错误可能是网络问题，等待更长时间
-            time.sleep(random.randint(60, 120))
-            continue
-        except requests.exceptions.RequestException as e:
-            print(f"网络请求错误 (尝试 {attempt + 1}): {e}")
-            # 其他网络错误
-            time.sleep(random.randint(30, 90))
-            continue
-        except Exception as e:
-            print(f"解析错误 (尝试 {attempt + 1}): {e}")
-            # 解析错误可能是页面结构变化
-            time.sleep(random.randint(20, 40))
-            continue
-    
-    print("所有尝试都失败了，返回备用数据")
-    return None
+    except Exception as e:
+        print(f"ScrapingBee API 错误: {e}")
+        return None
 
 def get_fallback_data():
-    """获取备用数据，当Scholar API失败时使用"""
+    """获取备用数据，当API失败时使用"""
     print("使用备用数据...")
     
     # 尝试从现有文件读取最新数据
@@ -469,13 +319,13 @@ def get_fallback_data():
             "h_index": h_index,
             "papers": papers,
             "citation_trend": citation_trend,
-            "fallback_used": True,  # 标记使用了备用数据
-            "fallback_reason": "Google Scholar access denied (403)"
+            "fallback_used": True,
+            "fallback_reason": "ScrapingBee API failed"
         }
     except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
         print(f"读取现有数据失败: {e}，使用默认备用数据")
         return {
-            "total_citations": 30,  # 当前已知的数据
+            "total_citations": 30,
             "h_index": 1,
             "papers": {
                 "Hello again! llm-powered personalized agent for long-term dialogue": {
@@ -492,26 +342,6 @@ def get_fallback_data():
             "fallback_reason": "No existing data found"
         }
 
-def should_delay_execution():
-    """决定是否应该延迟执行以避免被检测"""
-    current_hour = datetime.now().hour
-    
-    # 避免在高峰时间（工作时间）执行
-    peak_hours = list(range(9, 18))  # 9am-6pm
-    
-    if current_hour in peak_hours:
-        # 在高峰时间添加额外延时
-        delay = random.randint(300, 900)  # 5-15分钟
-        print(f"检测到高峰时间，添加 {delay} 秒延时...")
-        time.sleep(delay)
-        return True
-    
-    # 随机延时防止规律性访问
-    random_delay = random.randint(60, 300)  # 1-5分钟
-    print(f"随机延时 {random_delay} 秒...")
-    time.sleep(random_delay)
-    return False
-
 def update_scholar_stats():
     try:
         scholar_id = os.getenv('GOOGLE_SCHOLAR_ID')
@@ -520,14 +350,11 @@ def update_scholar_stats():
 
         print(f"开始更新 Scholar 统计数据 (ID: {scholar_id})")
         
-        # 智能延时策略
-        should_delay_execution()
-        
-        # 尝试解析 Scholar 数据
-        data = parse_scholar_profile(scholar_id)
+        # 使用 ScrapingBee API 获取数据
+        data = get_scholar_data_with_scrapingbee(scholar_id)
         
         if data is None:
-            # 如果解析失败，使用备用数据
+            # 如果API失败，使用备用数据
             data = get_fallback_data()
         
         # 读取现有的数据文件

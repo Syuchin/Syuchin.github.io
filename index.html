@@ -182,74 +182,95 @@
         width: 100%;
       }
     }
-    /* Biography可视化样式 */
+    /* Biography可视化样式 - 压缩版 */
     .bio-container {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 15px;
     }
     
     .bio-main {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-    }
-    
-    /* 研究兴趣卡片 */
-    .interest-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
-      margin-bottom: 0;
     }
     
-    .interest-card {
-      background: #f8fafc;
-      border-radius: 10px;
-      padding: 18px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    .bio-intro h3 {
+      margin-bottom: 8px !important;
+    }
+    
+    .bio-intro p {
+      margin-bottom: 15px !important;
+    }
+    
+    /* 研究兴趣和联系方式 - 两个小卡片 */
+    .interests-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 5px;
+    }
+    
+    .interest-card-wrapper,
+    .contact-card-wrapper {
+      background: #f9fafc;
+      border-radius: 8px;
+      padding: 15px;
+      border: 1px solid #edf2f7;
       transition: all 0.3s ease;
-      text-align: center;
-      border: 1px solid #f0f0f0;
     }
     
-    .interest-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 7px 15px rgba(0,0,0,0.07);
+    .interest-card-wrapper:hover,
+    .contact-card-wrapper:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       border-color: #e2e8f0;
-      background: linear-gradient(145deg, #ffffff, #f8fafc);
     }
     
-    .interest-icon {
-      font-size: 2.2rem;
-      margin-bottom: 12px;
+    .interest-card-wrapper h4,
+    .contact-card-wrapper h4 {
+      margin-bottom: 10px !important;
+      color: #4a5568;
     }
     
-    .interest-title {
-      font-weight: 600;
+    .interest-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .interest-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .interest-item:hover {
+      transform: translateX(3px);
+    }
+    
+    .interest-bullet {
+      color: #4299e1;
+      font-size: 0.9rem;
+      width: 16px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    
+    .interest-item span {
       color: #2d3748;
-      margin-bottom: 8px;
-      font-size: 1rem;
-    }
-    
-    .interest-desc {
-      font-size: 0.85rem;
-      color: #718096;
+      font-size: 0.9rem;
+      font-weight: 500;
       line-height: 1.4;
     }
     
-    .bio-footer {
-      background: #f9fafc;
-      border-radius: 8px;
-      padding: 20px;
-      border: 1px solid #edf2f7;
-      margin-top: 10px;
-    }
-    
-    .contact-section p {
+    .contact-card-wrapper p {
       color: #4a5568;
-      font-size: 0.95rem;
-      line-height: 1.5;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 12px !important;
     }
     
     .contact-links {
@@ -304,12 +325,26 @@
 
     /* 响应式设计 */
     @media (max-width: 768px) {
-      .bio-footer {
+      .interests-contact-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
       }
       
-      .interest-grid {
-        grid-template-columns: 1fr;
+      .interest-card-wrapper,
+      .contact-card-wrapper {
+        padding: 12px;
+      }
+      
+      .interest-item {
+        padding: 4px 0;
+      }
+      
+      .interest-item span {
+        font-size: 0.85rem;
+      }
+      
+      .contact-card-wrapper p {
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -364,8 +399,8 @@
         <!-- 简介和研究兴趣合并 -->
         <div class="bio-main">
           <div class="bio-intro">
-            <h3 style="color: #2d3748; margin-bottom: 12px;">Hello! I'm chyang.</h3>
-            <p style="margin-bottom: 20px;">
+            <h3 style="color: #2d3748;">Hello! I'm chyang.</h3>
+            <p>
               I am a first-year Master's student at <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">University of Science and Technology of China</a>, 
               advised by <a href="https://scholar.google.com/citations?hl=en&user=7620QAMAAAAJ" target="_blank" rel="noopener">Prof. Nenghai Yu</a> and 
               <a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ" target="_blank" rel="noopener">Prof. Qi Chu</a>. 
@@ -373,40 +408,36 @@
             </p>
           </div>
           
-          <!-- 研究兴趣 - 紧凑布局 -->
-          <div class="interest-cards">
-            <h4 style="margin-bottom: 15px;">Research Interests</h4>
-            <div class="interest-grid">
-              <div class="interest-card">
-                <div class="interest-icon">🔒</div>
-                <div class="interest-title">AI Security</div>
-                <div class="interest-desc">Ensure the robustness and trustworthiness of AI systems</div>
-              </div>
-              <div class="interest-card">
-                <div class="interest-icon">🤖</div>
-                <div class="interest-title">Multi-modal Intelligent Agents</div>
-                <div class="interest-desc">Develop integrated multi-modal intelligent systems</div>
-              </div>
-              <div class="interest-card">
-                <div class="interest-icon">🎯</div>
-                <div class="interest-title">Large Language Model Evaluation</div>
-                <div class="interest-desc">Develop benchmarks for evaluating LLMs performance</div>
+          <!-- 研究兴趣和联系方式 - 两个小卡片 -->
+          <div class="interests-contact-grid">
+            <div class="interest-card-wrapper">
+              <h4>Research Interests</h4>
+              <div class="interest-list">
+                <div class="interest-item">
+                  <i class="fas fa-chart-line interest-bullet"></i>
+                  <span>LLM Evaluation & Benchmarking</span>
+                </div>
+                <div class="interest-item">
+                  <i class="fas fa-cog interest-bullet"></i>
+                  <span>LLM Safety & Alignment</span>
+                </div>
+                <div class="interest-item">
+                  <i class="fas fa-shield-alt interest-bullet"></i>
+                  <span>AI-driven Cybersecurity</span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        
-        <!-- 合作与联系 - 简化布局 -->
-        <div class="bio-footer">
-          <div class="contact-section">
-            <h4 style="color: #4a5568; margin-bottom: 12px;">Contact & Collaboration</h4>
-            <p style="margin-bottom: 15px; font-size: 0.95rem;">
-              I'm enthusiastic about innovative projects and meaningful discussions. Feel free to reach out if you share similar interests!
-            </p>
-            <div class="contact-links">
-              <button onclick="copyEmail()" class="contact-link email-copy-btn"><i class="fas fa-envelope"></i>Email</button>
-              <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en" target="_blank" rel="noopener" class="contact-link"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
-              <a href="https://github.com/Syuchin" target="_blank" rel="noopener" class="contact-link"><i class="fab fa-github"></i>GitHub</a>
+            
+            <div class="contact-card-wrapper">
+              <h4>Contact & Collaboration</h4>
+              <p>
+                I'm enthusiastic about innovative projects and meaningful discussions. Feel free to reach out if you share similar interests!
+              </p>
+              <div class="contact-links">
+                <button onclick="copyEmail()" class="contact-link email-copy-btn"><i class="fas fa-envelope"></i>Email</button>
+                <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en" target="_blank" rel="noopener" class="contact-link"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
+                <a href="https://github.com/Syuchin" target="_blank" rel="noopener" class="contact-link"><i class="fab fa-github"></i>GitHub</a>
+              </div>
             </div>
           </div>
         </div>
@@ -1005,7 +1036,7 @@
           <td>
             <b>University of Science and Technology of China</b><br>
             <span class="calendar" style="color: #555; font-size: 0.9rem;">
-              Sep 2025 - Expected
+              Sep 2025 - Present
             </span><br>
             M.Eng. in Cyberspace Security (0838)<br>
             <span style="color: #777;">Research Focus: Large Language Model Security</span><br>
@@ -1020,7 +1051,7 @@
           <td>
             <b>University of Science and Technology of China</b><br>
             <span class="calendar" style="color: #555; font-size: 0.9rem;">
-              Sep 2021 - Jun 2025 (Expected)
+              Sep 2021 - Jun 2025
             </span><br>
             B.Eng. in Information Security
           </td>
@@ -1085,29 +1116,50 @@
     <span class="close">&times;</span>
     <img class="modal-content" id="modal-img">
   </div>
-  <!-- Visitor Counter -->
+  <!-- 访问计数器 -->
+  <div style="text-align: center; padding: 10px 20px; margin-top: 10px; color: #666;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.8); 
+         padding: 6px 14px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+         transition: all 0.3s ease;
+         cursor: default;">
+      <i class="fas fa-eye" style="color: #4a5568;"></i>
+      <span style="font-size: 0.9rem; color: #4a5568;">
+        Total Visitors: 
+        <span style="margin-left: 4px;">
+          <span id="busuanzi_value_site_uv" style="font-weight: 600; color: #000000;">0</span>
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <!-- 不蒜子统计脚本 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <!-- 备用计数器（使用你的GitHub Pages域名） -->
   <script>
-    // 使用本地存储实现访问计数
     document.addEventListener('DOMContentLoaded', function() {
-      // 从服务器获取当前访问量
-      fetch('https://api.countapi.xyz/hit/chenghaoyang.com/visits')
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('visitor_count').textContent = data.value;
-        })
-        .catch(error => {
-          console.error('Error fetching visitor count:', error);
-          // 如果API调用失败，尝试使用本地存储的备份
-          const storedCount = localStorage.getItem('visitorCount');
-          if (storedCount) {
-            document.getElementById('visitor_count').textContent = storedCount;
-          }
-        });
+      // 如果不蒜子加载失败，使用CountAPI作为备用
+      setTimeout(() => {
+        const busuanziElement = document.getElementById('busuanzi_value_site_uv');
+        if (!busuanziElement || busuanziElement.textContent === '0') {
+          // 使用你的GitHub Pages域名
+          fetch('https://api.countapi.xyz/hit/syuchin.github.io/visits')
+            .then(response => response.json())
+            .then(data => {
+              busuanziElement.textContent = data.value;
+            })
+            .catch(error => {
+              console.log('CountAPI也失败了，使用本地计数');
+              // 本地计数作为最后的备用方案
+              let count = localStorage.getItem('localVisitCount') || 0;
+              count = parseInt(count) + 1;
+              localStorage.setItem('localVisitCount', count);
+              busuanziElement.textContent = count;
+            });
+        }
+      }, 2000);
     });
   </script>
-  
-  <!-- 保留原有的计数器作为备份 -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script>
     // 为日期徽章设置随机背景色
     document.querySelectorAll('.date-badge').forEach(badge => {
