@@ -1,9 +1,9 @@
 {
-  "total_citations": 36,
+  "total_citations": 37,
   "h_index": 1,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 35,
+      "citations": 36,
       "year": 2025,
       "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
@@ -29,18 +29,18 @@
   },
   "citation_summary": {
     "total_papers": 3,
-    "total_citations": 36,
+    "total_citations": 37,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 35,
+        "citations": 36,
         "year": 2025
       }
     ],
     "recent_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 35,
+        "citations": 36,
         "year": 2025
       },
       {
@@ -110,7 +110,7 @@
     },
     {
       "date": "2025-07",
-      "citations": 36
+      "citations": 37
     }
   ],
   "github_stars": {
@@ -118,5 +118,5 @@
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 1
   },
-  "last_updated": "2025-07-04T03:17:52.297818"
+  "last_updated": "2025-07-06T18:45:41.158698"
 }
