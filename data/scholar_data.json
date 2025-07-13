@@ -10,7 +10,7 @@
       "versions_url": "",
       "scholar_url": ""
     },
-    "CryptoX: Compositional Reasoning Evaluation of Large Language Models": {
+    "Cryptox: Compositional reasoning evaluation of large language models": {
       "citations": 1,
       "year": 2025,
       "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:u-x6o8ySG0sC",
@@ -44,7 +44,7 @@
         "year": 2025
       },
       {
-        "title": "CryptoX: Compositional Reasoning Evaluation of Large Language Models",
+        "title": "Cryptox: Compositional reasoning evaluation of large language models",
         "citations": 1,
         "year": 2025
       },
@@ -118,5 +118,5 @@
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 1
   },
-  "last_updated": "2025-07-11T18:49:13.712175"
+  "last_updated": "2025-07-13T03:40:17.964469"
 }
