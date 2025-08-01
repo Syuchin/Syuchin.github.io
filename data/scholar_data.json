@@ -61,6 +61,10 @@
     {
       "date": "2025-07",
       "citations": 9
+    },
+    {
+      "date": "2025-08",
+      "citations": 9
     }
   ],
   "github_stars": {
@@ -68,5 +72,5 @@
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 1
   },
-  "last_updated": "2025-07-31T18:53:41.422000"
+  "last_updated": "2025-08-01T03:55:35.985403"
 }
