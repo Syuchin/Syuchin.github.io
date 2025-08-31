@@ -1,6 +1,6 @@
 {
-  "total_citations": 41,
-  "h_index": 1,
+  "total_citations": 42,
+  "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
       "citations": 40,
@@ -11,7 +11,7 @@
       "scholar_url": ""
     },
     "Cryptox: Compositional reasoning evaluation of large language models": {
-      "citations": 1,
+      "citations": 2,
       "year": 2025,
       "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:u-x6o8ySG0sC",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6500763536884533109",
@@ -29,7 +29,7 @@
   },
   "citation_summary": {
     "total_papers": 3,
-    "total_citations": 41,
+    "total_citations": 42,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
@@ -45,7 +45,7 @@
       },
       {
         "title": "Cryptox: Compositional reasoning evaluation of large language models",
-        "citations": 1,
+        "citations": 2,
         "year": 2025
       },
       {
@@ -114,7 +114,7 @@
     },
     {
       "date": "2025-08",
-      "citations": 41
+      "citations": 42
     }
   ],
   "github_stars": {
@@ -122,5 +122,5 @@
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 1
   },
-  "last_updated": "2025-08-28T03:01:54.741718"
+  "last_updated": "2025-08-31T03:06:20.370169"
 }
