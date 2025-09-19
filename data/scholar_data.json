@@ -1,63 +1,13 @@
 {
-  "total_citations": 43,
-  "h_index": 2,
-  "papers": {
-    "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 41,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
-      "versions_url": "",
-      "scholar_url": ""
-    },
-    "Cryptox: Compositional reasoning evaluation of large language models": {
-      "citations": 2,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:u-x6o8ySG0sC",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6500763536884533109",
-      "versions_url": "",
-      "scholar_url": ""
-    },
-    "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation": {
-      "citations": 0,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:qjMakFHDy7sC",
-      "citation_url": "",
-      "versions_url": "",
-      "scholar_url": ""
-    }
-  },
+  "total_citations": 9,
+  "h_index": 0,
+  "papers": {},
   "citation_summary": {
-    "total_papers": 3,
-    "total_citations": 43,
-    "highly_cited_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 41,
-        "year": 2025
-      }
-    ],
-    "recent_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 41,
-        "year": 2025
-      },
-      {
-        "title": "Cryptox: Compositional reasoning evaluation of large language models",
-        "citations": 2,
-        "year": 2025
-      },
-      {
-        "title": "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation",
-        "citations": 0,
-        "year": 2025
-      }
-    ],
-    "citation_distribution": {
-      "20+": 1,
-      "1-4": 1
-    }
+    "total_papers": 0,
+    "total_citations": 0,
+    "highly_cited_papers": [],
+    "recent_papers": [],
+    "citation_distribution": {}
   },
   "citation_trend": [
     {
@@ -118,7 +68,7 @@
     },
     {
       "date": "2025-09",
-      "citations": 43
+      "citations": 9
     }
   ],
   "github_stars": {
@@ -126,5 +76,5 @@
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 2
   },
-  "last_updated": "2025-09-16T18:45:02.572579"
+  "last_updated": "2025-09-19T02:59:55.256066"
 }
