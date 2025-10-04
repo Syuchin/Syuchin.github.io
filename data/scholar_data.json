@@ -1,9 +1,9 @@
 {
-  "total_citations": 47,
+  "total_citations": 49,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 45,
+      "citations": 46,
       "year": 2025,
       "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
@@ -19,10 +19,10 @@
       "scholar_url": ""
     },
     "FinSearchComp: Towards a Realistic, Expert-Level Evaluation of Financial Search and Reasoning": {
-      "citations": 0,
+      "citations": 1,
       "year": 2025,
       "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:zYLM7Y9cAGgC",
-      "citation_url": "",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6089271650791707487",
       "versions_url": "",
       "scholar_url": ""
     },
@@ -37,18 +37,18 @@
   },
   "citation_summary": {
     "total_papers": 4,
-    "total_citations": 47,
+    "total_citations": 49,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 45,
+        "citations": 46,
         "year": 2025
       }
     ],
     "recent_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 45,
+        "citations": 46,
         "year": 2025
       },
       {
@@ -58,7 +58,7 @@
       },
       {
         "title": "FinSearchComp: Towards a Realistic, Expert-Level Evaluation of Financial Search and Reasoning",
-        "citations": 0,
+        "citations": 1,
         "year": 2025
       },
       {
@@ -69,7 +69,7 @@
     ],
     "citation_distribution": {
       "20+": 1,
-      "1-4": 1
+      "1-4": 2
     }
   },
   "citation_trend": [
@@ -135,7 +135,7 @@
     },
     {
       "date": "2025-10",
-      "citations": 47
+      "citations": 49
     }
   ],
   "github_stars": {
@@ -143,5 +143,5 @@
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 2
   },
-  "last_updated": "2025-10-01T18:45:54.119384"
+  "last_updated": "2025-10-04T02:51:01.948441"
 }
