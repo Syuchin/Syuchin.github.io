@@ -1,76 +1,13 @@
 {
-  "total_citations": 50,
-  "h_index": 2,
-  "papers": {
-    "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 47,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
-      "versions_url": "",
-      "scholar_url": ""
-    },
-    "Cryptox: Compositional reasoning evaluation of large language models": {
-      "citations": 2,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:u-x6o8ySG0sC",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6500763536884533109",
-      "versions_url": "",
-      "scholar_url": ""
-    },
-    "FinSearchComp: Towards a Realistic, Expert-Level Evaluation of Financial Search and Reasoning": {
-      "citations": 1,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:zYLM7Y9cAGgC",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6089271650791707487",
-      "versions_url": "",
-      "scholar_url": ""
-    },
-    "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation": {
-      "citations": 0,
-      "year": 2025,
-      "url": "/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:qjMakFHDy7sC",
-      "citation_url": "",
-      "versions_url": "",
-      "scholar_url": ""
-    }
-  },
+  "total_citations": 9,
+  "h_index": 0,
+  "papers": {},
   "citation_summary": {
-    "total_papers": 4,
-    "total_citations": 50,
-    "highly_cited_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 47,
-        "year": 2025
-      }
-    ],
-    "recent_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 47,
-        "year": 2025
-      },
-      {
-        "title": "Cryptox: Compositional reasoning evaluation of large language models",
-        "citations": 2,
-        "year": 2025
-      },
-      {
-        "title": "FinSearchComp: Towards a Realistic, Expert-Level Evaluation of Financial Search and Reasoning",
-        "citations": 1,
-        "year": 2025
-      },
-      {
-        "title": "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation",
-        "citations": 0,
-        "year": 2025
-      }
-    ],
-    "citation_distribution": {
-      "20+": 1,
-      "1-4": 2
-    }
+    "total_papers": 0,
+    "total_citations": 0,
+    "highly_cited_papers": [],
+    "recent_papers": [],
+    "citation_distribution": {}
   },
   "citation_trend": [
     {
@@ -135,7 +72,7 @@
     },
     {
       "date": "2025-10",
-      "citations": 50
+      "citations": 9
     }
   ],
   "github_stars": {
@@ -143,5 +80,5 @@
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 2
   },
-  "last_updated": "2025-10-07T02:57:10.264742"
+  "last_updated": "2025-10-10T02:59:56.030688"
 }
