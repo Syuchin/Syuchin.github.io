@@ -1,5 +1,5 @@
 {
-  "total_citations": 50,
+  "total_citations": 52,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
@@ -33,43 +33,6 @@
       "citation_url": "",
       "versions_url": "",
       "scholar_url": ""
-    }
-  },
-  "citation_summary": {
-    "total_papers": 4,
-    "total_citations": 50,
-    "highly_cited_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 47,
-        "year": 2025
-      }
-    ],
-    "recent_papers": [
-      {
-        "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 47,
-        "year": 2025
-      },
-      {
-        "title": "Cryptox: Compositional reasoning evaluation of large language models",
-        "citations": 2,
-        "year": 2025
-      },
-      {
-        "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 1,
-        "year": 2025
-      },
-      {
-        "title": "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation",
-        "citations": 0,
-        "year": 2025
-      }
-    ],
-    "citation_distribution": {
-      "20+": 1,
-      "1-4": 2
     }
   },
   "citation_trend": [
@@ -135,13 +98,15 @@
     },
     {
       "date": "2025-10",
-      "citations": 50
+      "citations": 52
     }
   ],
+  "fallback_used": true,
+  "fallback_reason": "ScrapingBee API failed",
   "github_stars": {
     "leolee99/LD-Agent": 59,
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 2
   },
-  "last_updated": "2025-10-11T18:39:50.913423"
+  "last_updated": "2025-10-13T03:09:28.249586"
 }
