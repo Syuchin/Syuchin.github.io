@@ -1,5 +1,5 @@
 {
-  "total_citations": 154,
+  "total_citations": 208,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
@@ -98,15 +98,15 @@
     },
     {
       "date": "2025-10",
-      "citations": 154
+      "citations": 208
     }
   ],
   "fallback_used": true,
   "fallback_reason": "ScrapingBee API failed",
   "github_stars": {
-    "leolee99/LD-Agent": 61,
+    "leolee99/LD-Agent": 62,
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 2
   },
-  "last_updated": "2025-10-26T18:44:10.580905"
+  "last_updated": "2025-10-28T03:07:03.580889"
 }
