@@ -1,5 +1,5 @@
 {
-  "total_citations": 411,
+  "total_citations": 594,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
@@ -98,7 +98,7 @@
     },
     {
       "date": "2025-10",
-      "citations": 411
+      "citations": 594
     }
   ],
   "fallback_used": true,
@@ -108,5 +108,5 @@
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 2
   },
-  "last_updated": "2025-10-31T03:10:23.633134"
+  "last_updated": "2025-10-31T07:30:28.257022"
 }
