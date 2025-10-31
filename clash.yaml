@@ -1,0 +1,41 @@
+  mixed-port: 7890
+  allow-lan: true
+  mode: Rule
+  log-level: info
+  proxies:
+  EOF
+
+  # Option A: three simplified secrets with full YAML proxy entries
+  if [ -n "$CLASH_NODE_SS" ]; then
+    printf "%s\n" "$CLASH_NODE_SS" >> clash.yaml
+  fi
+  if [ -n "$CLASH_NODE_VMESS1" ]; then
+    printf "%s\n" "$CLASH_NODE_VMESS1" >> clash.yaml
+  fi
+  if [ -n "$CLASH_NODE_VMESS2" ]; then
+    printf "%s\n" "$CLASH_NODE_VMESS2" >> clash.yaml
+  fi
+
+  # Option B: fall back to per-field secrets (if provided)
+  if [ -n "$SS1_SERVER" ] && [ -n "$SS1_PORT" ] && [ -n "$SS1_PASSWORD" ]; then
+    cat >> clash.yaml <<EOF
+    - name: Lite-家庭宽带-香港HGC-1X-SS
+      type: ss
+      server: $SS1_SERVER
+      port: $SS1_PORT
+      cipher: chacha20-ietf-poly1305
+      password: $SS1_PASSWORD
+      udp: true
+  proxy-groups:
+    - name: Proxy
+      type: fallback
+      proxies:
+        - Lite-家庭宽带-香港HGC-1X-SS
+        - Pro-家庭宽带-香港HKBN-1X-VMESS
+        - Pro-家庭宽带-香港CMHK-1X-VMESS
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+  rules:
+    - MATCH, Proxy
+  EOF
+fi
