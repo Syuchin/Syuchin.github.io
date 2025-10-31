@@ -38,48 +38,96 @@ jobs:
           go install github.com/metacubex/mihomo@latest
 
       - name: Generate proxy client config
+        env:
+          CLASH_CONFIG: ${{ secrets.CLASH_CONFIG }}
+          CLASH_NODE_SS: ${{ secrets.CLASH_NODE_SS }}
+          CLASH_NODE_VMESS1: ${{ secrets.CLASH_NODE_VMESS1 }}
+          CLASH_NODE_VMESS2: ${{ secrets.CLASH_NODE_VMESS2 }}
+          SS1_SERVER: ${{ secrets.SS1_SERVER }}
+          SS1_PORT: ${{ secrets.SS1_PORT }}
+          SS1_PASSWORD: ${{ secrets.SS1_PASSWORD }}
+          VMESS1_SERVER: ${{ secrets.VMESS1_SERVER }}
+          VMESS1_PORT: ${{ secrets.VMESS1_PORT }}
+          VMESS1_UUID: ${{ secrets.VMESS1_UUID }}
+          VMESS2_SERVER: ${{ secrets.VMESS2_SERVER }}
+          VMESS2_PORT: ${{ secrets.VMESS2_PORT }}
+          VMESS2_UUID: ${{ secrets.VMESS2_UUID }}
         run: |
-          cat > clash.yaml <<'EOF'
-          mixed-port: 7890
-          allow-lan: true
-          mode: Rule
-          log-level: info
-          proxies:
-            - name: Lite-家庭宽带-香港HGC-1X-SS
-              type: ss
-              server: ${{ secrets.SS1_SERVER }}
-              port: ${{ secrets.SS1_PORT }}
-              cipher: chacha20-ietf-poly1305
-              password: ${{ secrets.SS1_PASSWORD }}
-              udp: true
-            - name: Pro-家庭宽带-香港HKBN-1X-VMESS
-              type: vmess
-              server: ${{ secrets.VMESS1_SERVER }}
-              port: ${{ secrets.VMESS1_PORT }}
-              uuid: ${{ secrets.VMESS1_UUID }}
-              alterId: 0
-              cipher: auto
-              udp: true
-            - name: Pro-家庭宽带-香港CMHK-1X-VMESS
-              type: vmess
-              server: ${{ secrets.VMESS2_SERVER }}
-              port: ${{ secrets.VMESS2_PORT }}
-              uuid: ${{ secrets.VMESS2_UUID }}
-              alterId: 0
-              cipher: auto
-              udp: true
-          proxy-groups:
-            - name: Proxy
-              type: fallback
-              proxies:
-                - Lite-家庭宽带-香港HGC-1X-SS
-                - Pro-家庭宽带-香港HKBN-1X-VMESS
-                - Pro-家庭宽带-香港CMHK-1X-VMESS
-              url: http://www.gstatic.com/generate_204
-              interval: 120
-          rules:
-            - MATCH, Proxy
+          if [ -n "$CLASH_CONFIG" ]; then
+            printf "%s\n" "$CLASH_CONFIG" > clash.yaml
+          else
+            # Header
+            cat > clash.yaml <<'EOF'
+            mixed-port: 7890
+            allow-lan: true
+            mode: Rule
+            log-level: info
+            proxies:
+            EOF
+
+            # Option A: three simplified secrets with full YAML proxy entries
+            if [ -n "$CLASH_NODE_SS" ]; then
+              printf "%s\n" "$CLASH_NODE_SS" >> clash.yaml
+            fi
+            if [ -n "$CLASH_NODE_VMESS1" ]; then
+              printf "%s\n" "$CLASH_NODE_VMESS1" >> clash.yaml
+            fi
+            if [ -n "$CLASH_NODE_VMESS2" ]; then
+              printf "%s\n" "$CLASH_NODE_VMESS2" >> clash.yaml
+            fi
+
+            # Option B: fall back to per-field secrets (if provided)
+            if [ -n "$SS1_SERVER" ] && [ -n "$SS1_PORT" ] && [ -n "$SS1_PASSWORD" ]; then
+              cat >> clash.yaml <<EOF
+              - name: Lite-家庭宽带-香港HGC-1X-SS
+                type: ss
+                server: $SS1_SERVER
+                port: $SS1_PORT
+                cipher: chacha20-ietf-poly1305
+                password: $SS1_PASSWORD
+                udp: true
           EOF
+            fi
+            if [ -n "$VMESS1_SERVER" ] && [ -n "$VMESS1_PORT" ] && [ -n "$VMESS1_UUID" ]; then
+              cat >> clash.yaml <<EOF
+              - name: Pro-家庭宽带-香港HKBN-1X-VMESS
+                type: vmess
+                server: $VMESS1_SERVER
+                port: $VMESS1_PORT
+                uuid: $VMESS1_UUID
+                alterId: 0
+                cipher: auto
+                udp: true
+          EOF
+            fi
+            if [ -n "$VMESS2_SERVER" ] && [ -n "$VMESS2_PORT" ] && [ -n "$VMESS2_UUID" ]; then
+              cat >> clash.yaml <<EOF
+              - name: Pro-家庭宽带-香港CMHK-1X-VMESS
+                type: vmess
+                server: $VMESS2_SERVER
+                port: $VMESS2_PORT
+                uuid: $VMESS2_UUID
+                alterId: 0
+                cipher: auto
+                udp: true
+          EOF
+            fi
+
+            # Footer
+            cat >> clash.yaml <<'EOF'
+            proxy-groups:
+              - name: Proxy
+                type: fallback
+                proxies:
+                  - Lite-家庭宽带-香港HGC-1X-SS
+                  - Pro-家庭宽带-香港HKBN-1X-VMESS
+                  - Pro-家庭宽带-香港CMHK-1X-VMESS
+                url: http://www.gstatic.com/generate_204
+                interval: 120
+            rules:
+              - MATCH, Proxy
+            EOF
+          fi
 
       - name: Start proxy client
         run: |
