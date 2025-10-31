@@ -824,6 +824,15 @@
     }
 
     // 生成论文卡片
+    function normalizeUrl(u) {
+      if (!u) return '#';
+      // 修复常见的冒号缺失（https// 或 http//）
+      if (u.startsWith('https//')) u = 'https://' + u.slice('https//'.length);
+      if (u.startsWith('http//')) u = 'http://' + u.slice('http//'.length);
+      // 绝对地址直接返回；相对路径补上域名
+      return /^https?:\/\//.test(u) ? u : `https://scholar.google.com${u}`;
+    }
+
     function generatePaperCards(papers) {
       const container = document.getElementById('papers-container');
       container.innerHTML = '';
@@ -835,6 +844,9 @@
         // 截取标题
         const displayTitle = title.length > 70 ? title.substring(0, 70) + '...' : title;
         
+        const citationHref = normalizeUrl(info.citation_url || '#');
+        const detailsHref = normalizeUrl(info.url || '#');
+
         paperCard.innerHTML = `
           <div class="paper-title">${displayTitle}</div>
           <div class="paper-metrics">
@@ -848,11 +860,11 @@
             </div>
           </div>
           <div class="paper-links">
-            <a href="${info.citation_url || '#'}" target="_blank" class="paper-link">
+            <a href="${citationHref}" target="_blank" class="paper-link">
               <i class="fas fa-search"></i>
               Citations
             </a>
-            <a href="https://scholar.google.com${info.url}" target="_blank" class="paper-link">
+            <a href="${detailsHref}" target="_blank" class="paper-link">
               <i class="fas fa-external-link-alt"></i>
               Details
             </a>
@@ -1126,4 +1138,4 @@
     });
   </script>
 </body>
-</html> 
+</html>
