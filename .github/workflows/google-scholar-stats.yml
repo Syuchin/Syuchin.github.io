@@ -27,6 +27,66 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4 PySocks
+
+      - name: Set up Go (for proxy client)
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22'
+
+      - name: Install mihomo (Clash) proxy client
+        run: |
+          go install github.com/metacubex/mihomo@latest
+
+      - name: Generate proxy client config
+        run: |
+          cat > clash.yaml <<'EOF'
+          mixed-port: 7890
+          allow-lan: true
+          mode: Rule
+          log-level: info
+          proxies:
+            - name: Lite-家庭宽带-香港HGC-1X-SS
+              type: ss
+              server: ${{ secrets.SS1_SERVER }}
+              port: ${{ secrets.SS1_PORT }}
+              cipher: chacha20-ietf-poly1305
+              password: ${{ secrets.SS1_PASSWORD }}
+              udp: true
+            - name: Pro-家庭宽带-香港HKBN-1X-VMESS
+              type: vmess
+              server: ${{ secrets.VMESS1_SERVER }}
+              port: ${{ secrets.VMESS1_PORT }}
+              uuid: ${{ secrets.VMESS1_UUID }}
+              alterId: 0
+              cipher: auto
+              udp: true
+            - name: Pro-家庭宽带-香港CMHK-1X-VMESS
+              type: vmess
+              server: ${{ secrets.VMESS2_SERVER }}
+              port: ${{ secrets.VMESS2_PORT }}
+              uuid: ${{ secrets.VMESS2_UUID }}
+              alterId: 0
+              cipher: auto
+              udp: true
+          proxy-groups:
+            - name: Proxy
+              type: fallback
+              proxies:
+                - Lite-家庭宽带-香港HGC-1X-SS
+                - Pro-家庭宽带-香港HKBN-1X-VMESS
+                - Pro-家庭宽带-香港CMHK-1X-VMESS
+              url: http://www.gstatic.com/generate_204
+              interval: 120
+          rules:
+            - MATCH, Proxy
+          EOF
+
+      - name: Start proxy client
+        run: |
+          nohup $HOME/go/bin/mihomo -f clash.yaml >/dev/null 2>&1 &
+          sleep 3
+          # 简单连通性测试，不阻塞后续步骤
+          curl -x http://127.0.0.1:7890 -I https://scholar.google.com/robots.txt || true
           
       - name: Create data directory
         run: |
@@ -42,9 +102,9 @@ jobs:
         run: python .github/scripts/update_citations.py
         env:
           GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
-          PROXY_LIST: ${{ secrets.PROXY_LIST }}
-          HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
-          HTTPS_PROXY: ${{ secrets.HTTPS_PROXY }}
+          PROXY_LIST: http://127.0.0.1:7890
+          HTTP_PROXY: http://127.0.0.1:7890
+          HTTPS_PROXY: http://127.0.0.1:7890
         continue-on-error: true  # 即使失败也继续执行
         
       - name: Commit and push if changed
