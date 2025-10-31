@@ -1328,6 +1328,14 @@
   </script>
 
   <script>
+    // 统一按标题大小写无关匹配论文条目，避免键名大小写不一致导致不更新
+    function getPaperByTitle(papers, title) {
+      if (papers[title]) return papers[title];
+      const lower = title.toLowerCase();
+      const key = Object.keys(papers).find(k => k.toLowerCase() === lower);
+      return key ? papers[key] : null;
+    }
+
     // 合并之前的 updateCitations 和 updateMetrics 函数
     async function updateMetrics() {
       try {
@@ -1335,25 +1343,25 @@
         const data = await response.json();
         
         // 更新 LD-Agent 论文引用数和星标数
-        const ldAgentPaper = data.papers['Hello again! llm-powered personalized agent for long-term dialogue'];
+        const ldAgentPaper = getPaperByTitle(data.papers, 'Hello again! llm-powered personalized agent for long-term dialogue');
         if (ldAgentPaper) {
           document.getElementById('ldagent-citations').textContent = `${ldAgentPaper.citations} citations`;
         }
         
-        // 更新 CryptoX 论文引用数和星标数
-        const cryptoXPaper = data.papers['CryptoX: Compositional Reasoning Evaluation of Large Language Models'];
+        // 更新 CryptoX 论文引用数和星标数（大小写无关匹配）
+        const cryptoXPaper = getPaperByTitle(data.papers, 'CryptoX: Compositional Reasoning Evaluation of Large Language Models');
         if (cryptoXPaper) {
           document.getElementById('cryptox-citations').textContent = `${cryptoXPaper.citations} citations`;
         }
         
         // 更新 MARS-Bench 论文引用数和星标数
-        const marsBenchPaper = data.papers['MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation'];
+        const marsBenchPaper = getPaperByTitle(data.papers, 'MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation');
         if (marsBenchPaper) {
           document.getElementById('marsbench-citations').textContent = `${marsBenchPaper.citations} citations`;
         }
         
         // 更新 FinSearchComp 论文引用数
-        const finSearchCompPaper = data.papers['Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning'];
+        const finSearchCompPaper = getPaperByTitle(data.papers, 'Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning');
         if (finSearchCompPaper) {
           document.getElementById('finsearchcomp-citations').textContent = `${finSearchCompPaper.citations} citations`;
         }
