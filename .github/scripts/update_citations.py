@@ -8,6 +8,16 @@ import time
 import random
 import re
 
+# 简单 UA 轮换（用于降低被封概率）
+USER_AGENTS = [
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+]
+
+def _pick_ua():
+    return random.choice(USER_AGENTS)
+
 # 定义历史基准数据
 HISTORICAL_CITATIONS = [
     {"date": "2024-07", "citations": 1},
@@ -247,42 +257,120 @@ def parse_scholar_page(soup):
         return None
 
 def get_scholar_data_with_scrapingbee(scholar_id):
-    """使用ScrapingBee API获取Scholar数据"""
-    api_key = os.getenv('SCRAPINGBEE_API_KEY')
-    if not api_key:
-        print("未配置 ScrapingBee API Key")
-        return None
-    
+    """已禁用：ScrapingBee 不再使用，直接返回 None"""
+    print("ScrapingBee 已禁用，跳过该路径")
+    return None
+
+def get_scholar_data_without_proxy(scholar_id):
+    """无需代理的直接抓取，适用于低频任务偶尔成功的场景"""
     try:
         url = f"https://scholar.google.com/citations?user={scholar_id}&hl=en"
-        params = {
-            'api_key': api_key,
-            'url': url,
-            'render_js': 'false',
-            'premium_proxy': 'true',
-            'country_code': 'us',
-            'custom_google': 'true'  # 爬取Google网站必需的参数
+        headers = {
+            'User-Agent': _pick_ua(),
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Cache-Control': 'no-cache',
+            'Referer': 'https://www.google.com/'
         }
-        
-        print("使用 ScrapingBee API 获取 Scholar 数据...")
-        response = requests.get('https://app.scrapingbee.com/api/v1/', params=params, timeout=60)
-        
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.content, 'html.parser')
-            return parse_scholar_page(soup)
-        else:
-            print(f"ScrapingBee API 失败: {response.status_code}")
-            if response.status_code == 422:
-                print("可能是 API 配额用完或参数错误")
-            elif response.status_code == 401:
-                print("API Key 无效")
-            elif response.status_code == 400:
-                print("请求参数错误")
-            return None
-            
-    except Exception as e:
-        print(f"ScrapingBee API 错误: {e}")
+        time.sleep(random.uniform(0.5, 1.2))
+        resp = requests.get(url, headers=headers, timeout=30)
+        if resp.status_code == 200:
+            soup = BeautifulSoup(resp.content, 'html.parser')
+            parsed = parse_scholar_page(soup)
+            if parsed:
+                print("无需代理的直接抓取成功")
+                return parsed
+        print(f"直接抓取失败，HTTP {resp.status_code}")
         return None
+    except Exception as e:
+        print(f"直接抓取出错: {e}")
+        return None
+
+def _get_env_proxy_list():
+    """从环境变量获取代理列表，支持 PROXY_LIST 或单个 HTTP_PROXY/HTTPS_PROXY"""
+    proxies = []
+    proxy_list = os.getenv('PROXY_LIST', '')
+    if proxy_list:
+        # 支持逗号或换行分隔
+        for p in re.split(r'[\n,]+', proxy_list.strip()):
+            if p:
+                proxies.append(p.strip())
+    else:
+        http_proxy = os.getenv('HTTP_PROXY')
+        https_proxy = os.getenv('HTTPS_PROXY')
+        if http_proxy:
+            proxies.append(http_proxy.strip())
+        elif https_proxy:
+            proxies.append(https_proxy.strip())
+    return proxies
+
+def _build_proxies_dict(proxy_url: str):
+    """构造 requests 可用的代理字典"""
+    return {
+        'http': proxy_url,
+        'https': proxy_url,
+    }
+
+def _probe_proxy(proxy_url: str, timeout: int = 15) -> bool:
+    """简单探测代理是否可用：访问 robots.txt """
+    try:
+        resp = requests.get(
+            'https://scholar.google.com/robots.txt',
+            proxies=_build_proxies_dict(proxy_url),
+            headers={
+                'User-Agent': _pick_ua(),
+                'Accept-Language': 'en-US,en;q=0.9'
+            },
+            timeout=timeout
+        )
+        return resp.status_code == 200
+    except Exception:
+        return False
+
+def get_scholar_data_via_direct_proxy(scholar_id):
+    """使用环境代理直接抓取 Scholar，作为免费回退方案"""
+    proxy_list = _get_env_proxy_list()
+    if not proxy_list:
+        print("未配置任何代理（PROXY_LIST/HTTP_PROXY/HTTPS_PROXY），跳过直接代理抓取")
+        return None
+
+    random.shuffle(proxy_list)
+    url = f"https://scholar.google.com/citations?user={scholar_id}&hl=en"
+
+    for proxy_url in proxy_list:
+        print(f"尝试使用代理抓取: {proxy_url}")
+        if not _probe_proxy(proxy_url):
+            print("代理健康检查失败，跳过")
+            continue
+        try:
+            # 轻微随机延迟
+            time.sleep(random.uniform(0.8, 2.0))
+
+            resp = requests.get(
+                url,
+                proxies=_build_proxies_dict(proxy_url),
+                headers={
+                    'User-Agent': _pick_ua(),
+                    'Accept-Language': 'en-US,en;q=0.9',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                    'Cache-Control': 'no-cache'
+                },
+                timeout=30
+            )
+
+            if resp.status_code == 200:
+                soup = BeautifulSoup(resp.content, 'html.parser')
+                parsed = parse_scholar_page(soup)
+                if parsed:
+                    print("直接代理抓取成功")
+                    return parsed
+            else:
+                print(f"代理抓取失败，HTTP {resp.status_code}")
+        except Exception as e:
+            print(f"代理抓取出错: {e}")
+
+    print("所有代理均抓取失败")
+    return None
 
 def get_fallback_data():
     """获取备用数据，当API失败时使用"""
@@ -350,11 +438,16 @@ def update_scholar_stats():
 
         print(f"开始更新 Scholar 统计数据 (ID: {scholar_id})")
         
-        # 使用 ScrapingBee API 获取数据
-        data = get_scholar_data_with_scrapingbee(scholar_id)
-        
+        # 1) 先尝试无需代理的直接抓取
+        data = get_scholar_data_without_proxy(scholar_id)
+
+        # 2) 回退：尝试使用环境代理抓取
         if data is None:
-            # 如果API失败，使用备用数据
+            print("直接抓取失败，尝试使用代理列表...")
+            data = get_scholar_data_via_direct_proxy(scholar_id)
+
+        # 3) 最终回退：使用本地估算数据
+        if data is None:
             data = get_fallback_data()
         
         # 读取现有的数据文件
@@ -432,4 +525,4 @@ if __name__ == "__main__":
     if os.getenv('TEST_MODE'):
         print("运行测试模式")
         os.environ['GOOGLE_SCHOLAR_ID'] = '8RnQ3EEAAAAJ'  # 测试用ID
-    update_scholar_stats() 
+    update_scholar_stats()
