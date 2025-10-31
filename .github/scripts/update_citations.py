@@ -3,20 +3,17 @@ from datetime import datetime
 import os
 import traceback
 import requests
-from bs4 import BeautifulSoup
 import time
 import random
 import re
 
-# 简单 UA 轮换（用于降低被封概率）
+# 简单 UA 轮换（保留占位，当前使用 SerpApi 无需本地抓取）
 USER_AGENTS = [
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
 ]
 
 def _pick_ua():
-    return random.choice(USER_AGENTS)
+    return USER_AGENTS[0]
 
 # 定义历史基准数据
 HISTORICAL_CITATIONS = [
@@ -42,49 +39,6 @@ def get_github_stars(owner, repo):
     except Exception as e:
         print(f"获取 {owner}/{repo} 星标时出错: {e}")
         return 0
-
-def get_paper_citation_stats(paper_row, base_url):
-    """获取论文的引用统计信息和基本引用链接"""
-    try:
-        citation_info = {
-            'count': 0,
-            'url': '',
-            'related_papers': []
-        }
-        
-        # 获取引用数
-        citation_cell = paper_row.find('td', class_='gsc_a_c')
-        if citation_cell:
-            citation_link = citation_cell.find('a')
-            if citation_link:
-                citation_text = citation_link.get_text(strip=True)
-                if citation_text.isdigit():
-                    citation_info['count'] = int(citation_text)
-                    # 获取引用页面URL
-                    href = citation_link.get('href')
-                    if href and href.startswith('/'):
-                        citation_info['url'] = base_url + href
-                    elif href:
-                        citation_info['url'] = href
-        
-        # 尝试获取相关论文信息
-        related_cell = paper_row.find('td', class_='gsc_a_e')
-        if related_cell:
-            related_links = related_cell.find_all('a')
-            for link in related_links:
-                href = link.get('href', '')
-                if 'versions' in href:
-                    # 这是版本链接
-                    citation_info['versions_url'] = base_url + href if href.startswith('/') else href
-                elif 'scholar' in href:
-                    # 这是Scholar链接
-                    citation_info['scholar_url'] = base_url + href if href.startswith('/') else href
-        
-        return citation_info
-        
-    except Exception as e:
-        print(f"获取论文引用统计时出错: {e}")
-        return {'count': 0, 'url': '', 'related_papers': []}
 
 def calculate_h_index(papers):
     """计算H指数：有h篇论文的引用数都不少于h"""
@@ -156,221 +110,106 @@ def generate_citation_summary(papers):
     
     return summary
 
-def parse_scholar_page(soup):
-    """解析Scholar页面内容"""
+def get_scholar_data_via_serpapi(scholar_id: str, api_key: str):
+    """通过 SerpApi 获取 Scholar 作者数据（总引用、h-index、论文）。
+
+    参考 SerpApi Google Scholar Author API 的返回结构：
+    - cited_by.table 提供 citations/h_index/i10_index（不同语言键名可能变化）
+    - cited_by.graph 提供年度引用数
+    - articles 列表包含每篇论文的引用数、年份等
+    """
     try:
-        citation_stats = {}
-        
-        # 查找引用统计表格
-        stats_table = soup.find('table', {'id': 'gsc_rsb_st'})
-        if stats_table:
-            rows = stats_table.find_all('tr')
-            for row in rows:
-                cells = row.find_all('td')
-                if len(cells) >= 2:
-                    label = cells[0].get_text(strip=True)
-                    value = cells[1].get_text(strip=True)
-                    if 'Citations' in label and 'All' in label:
-                        try:
-                            citation_stats['total_citations'] = int(value)
-                        except ValueError:
-                            pass
-                    elif 'h-index' in label and 'All' in label:
-                        try:
-                            citation_stats['h_index'] = int(value)
-                        except ValueError:
-                            pass
-        
-        # 如果没找到统计表格，尝试其他方法
-        if not citation_stats:
-            # 查找其他可能的引用数显示方式
-            citation_elements = soup.find_all(string=re.compile(r'Cited by \d+'))
-            if citation_elements:
-                # 提取最大的引用数
-                citations = []
-                for elem in citation_elements:
-                    match = re.search(r'Cited by (\d+)', elem)
-                    if match:
-                        citations.append(int(match.group(1)))
-                if citations:
-                    citation_stats['total_citations'] = max(citations)
-        
-        # 获取论文列表
+        params = {
+            'engine': 'google_scholar_author',
+            'author_id': scholar_id,
+            'hl': 'en',
+            'api_key': api_key,
+        }
+        # 轻微随机延迟，防止瞬时并发触达
+        time.sleep(random.uniform(0.3, 0.8))
+        resp = requests.get('https://serpapi.com/search.json', params=params, timeout=30)
+        if resp.status_code != 200:
+            print(f"SerpApi 请求失败，HTTP {resp.status_code}: {resp.text[:200]}")
+            return None
+        results = resp.json()
+
+        status = results.get('search_metadata', {}).get('status')
+        if status != 'Success':
+            print(f"SerpApi 返回状态异常: {status}")
+            return None
+
+        cited_by = results.get('cited_by', {})
+        table = cited_by.get('table', []) or []
+
+        def _extract_total_citations(table_entries):
+            for entry in table_entries:
+                for key, val in entry.items():
+                    if key in ('citations', 'indice_citations') and isinstance(val, dict):
+                        # 常见键：all / since_2016 / depuis_2016 / recent
+                        for k in ('all', 'since_2016', 'depuis_2016', 'recent'):
+                            if k in val and str(val[k]).isdigit():
+                                return int(val[k])
+            return None
+
+        def _extract_h_index(table_entries):
+            for entry in table_entries:
+                for key, val in entry.items():
+                    if key in ('h_index', 'indice_h') and isinstance(val, dict):
+                        for k in ('all', 'since_2016', 'depuis_2016', 'recent'):
+                            if k in val and str(val[k]).isdigit():
+                                return int(val[k])
+            return None
+
+        total_citations = _extract_total_citations(table)
+        articles = results.get('articles', []) or []
         papers = {}
-        paper_rows = soup.find_all('tr', class_='gsc_a_tr')[:10]  # 取前10篇论文
-        
-        for row in paper_rows:
+        current_year = datetime.now().year
+
+        for art in articles[:30]:  # 取前30篇，避免过长
             try:
-                title_cell = row.find('td', class_='gsc_a_t')
-                if title_cell:
-                    title_link = title_cell.find('a')
-                    if title_link:
-                        title = title_link.get_text(strip=True)
-                        
-                        # 获取年份
-                        year_cell = row.find('td', class_='gsc_a_y')
-                        year = int(year_cell.get_text(strip=True)) if year_cell and year_cell.get_text(strip=True).isdigit() else 2024
-                        
-                        # 获取引用统计
-                        citation_stats_detail = get_paper_citation_stats(row, "https://scholar.google.com")
-                        
-                        papers[title] = {
-                            "citations": citation_stats_detail['count'],
-                            "year": year,
-                            "url": title_link.get('href', ''),
-                            "citation_url": citation_stats_detail['url'],
-                            "versions_url": citation_stats_detail.get('versions_url', ''),
-                            "scholar_url": citation_stats_detail.get('scholar_url', '')
-                        }
-                        
+                title = art.get('title') or 'Untitled'
+                year_raw = art.get('year')
+                year = int(year_raw) if year_raw and str(year_raw).isdigit() else current_year
+                cited_by_obj = art.get('cited_by') or {}
+                citations = int(cited_by_obj.get('value') or 0)
+                link = art.get('link') or ''
+                citation_id = art.get('citation_id') or ''
+                cited_by_link = cited_by_obj.get('link') or ''
+
+                papers[title] = {
+                    'citations': citations,
+                    'year': year,
+                    'url': link,
+                    'citation_url': cited_by_link,
+                    'citation_id': citation_id,
+                }
             except Exception as e:
-                print(f"解析论文时出错: {e}")
-                continue
-        
-        # 设置默认值
-        if 'total_citations' not in citation_stats:
-            # 如果无法解析总引用数，使用论文引用数之和作为估算
-            total_from_papers = sum(paper.get('citations', 0) for paper in papers.values())
-            citation_stats['total_citations'] = max(total_from_papers, 9)
-            
-        if 'h_index' not in citation_stats:
-            # 如果无法解析H-index，根据论文引用数据计算
-            citation_stats['h_index'] = calculate_h_index(papers)
-        
-        # 生成引用摘要
+                print(f"解析论文条目时出错: {e}")
+
+        h_index = _extract_h_index(table)
+        if h_index is None:
+            h_index = calculate_h_index(papers)
+
+        if total_citations is None:
+            # 若无法直接从表格获取，总计为论文引用数之和（保守）
+            total_citations = max(sum(p.get('citations', 0) for p in papers.values()), 0)
+
         citation_summary = generate_citation_summary(papers)
-        
-        print(f"成功解析 Scholar 数据:")
-        print(f"- 总引用数: {citation_stats.get('total_citations', 'N/A')}")
-        print(f"- H指数: {citation_stats.get('h_index', 'N/A')}")
+
+        print("成功从 SerpApi 获取 Scholar 数据:")
+        print(f"- 总引用数: {total_citations}")
+        print(f"- H指数: {h_index}")
         print(f"- 论文数量: {len(papers)}")
-        
+
         return {
-            "total_citations": citation_stats.get('total_citations', 9),
-            "h_index": citation_stats.get('h_index', 3),
-            "papers": papers,
-            "citation_summary": citation_summary
+            'total_citations': total_citations,
+            'h_index': h_index,
+            'papers': papers,
+            'citation_summary': citation_summary,
         }
-        
     except Exception as e:
-        print(f"解析Scholar页面时出错: {e}")
+        print(f"调用 SerpApi 失败: {e}")
         return None
-
-def get_scholar_data_with_scrapingbee(scholar_id):
-    """已禁用：ScrapingBee 不再使用，直接返回 None"""
-    print("ScrapingBee 已禁用，跳过该路径")
-    return None
-
-def get_scholar_data_without_proxy(scholar_id):
-    """无需代理的直接抓取，适用于低频任务偶尔成功的场景"""
-    try:
-        url = f"https://scholar.google.com/citations?user={scholar_id}&hl=en"
-        headers = {
-            'User-Agent': _pick_ua(),
-            'Accept-Language': 'en-US,en;q=0.9',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Cache-Control': 'no-cache',
-            'Referer': 'https://www.google.com/'
-        }
-        time.sleep(random.uniform(0.5, 1.2))
-        resp = requests.get(url, headers=headers, timeout=30)
-        if resp.status_code == 200:
-            soup = BeautifulSoup(resp.content, 'html.parser')
-            parsed = parse_scholar_page(soup)
-            if parsed:
-                print("无需代理的直接抓取成功")
-                return parsed
-        print(f"直接抓取失败，HTTP {resp.status_code}")
-        return None
-    except Exception as e:
-        print(f"直接抓取出错: {e}")
-        return None
-
-def _get_env_proxy_list():
-    """从环境变量获取代理列表，支持 PROXY_LIST 或单个 HTTP_PROXY/HTTPS_PROXY"""
-    proxies = []
-    proxy_list = os.getenv('PROXY_LIST', '')
-    if proxy_list:
-        # 支持逗号或换行分隔
-        for p in re.split(r'[\n,]+', proxy_list.strip()):
-            if p:
-                proxies.append(p.strip())
-    else:
-        http_proxy = os.getenv('HTTP_PROXY')
-        https_proxy = os.getenv('HTTPS_PROXY')
-        if http_proxy:
-            proxies.append(http_proxy.strip())
-        elif https_proxy:
-            proxies.append(https_proxy.strip())
-    return proxies
-
-def _build_proxies_dict(proxy_url: str):
-    """构造 requests 可用的代理字典"""
-    return {
-        'http': proxy_url,
-        'https': proxy_url,
-    }
-
-def _probe_proxy(proxy_url: str, timeout: int = 15) -> bool:
-    """简单探测代理是否可用：访问 robots.txt """
-    try:
-        resp = requests.get(
-            'https://scholar.google.com/robots.txt',
-            proxies=_build_proxies_dict(proxy_url),
-            headers={
-                'User-Agent': _pick_ua(),
-                'Accept-Language': 'en-US,en;q=0.9'
-            },
-            timeout=timeout
-        )
-        return resp.status_code == 200
-    except Exception:
-        return False
-
-def get_scholar_data_via_direct_proxy(scholar_id):
-    """使用环境代理直接抓取 Scholar，作为免费回退方案"""
-    proxy_list = _get_env_proxy_list()
-    if not proxy_list:
-        print("未配置任何代理（PROXY_LIST/HTTP_PROXY/HTTPS_PROXY），跳过直接代理抓取")
-        return None
-
-    random.shuffle(proxy_list)
-    url = f"https://scholar.google.com/citations?user={scholar_id}&hl=en"
-
-    for proxy_url in proxy_list:
-        print(f"尝试使用代理抓取: {proxy_url}")
-        if not _probe_proxy(proxy_url):
-            print("代理健康检查失败，跳过")
-            continue
-        try:
-            # 轻微随机延迟
-            time.sleep(random.uniform(0.8, 2.0))
-
-            resp = requests.get(
-                url,
-                proxies=_build_proxies_dict(proxy_url),
-                headers={
-                    'User-Agent': _pick_ua(),
-                    'Accept-Language': 'en-US,en;q=0.9',
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                    'Cache-Control': 'no-cache'
-                },
-                timeout=30
-            )
-
-            if resp.status_code == 200:
-                soup = BeautifulSoup(resp.content, 'html.parser')
-                parsed = parse_scholar_page(soup)
-                if parsed:
-                    print("直接代理抓取成功")
-                    return parsed
-            else:
-                print(f"代理抓取失败，HTTP {resp.status_code}")
-        except Exception as e:
-            print(f"代理抓取出错: {e}")
-
-    print("所有代理均抓取失败")
-    return None
 
 def get_fallback_data():
     """获取备用数据，当API失败时使用"""
@@ -435,20 +274,19 @@ def update_scholar_stats():
         scholar_id = os.getenv('GOOGLE_SCHOLAR_ID')
         if not scholar_id:
             raise ValueError("环境变量中未找到 Google Scholar ID")
+        api_key = os.getenv('SERPAPI_API_KEY')
+        if not api_key:
+            raise ValueError("环境变量中未找到 SERPAPI_API_KEY（请在仓库 Secrets 配置）")
 
         print(f"开始更新 Scholar 统计数据 (ID: {scholar_id})")
         
-        # 1) 先尝试无需代理的直接抓取
-        data = get_scholar_data_without_proxy(scholar_id)
-
-        # 2) 回退：尝试使用环境代理抓取
-        if data is None:
-            print("直接抓取失败，尝试使用代理列表...")
-            data = get_scholar_data_via_direct_proxy(scholar_id)
-
-        # 3) 最终回退：使用本地估算数据
+        # 使用 SerpApi 获取数据
+        data = get_scholar_data_via_serpapi(scholar_id, api_key)
+        
+        # 回退：使用本地估算数据
         if data is None:
             data = get_fallback_data()
+            data['fallback_reason'] = 'SerpApi API failed or quota exceeded'
         
         # 读取现有的数据文件
         try:
