@@ -132,6 +132,10 @@
     {
       "date": "2025-10",
       "citations": 60
+    },
+    {
+      "date": "2025-11",
+      "citations": 60
     }
   ],
   "github_stars": {
@@ -140,5 +144,5 @@
     "Syuchin/MARS-Bench": 2,
     "randomtutu/FinSearchComp": 10
   },
-  "last_updated": "2025-10-31T18:47:55.505323"
+  "last_updated": "2025-11-01T03:11:13.251365"
 }
