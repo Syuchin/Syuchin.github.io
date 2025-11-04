@@ -1,9 +1,9 @@
 {
-  "total_citations": 60,
+  "total_citations": 61,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 56,
+      "citations": 57,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
@@ -33,18 +33,18 @@
   },
   "citation_summary": {
     "total_papers": 4,
-    "total_citations": 60,
+    "total_citations": 61,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 56,
+        "citations": 57,
         "year": 2025
       }
     ],
     "recent_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 56,
+        "citations": 57,
         "year": 2025
       },
       {
@@ -135,14 +135,14 @@
     },
     {
       "date": "2025-11",
-      "citations": 60
+      "citations": 61
     }
   ],
   "github_stars": {
     "leolee99/LD-Agent": 63,
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 2,
-    "randomtutu/FinSearchComp": 10
+    "randomtutu/FinSearchComp": 11
   },
-  "last_updated": "2025-11-01T18:42:18.898004"
+  "last_updated": "2025-11-04T03:09:52.678226"
 }
