@@ -160,13 +160,17 @@
     {
       "date": "2025-11",
       "citations": 65
+    },
+    {
+      "date": "2025-12",
+      "citations": 65
     }
   ],
   "github_stars": {
-    "leolee99/LD-Agent": 68,
+    "leolee99/LD-Agent": 69,
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 15
   },
-  "last_updated": "2025-11-28T03:11:37.241576"
+  "last_updated": "2025-12-01T03:51:30.936680"
 }
