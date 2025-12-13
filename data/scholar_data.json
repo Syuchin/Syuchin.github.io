@@ -1,16 +1,16 @@
 {
-  "total_citations": 66,
+  "total_citations": 68,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 62,
+      "citations": 63,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
       "citation_id": "8RnQ3EEAAAAJ:d1gkVwhDpl0C"
     },
     "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning": {
-      "citations": 2,
+      "citations": 3,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:zYLM7Y9cAGgC",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6089271650791707487",
@@ -47,23 +47,23 @@
   },
   "citation_summary": {
     "total_papers": 6,
-    "total_citations": 66,
+    "total_citations": 68,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 62,
+        "citations": 63,
         "year": 2025
       }
     ],
     "recent_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 62,
+        "citations": 63,
         "year": 2025
       },
       {
         "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 2,
+        "citations": 3,
         "year": 2025
       },
       {
@@ -163,7 +163,7 @@
     },
     {
       "date": "2025-12",
-      "citations": 66
+      "citations": 68
     }
   ],
   "github_stars": {
@@ -172,5 +172,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 15
   },
-  "last_updated": "2025-12-11T18:52:43.430875"
+  "last_updated": "2025-12-13T03:16:07.286030"
 }
