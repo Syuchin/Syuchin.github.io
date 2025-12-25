@@ -1,5 +1,5 @@
 {
-  "total_citations": 71,
+  "total_citations": 74,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
@@ -10,7 +10,7 @@
       "citation_id": "8RnQ3EEAAAAJ:d1gkVwhDpl0C"
     },
     "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning": {
-      "citations": 5,
+      "citations": 6,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:zYLM7Y9cAGgC",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6089271650791707487",
@@ -23,31 +23,31 @@
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6500763536884533109",
       "citation_id": "8RnQ3EEAAAAJ:u-x6o8ySG0sC"
     },
+    "MME-CC: A Challenging Multi-Modal Evaluation Benchmark of Cognitive Capacity": {
+      "citations": 1,
+      "year": 2025,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:Tyk-4Ss8FVUC",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15182188776743263834",
+      "citation_id": "8RnQ3EEAAAAJ:Tyk-4Ss8FVUC"
+    },
+    "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation": {
+      "citations": 1,
+      "year": 2025,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:qjMakFHDy7sC",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9979196360377862075",
+      "citation_id": "8RnQ3EEAAAAJ:qjMakFHDy7sC"
+    },
     "DiscoX: Benchmarking Discourse-Level Translation task in Expert Domains": {
       "citations": 0,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:Y0pCki6q_DkC",
       "citation_url": "",
       "citation_id": "8RnQ3EEAAAAJ:Y0pCki6q_DkC"
-    },
-    "MME-CC: A Challenging Multi-Modal Evaluation Benchmark of Cognitive Capacity": {
-      "citations": 0,
-      "year": 2025,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:Tyk-4Ss8FVUC",
-      "citation_url": "",
-      "citation_id": "8RnQ3EEAAAAJ:Tyk-4Ss8FVUC"
-    },
-    "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation": {
-      "citations": 0,
-      "year": 2025,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:qjMakFHDy7sC",
-      "citation_url": "",
-      "citation_id": "8RnQ3EEAAAAJ:qjMakFHDy7sC"
     }
   },
   "citation_summary": {
     "total_papers": 6,
-    "total_citations": 71,
+    "total_citations": 74,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
@@ -56,7 +56,7 @@
       },
       {
         "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 5,
+        "citations": 6,
         "year": 2025
       }
     ],
@@ -68,7 +68,7 @@
       },
       {
         "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 5,
+        "citations": 6,
         "year": 2025
       },
       {
@@ -77,17 +77,17 @@
         "year": 2025
       },
       {
-        "title": "DiscoX: Benchmarking Discourse-Level Translation task in Expert Domains",
-        "citations": 0,
-        "year": 2025
-      },
-      {
         "title": "MME-CC: A Challenging Multi-Modal Evaluation Benchmark of Cognitive Capacity",
-        "citations": 0,
+        "citations": 1,
         "year": 2025
       },
       {
         "title": "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation",
+        "citations": 1,
+        "year": 2025
+      },
+      {
+        "title": "DiscoX: Benchmarking Discourse-Level Translation task in Expert Domains",
         "citations": 0,
         "year": 2025
       }
@@ -95,7 +95,7 @@
     "citation_distribution": {
       "20+": 1,
       "5-9": 1,
-      "1-4": 1
+      "1-4": 3
     }
   },
   "citation_trend": [
@@ -169,7 +169,7 @@
     },
     {
       "date": "2025-12",
-      "citations": 71
+      "citations": 74
     }
   ],
   "github_stars": {
@@ -178,5 +178,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 15
   },
-  "last_updated": "2025-12-22T03:42:40.518654"
+  "last_updated": "2025-12-25T03:27:06.529254"
 }
