@@ -1,5 +1,5 @@
 {
-  "total_citations": 76,
+  "total_citations": 77,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
@@ -16,6 +16,13 @@
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6089271650791707487",
       "citation_id": "8RnQ3EEAAAAJ:zYLM7Y9cAGgC"
     },
+    "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation": {
+      "citations": 2,
+      "year": 2025,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:qjMakFHDy7sC",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9979196360377862075",
+      "citation_id": "8RnQ3EEAAAAJ:qjMakFHDy7sC"
+    },
     "Cryptox: Compositional reasoning evaluation of large language models": {
       "citations": 2,
       "year": 2025,
@@ -30,13 +37,6 @@
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15182188776743263834",
       "citation_id": "8RnQ3EEAAAAJ:Tyk-4Ss8FVUC"
     },
-    "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation": {
-      "citations": 1,
-      "year": 2025,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:qjMakFHDy7sC",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9979196360377862075",
-      "citation_id": "8RnQ3EEAAAAJ:qjMakFHDy7sC"
-    },
     "DiscoX: Benchmarking Discourse-Level Translation task in Expert Domains": {
       "citations": 0,
       "year": 2025,
@@ -47,7 +47,7 @@
   },
   "citation_summary": {
     "total_papers": 6,
-    "total_citations": 76,
+    "total_citations": 77,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
@@ -72,17 +72,17 @@
         "year": 2025
       },
       {
+        "title": "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation",
+        "citations": 2,
+        "year": 2025
+      },
+      {
         "title": "Cryptox: Compositional reasoning evaluation of large language models",
         "citations": 2,
         "year": 2025
       },
       {
         "title": "MME-CC: A Challenging Multi-Modal Evaluation Benchmark of Cognitive Capacity",
-        "citations": 1,
-        "year": 2025
-      },
-      {
-        "title": "MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation",
         "citations": 1,
         "year": 2025
       },
@@ -169,7 +169,7 @@
     },
     {
       "date": "2025-12",
-      "citations": 76
+      "citations": 77
     }
   ],
   "github_stars": {
@@ -178,5 +178,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 15
   },
-  "last_updated": "2025-12-28T03:48:11.111075"
+  "last_updated": "2025-12-31T03:27:03.315837"
 }
