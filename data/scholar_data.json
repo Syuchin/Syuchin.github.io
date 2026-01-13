@@ -1,9 +1,9 @@
 {
-  "total_citations": 81,
+  "total_citations": 83,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 69,
+      "citations": 71,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
@@ -47,11 +47,11 @@
   },
   "citation_summary": {
     "total_papers": 6,
-    "total_citations": 81,
+    "total_citations": 83,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 69,
+        "citations": 71,
         "year": 2025
       },
       {
@@ -63,7 +63,7 @@
     "recent_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 69,
+        "citations": 71,
         "year": 2025
       },
       {
@@ -173,7 +173,7 @@
     },
     {
       "date": "2026-01",
-      "citations": 81
+      "citations": 83
     }
   ],
   "github_stars": {
@@ -182,5 +182,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 16
   },
-  "last_updated": "2026-01-11T18:49:16.500239"
+  "last_updated": "2026-01-13T03:37:50.317486"
 }
