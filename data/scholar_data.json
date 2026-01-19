@@ -43,10 +43,17 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:Y0pCki6q_DkC",
       "citation_url": "",
       "citation_id": "8RnQ3EEAAAAJ:Y0pCki6q_DkC"
+    },
+    "Beyond Score: A Multi-Agent System to Discover Capability and Behavioral Weaknesses in LLMs": {
+      "citations": 0,
+      "year": 2026,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:W7OEmFMy1HYC",
+      "citation_url": "",
+      "citation_id": "8RnQ3EEAAAAJ:W7OEmFMy1HYC"
     }
   },
   "citation_summary": {
-    "total_papers": 6,
+    "total_papers": 7,
     "total_citations": 87,
     "highly_cited_papers": [
       {
@@ -61,6 +68,11 @@
       }
     ],
     "recent_papers": [
+      {
+        "title": "Beyond Score: A Multi-Agent System to Discover Capability and Behavioral Weaknesses in LLMs",
+        "citations": 0,
+        "year": 2026
+      },
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
         "citations": 74,
@@ -182,5 +194,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 16
   },
-  "last_updated": "2026-01-16T18:54:11.887817"
+  "last_updated": "2026-01-19T03:50:44.342868"
 }
