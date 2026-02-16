@@ -1,16 +1,16 @@
 {
-  "total_citations": 100,
+  "total_citations": 105,
   "h_index": 2,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 83,
+      "citations": 87,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10848223836082559000",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15635492636491334896",
       "citation_id": "8RnQ3EEAAAAJ:d1gkVwhDpl0C"
     },
     "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning": {
-      "citations": 12,
+      "citations": 13,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:zYLM7Y9cAGgC",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6089271650791707487",
@@ -54,16 +54,16 @@
   },
   "citation_summary": {
     "total_papers": 7,
-    "total_citations": 100,
+    "total_citations": 105,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 83,
+        "citations": 87,
         "year": 2025
       },
       {
         "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 12,
+        "citations": 13,
         "year": 2025
       }
     ],
@@ -75,12 +75,12 @@
       },
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 83,
+        "citations": 87,
         "year": 2025
       },
       {
         "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 12,
+        "citations": 13,
         "year": 2025
       },
       {
@@ -189,14 +189,14 @@
     },
     {
       "date": "2026-02",
-      "citations": 100
+      "citations": 105
     }
   ],
   "github_stars": {
-    "leolee99/LD-Agent": 76,
-    "multimodal-art-projection/CryptoX": 6,
-    "Syuchin/MARS-Bench": 3,
-    "randomtutu/FinSearchComp": 16
+    "leolee99/LD-Agent": 0,
+    "multimodal-art-projection/CryptoX": 0,
+    "Syuchin/MARS-Bench": 0,
+    "randomtutu/FinSearchComp": 0
   },
-  "last_updated": "2026-02-13T04:21:50.338231"
+  "last_updated": "2026-02-16T04:25:49.212170"
 }
