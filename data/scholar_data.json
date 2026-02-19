@@ -37,6 +37,13 @@
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15182188776743263834",
       "citation_id": "8RnQ3EEAAAAJ:Tyk-4Ss8FVUC"
     },
+    "WorldTravel: A Realistic Multimodal Travel-Planning Benchmark with Tightly Coupled Constraints": {
+      "citations": 0,
+      "year": 2026,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:YsMSGLbcyi4C",
+      "citation_url": "",
+      "citation_id": "8RnQ3EEAAAAJ:YsMSGLbcyi4C"
+    },
     "DiscoX: Benchmarking Discourse-Level Translation task in Expert Domains": {
       "citations": 0,
       "year": 2025,
@@ -53,7 +60,7 @@
     }
   },
   "citation_summary": {
-    "total_papers": 7,
+    "total_papers": 8,
     "total_citations": 105,
     "highly_cited_papers": [
       {
@@ -68,6 +75,11 @@
       }
     ],
     "recent_papers": [
+      {
+        "title": "WorldTravel: A Realistic Multimodal Travel-Planning Benchmark with Tightly Coupled Constraints",
+        "citations": 0,
+        "year": 2026
+      },
       {
         "title": "Beyond Score: A Multi-Agent System to Discover Capability and Behavioral Weaknesses in LLMs",
         "citations": 0,
@@ -198,5 +210,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 16
   },
-  "last_updated": "2026-02-16T19:07:21.071900"
+  "last_updated": "2026-02-19T04:20:47.946069"
 }
