@@ -2,1140 +2,214 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Citation Trends - Chenghao Yang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <!-- 网页图标 -->
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/11820/11820511.png" type="image/png">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Chart.js -->
+  <title>Citation Trends | Chenghao Yang</title>
+  <meta name="description" content="Citation trends and publication metrics for Chenghao Yang, a USTC researcher working on LLM evaluation, safety, and AI-driven cybersecurity.">
+  <meta name="keywords" content="Chenghao Yang, Citation Trends, Google Scholar, USTC, Academic Metrics">
+  <meta name="author" content="Chenghao Yang">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#f6f5f2">
+  <link rel="canonical" href="https://syuchin.github.io/trends.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Chenghao Yang">
+  <meta property="og:title" content="Citation Trends | Chenghao Yang">
+  <meta property="og:description" content="Automatically updated citation trends and paper-level metrics for Chenghao Yang.">
+  <meta property="og:url" content="https://syuchin.github.io/trends.html">
+  <meta property="og:image" content="https://syuchin.github.io/data/profile.jpg">
+  <meta property="og:image:alt" content="Portrait of Chenghao Yang">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Citation Trends | Chenghao Yang">
+  <meta name="twitter:description" content="Automatically updated citation trends and paper-level metrics for Chenghao Yang.">
+  <meta name="twitter:image" content="https://syuchin.github.io/data/profile.jpg">
+  <link rel="icon" href="data/logos/Logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- 导入共享样式 -->
-  <link rel="stylesheet" href="static/w3.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      letter-spacing: -0.025em;
-    }
-
-    /* 导航栏样式 - 更现代化 */
-    header {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 1px 30px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-    }
-
-    .navbar .brand {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #2d3748;
-      letter-spacing: -0.8px;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .navbar .brand:hover {
-      color: #4299e1;
-      text-decoration: none;
-    }
-
-    .navbar nav ul {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .navbar nav ul li a {
-      color: #4a5568;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      padding: 0.5rem 0;
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .navbar nav ul li a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #4299e1, #3182ce);
-      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 1px;
-    }
-
-    .navbar nav ul li a:hover {
-      color: #4299e1;
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .navbar nav ul li a:hover::after,
-    .navbar nav ul li a.active::after {
-      width: 100%;
-    }
-
-    .navbar nav ul li a.active {
-      color: #4299e1;
-      font-weight: 600;
-    }
-
-    /* 主容器 */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
-    /* 页面标题 - 更简洁 */
-    .page-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .page-title {
-      font-size: 3rem;
-      color: #2d3748;
-      margin: 0 0 0.5rem 0;
-      font-weight: 700;
-      letter-spacing: -0.05em;
-      background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .page-subtitle {
-      font-size: 1.1rem;
-      color: #718096;
-      margin: 0 0 1.5rem 0;
-      font-weight: 400;
-    }
-
-    /* 快速导航按钮 - 更现代化 */
-    .quick-nav {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .nav-btn {
-      background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 0.75rem 1.25rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 20px rgba(45, 55, 72, 0.15);
-      font-family: 'Inter', sans-serif;
-    }
-
-    .nav-btn:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 8px 30px rgba(45, 55, 72, 0.25);
-    }
-
-    .nav-btn:active {
-      transform: translateY(0) scale(0.98);
-    }
-
-    /* 卡片样式 - 现代化玻璃效果 */
-    .section-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 20px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.3), transparent);
-    }
-
-    .section-card:hover {
-      box-shadow: 0 12px 50px rgba(0,0,0,0.1);
-      transform: translateY(-4px);
-      border-color: rgba(66, 153, 225, 0.2);
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      color: #2d3748;
-      margin: 0 0 1.5rem 0;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      letter-spacing: -0.025em;
-    }
-
-    .section-title i {
-      color: #4299e1;
-      font-size: 1.2rem;
-      padding: 0.5rem;
-      background: rgba(66, 153, 225, 0.1);
-      border-radius: 10px;
-    }
-
-    /* 压缩的metrics布局 */
-    .compact-metrics {
-      padding: 1.5rem 2rem;
-    }
-
-    .metrics-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .metrics-header .section-title {
-      margin: 0;
-    }
-
-    .metrics-header .last-updated {
-      margin: 0;
-      padding: 0;
-      border: none;
-      font-size: 0.75rem;
-    }
-
-    /* 指标网格 - 更紧凑 */
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
-
-    .metric-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%);
-      border: 1px solid rgba(226, 232, 240, 0.5);
-      border-radius: 12px;
-      padding: 1rem;
-      text-align: center;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .metric-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #4299e1, #3182ce);
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-    }
-
-    .metric-card:hover::before {
-      transform: translateX(0);
-    }
-
-    .metric-card:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      border-color: rgba(66, 153, 225, 0.3);
-    }
-
-    .metric-icon {
-      font-size: 1rem;
-      color: #4299e1;
-      margin-bottom: 0.5rem;
-      display: block;
-      padding: 0.4rem;
-      background: rgba(66, 153, 225, 0.1);
-      border-radius: 8px;
-      width: fit-content;
-      margin: 0 auto 0.5rem auto;
-    }
-
-    .metric-value {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #2d3748;
-      margin: 0 0 0.25rem 0;
-      letter-spacing: -0.025em;
-    }
-
-    .metric-label {
-      font-size: 0.85rem;
-      color: #4a5568;
-      font-weight: 500;
-    }
-
-    /* 图表容器 - 优化布局 */
-    .chart-container {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .chart-wrapper {
-      position: relative;
-      height: 320px;
-      padding: 1rem 0;
-    }
-
-    /* 增长统计 - 更紧凑的4列布局 */
-    .growth-stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(226, 232, 240, 0.6);
-    }
-
-    .growth-item {
-      text-align: center;
-      padding: 1rem;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(248, 249, 250, 0.6) 100%);
-      border-radius: 12px;
-      border: 1px solid rgba(226, 232, 240, 0.3);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(5px);
-    }
-
-    .growth-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      border-color: rgba(66, 153, 225, 0.3);
-    }
-
-    .growth-item i {
-      font-size: 1.25rem;
-      color: #4299e1;
-      margin-bottom: 0.5rem;
-      display: block;
-      padding: 0.5rem;
-      background: rgba(66, 153, 225, 0.1);
-      border-radius: 8px;
-      width: fit-content;
-      margin: 0 auto 0.5rem auto;
-    }
-
-    .growth-item .label {
-      font-size: 0.8rem;
-      color: #718096;
-      margin-bottom: 0.25rem;
-      font-weight: 500;
-    }
-
-    .growth-item .value {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #2d3748;
-    }
-
-    /* 论文展示 - 更紧凑 */
-    .papers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .paper-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 249, 250, 0.8) 100%);
-      border: 1px solid rgba(226, 232, 240, 0.4);
-      border-radius: 16px;
-      padding: 1.5rem;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .paper-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #4299e1, #48bb78, #ed8936);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .paper-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .paper-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      border-color: rgba(66, 153, 225, 0.3);
-    }
-
-    .paper-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #2d3748;
-      margin: 0 0 1rem 0;
-      line-height: 1.4;
-      letter-spacing: -0.015em;
-    }
-
-    .paper-metrics {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .paper-metric {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.85rem;
-      color: #718096;
-      font-weight: 500;
-    }
-
-    .paper-metric i {
-      color: #4299e1;
-      font-size: 0.8rem;
-    }
-
-    .paper-links {
-      display: flex;
-      gap: 0.75rem;
-    }
-
-    .paper-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.5rem 0.875rem;
-      background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .paper-link:hover {
-      background: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
-      text-decoration: none;
-      color: white;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
-    }
-
-    /* 最后更新时间 - 更紧凑 */
-    .last-updated {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      color: #a0aec0;
-      opacity: 0.9;
-      padding: 0.5rem 0;
-      margin-bottom: 1rem;
-      border-bottom: 1px dashed rgba(226, 232, 240, 0.6);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .last-updated i {
-      font-size: 0.75rem;
-      color: #cbd5e0;
-    }
-
-    /* 模态框样式 - 现代化 */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: 1000;
-      backdrop-filter: blur(5px);
-    }
-
-    .modal-content {
-      position: relative;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      margin: 3% auto;
-      padding: 2rem;
-      width: 90%;
-      max-width: 1000px;
-      border-radius: 24px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .modal-header h2 {
-      font-size: 1.75rem;
-      color: #2d3748;
-      margin: 0 0 0.5rem 0;
-      font-weight: 600;
-    }
-
-    .modal-chart-wrapper {
-      height: 500px;
-      width: 100%;
-      position: relative;
-    }
-
-    .close-btn {
-      position: absolute;
-      right: 1.5rem;
-      top: 1.5rem;
-      font-size: 1.25rem;
-      color: #a0aec0;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(248, 249, 250, 0.8);
-    }
-
-    .close-btn:hover {
-      color: #2d3748;
-      background: rgba(226, 232, 240, 0.8);
-      transform: rotate(90deg);
-    }
-
-    /* 加载动画 */
-    .loading-spinner {
-      display: inline-block;
-      width: 14px;
-      height: 14px;
-      border: 2px solid #e2e8f0;
-      border-radius: 50%;
-      border-top-color: #4299e1;
-      animation: spin 1s ease-in-out infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* 响应式设计 */
-    @media (max-width: 1024px) {
-      .chart-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .growth-stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-          @media (max-width: 768px) {
-        .container {
-          padding: 1.5rem 1rem;
-        }
-        
-        .page-title {
-          font-size: 2.25rem;
-        }
-        
-        .section-card {
-          padding: 1.5rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .compact-metrics {
-          padding: 1rem 1.5rem;
-        }
-
-        .metrics-header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.5rem;
-        }
-        
-        .metrics-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 0.75rem;
-        }
-      
-      .papers-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .growth-stats {
-        grid-template-columns: 1fr;
-      }
-      
-      .chart-wrapper {
-        height: 280px;
-      }
-      
-      .navbar {
-        padding: 1rem;
-      }
-      
-      .navbar nav ul {
-        gap: 1.5rem;
-      }
-    }
-
-            @media (max-width: 480px) {
-          .quick-nav {
-            gap: 0.5rem;
-          }
-          
-          .nav-btn {
-            font-size: 0.8rem;
-            padding: 0.6rem 1rem;
-          }
-
-          .metrics-grid {
-            grid-template-columns: 1fr;
-            gap: 0.5rem;
-          }
-          
-          .paper-links {
-            flex-direction: column;
-          }
-        }
-  </style>
 </head>
+<body class="page-trends">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-<body>
-  <!-- 顶部导航条 -->
-  <header>
-    <div class="navbar">
-      <div class="brand">Chenghao Yang@USTC</div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="trends.html" class="active">Trends</a></li>
+  <header class="site-header" data-site-header>
+    <div class="nav-shell">
+      <a class="brand" href="index.html">Chenghao Yang</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <span class="visually-hidden">Toggle navigation</span>
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary" data-site-nav>
+        <ul class="site-nav-list">
+          <li><a class="nav-link" href="index.html#overview">Overview</a></li>
+          <li><a class="nav-link" href="index.html#news">News</a></li>
+          <li><a class="nav-link" href="index.html#publications">Publications</a></li>
+          <li><a class="nav-link" href="index.html#experience">Experience</a></li>
+          <li><a class="nav-link" href="index.html#awards">Awards</a></li>
+          <li><a class="nav-link" href="trends.html" aria-current="page">Trends</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <div class="container">
-    <!-- 页面标题 -->
-    <div class="page-header">
-      <h1 class="page-title">Citation Trends</h1>
-      <p class="page-subtitle">Academic impact analysis and research insights</p>
-      
-      <!-- 快速导航按钮 -->
-      <div class="quick-nav">
-        <button class="nav-btn" onclick="scrollToSection('metrics-section')">
-          <i class="fas fa-chart-bar"></i>
-          Metrics
-        </button>
-        <button class="nav-btn" onclick="scrollToSection('charts-section')">
-          <i class="fas fa-chart-line"></i>
-          Trends
-        </button>
-        <button class="nav-btn" onclick="scrollToSection('papers-section')">
-          <i class="fas fa-file-alt"></i>
-          Publications
-        </button>
+  <main class="site-shell">
+    <aside class="left-rail">
+      <div class="rail-stack">
+        <img class="rail-photo" src="data/profile.jpg" alt="Portrait of Chenghao Yang" width="180" height="180">
+        <h1 class="rail-name">Chenghao Yang</h1>
+        <p class="rail-role">M.Eng. Student, Cyberspace Security, USTC</p>
+        <p class="rail-summary">Research on LLM evaluation, safety, alignment, and AI-driven cybersecurity.</p>
       </div>
-    </div>
 
-    <!-- 总体指标 -->
-    <div class="section-card compact-metrics" id="metrics-section">
-      <div class="metrics-header">
-        <h2 class="section-title">
-          <i class="fas fa-chart-bar"></i>
-          Academic Metrics
-        </h2>
-        <div class="last-updated">
-          <i class="fas fa-clock"></i>
-          <span class="loading-spinner" id="loading-indicator"></span>
-          <span id="updateDate">Loading...</span>
+      <section class="rail-section" aria-label="Affiliations">
+        <p class="rail-label">Affiliation</p>
+        <ul class="meta-list">
+          <li>University of Science and Technology of China</li>
+          <li>Former Algorithm Intern, ByteDance Seed</li>
+          <li>Hefei / Beijing</li>
+        </ul>
+      </section>
+
+      <section class="rail-section" aria-label="Advisors">
+        <p class="rail-label">Advisors</p>
+        <ul class="meta-list meta-list-inline">
+          <li><a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ" target="_blank" rel="noopener">Prof. Qi Chu</a></li>
+          <li><a href="https://scholar.google.com/citations?hl=en&amp;user=7620QAMAAAAJ" target="_blank" rel="noopener">Prof. Nenghai Yu</a></li>
+        </ul>
+      </section>
+
+      <section class="rail-section" aria-label="Keywords">
+        <p class="rail-label">Keywords</p>
+        <p class="rail-keywords">LLM evaluation, safety &amp; alignment, dialogue systems, reasoning benchmarks, AI-driven cybersecurity.</p>
+      </section>
+
+      <section class="rail-section" aria-label="Links">
+        <p class="rail-label">Links</p>
+        <ul class="rail-links">
+          <li><a href="index.html">Homepage</a></li>
+          <li><a href="mailto:yangchenghao@mail.ustc.edu.cn">Email</a></li>
+          <li><a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></li>
+          <li><a href="https://github.com/Syuchin" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </section>
+
+      <nav class="rail-section rail-nav desktop-only" aria-label="Section navigation">
+        <p class="rail-label">Navigate</p>
+        <a href="index.html#overview">Overview</a>
+        <a href="index.html#news">News</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#awards">Awards</a>
+        <a href="trends.html" aria-current="page">Trends</a>
+      </nav>
+    </aside>
+
+    <div class="main-column" id="main-content">
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Scholarly analytics</p>
+            <h2>Citation Trends</h2>
+          </div>
         </div>
-      </div>
-      
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <i class="fas fa-quote-right metric-icon"></i>
-          <div class="metric-value" id="total-citations">30</div>
-          <div class="metric-label">Citations</div>
+        <div class="intro-copy">
+          <p>
+            This page presents a quantitative view of my publication record alongside the main academic homepage.
+            Citation counts and paper-level metrics are refreshed periodically from Google Scholar.
+          </p>
+          <p class="helper-text">Last updated: <span id="trends-last-updated">Loading...</span></p>
         </div>
-        
-        <div class="metric-card">
-          <i class="fas fa-graduation-cap metric-icon"></i>
-          <div class="metric-value" id="h-index">3</div>
-          <div class="metric-label">H-Index</div>
+      </section>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Overview</p>
+            <h2>Research Metrics</h2>
+          </div>
         </div>
-        
-        <div class="metric-card">
-          <i class="fas fa-file-alt metric-icon"></i>
-          <div class="metric-value" id="total-papers">2</div>
-          <div class="metric-label">Papers</div>
+        <div class="stats-strip">
+          <div class="stat-cell">
+            <p class="stat-label">Total citations</p>
+            <p class="stat-value" id="total-citations">--</p>
+            <p class="stat-note">Google Scholar total</p>
+          </div>
+          <div class="stat-cell">
+            <p class="stat-label">h-index</p>
+            <p class="stat-value" id="h-index">--</p>
+            <p class="stat-note">Based on tracked publications</p>
+          </div>
+          <div class="stat-cell">
+            <p class="stat-label">Publications shown</p>
+            <p class="stat-value" id="total-papers">--</p>
+            <p class="stat-note">Shown on this page</p>
+          </div>
+          <div class="stat-cell">
+            <p class="stat-label">Latest growth</p>
+            <p class="stat-value" id="monthly-growth">--</p>
+            <p class="stat-note">Since last update</p>
+          </div>
         </div>
-        
-        <div class="metric-card">
-          <i class="fas fa-chart-line metric-icon"></i>
-          <div class="metric-value" id="growth-rate">+25.0%</div>
-          <div class="metric-label">Growth</div>
+        <div class="framed-block">
+          <p class="status-message" id="trends-status" hidden>Loading citation data...</p>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <!-- 图表区域 -->
-    <div class="chart-container" id="charts-section">
-      <!-- 引用趋势图 -->
-      <div class="section-card">
-        <h2 class="section-title">
-          <i class="fas fa-chart-line"></i>
-          Citation Trends
-        </h2>
-        <div class="chart-wrapper">
-          <canvas id="citationTrends"></canvas>
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Trajectory</p>
+            <h2>Charts</h2>
+          </div>
         </div>
-      </div>
-
-      <!-- 论文引用分布 -->
-      <div class="section-card">
-        <h2 class="section-title">
-          <i class="fas fa-chart-pie"></i>
-          Distribution
-        </h2>
-        <div class="chart-wrapper">
-          <canvas id="citationDistribution"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- 论文详情展示 -->
-    <div class="section-card" id="papers-section">
-      <h2 class="section-title">
-        <i class="fas fa-file-alt"></i>
-        Featured Publications
-      </h2>
-      
-      <div class="papers-grid" id="papers-container">
-        <!-- 论文卡片将通过JavaScript动态生成 -->
-      </div>
-    </div>
-  </div>
-
-  <!-- 模态框 -->
-  <div id="trendModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <div class="modal-header">
-        <h2>Detailed Citation Trends</h2>
-        <p>Comprehensive view of citation growth over time</p>
-      </div>
-      <div class="modal-chart-wrapper">
-        <canvas id="largeTrendChart"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // 更新日期
-    document.getElementById('updateDate').textContent = 'Loading...';
-
-    // 声明全局变量
-    let chartData = null;
-    let largeTrendChart = null;
-
-    // 平滑滚动到指定区域
-    function scrollToSection(sectionId) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    }
-
-    // 格式化日期函数
-    function formatDate(dateString) {
-      return dateString.split('T')[0];
-    }
-
-    // 隐藏加载指示器
-    function hideLoadingIndicator() {
-      const spinner = document.getElementById('loading-indicator');
-      if (spinner) {
-        spinner.style.display = 'none';
-      }
-    }
-
-    // 生成论文卡片
-    function normalizeUrl(u) {
-      if (!u) return '#';
-      // 修复常见的冒号缺失（https// 或 http//）
-      if (u.startsWith('https//')) u = 'https://' + u.slice('https//'.length);
-      if (u.startsWith('http//')) u = 'http://' + u.slice('http//'.length);
-      // 绝对地址直接返回；相对路径补上域名
-      return /^https?:\/\//.test(u) ? u : `https://scholar.google.com${u}`;
-    }
-
-    function generatePaperCards(papers) {
-      const container = document.getElementById('papers-container');
-      container.innerHTML = '';
-      
-      Object.entries(papers).forEach(([title, info]) => {
-        const paperCard = document.createElement('div');
-        paperCard.className = 'paper-card';
-        
-        // 截取标题
-        const displayTitle = title.length > 70 ? title.substring(0, 70) + '...' : title;
-        
-        const citationHref = normalizeUrl(info.citation_url || '#');
-        const detailsHref = normalizeUrl(info.url || '#');
-
-        paperCard.innerHTML = `
-          <div class="paper-title">${displayTitle}</div>
-          <div class="paper-metrics">
-            <div class="paper-metric">
-              <i class="fas fa-quote-right"></i>
-              <span>${info.citations} citations</span>
-            </div>
-            <div class="paper-metric">
-              <i class="fas fa-calendar"></i>
-              <span>${info.year}</span>
+        <div class="charts-grid">
+          <div class="framed-block chart-panel">
+            <h3>Citation Growth Over Time</h3>
+            <p>Cumulative citation count across archived checkpoints.</p>
+            <div class="chart-canvas-wrap">
+              <canvas id="citation-trend-chart" aria-label="Citation trend chart"></canvas>
             </div>
           </div>
-          <div class="paper-links">
-            <a href="${citationHref}" target="_blank" class="paper-link">
-              <i class="fas fa-search"></i>
-              Citations
-            </a>
-            <a href="${detailsHref}" target="_blank" class="paper-link">
-              <i class="fas fa-external-link-alt"></i>
-              Details
-            </a>
+          <div class="framed-block chart-panel">
+            <h3>Most Cited Papers</h3>
+            <p>Top papers ranked by current citation count.</p>
+            <div class="chart-canvas-wrap">
+              <canvas id="paper-impact-chart" aria-label="Paper impact chart"></canvas>
+            </div>
           </div>
-        `;
-        
-        container.appendChild(paperCard);
-      });
-    }
+        </div>
+      </section>
 
-    // 初始化模态框事件
-    function initializeModalEvents() {
-      const trendChart = document.getElementById('citationTrends');
-      const modal = document.getElementById('trendModal');
-      const closeBtn = document.querySelector('.close-btn');
-      
-      if (trendChart) {
-        trendChart.addEventListener('click', () => {
-          modal.style.display = 'block';
-          if (largeTrendChart) {
-            largeTrendChart.destroy();
-          }
-          createLargeChart();
-        });
-      }
-      
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-          modal.style.display = 'none';
-        });
-      }
-      
-      window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-        }
-      });
-    }
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Publication record</p>
+            <h2>Paper-Level Metrics</h2>
+          </div>
+        </div>
+        <div class="trend-list" id="papers-container" aria-live="polite"></div>
+      </section>
+    </div>
+  </main>
 
-    // 创建大图表
-    function createLargeChart() {
-      const ctx = document.getElementById('largeTrendChart');
-      
-      if (!ctx || !chartData) {
-        console.error('Cannot find canvas or data');
-        return;
-      }
-      
-      largeTrendChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: chartData.citation_trend.map(item => item.date),
-          datasets: [{
-            label: 'Citations',
-            data: chartData.citation_trend.map(item => item.citations),
-            borderColor: '#4299e1',
-            backgroundColor: 'rgba(66, 153, 225, 0.1)',
-            fill: true,
-            tension: 0.4,
-            pointBackgroundColor: '#4299e1',
-            pointBorderColor: '#ffffff',
-            pointBorderWidth: 2,
-            pointRadius: 5
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              backgroundColor: 'rgba(255, 255, 255, 0.95)',
-              titleColor: '#2d3748',
-              bodyColor: '#4a5568',
-              borderColor: '#e2e8f0',
-              borderWidth: 1,
-              padding: 12,
-              cornerRadius: 8
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                color: 'rgba(0, 0, 0, 0.1)'
-              },
-              ticks: {
-                color: '#718096'
-              }
-            },
-            x: {
-              grid: {
-                display: false
-              },
-              ticks: {
-                color: '#718096'
-              }
-            }
-          }
-        }
-      });
-    }
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div>
+        <p class="footer-title">Chenghao Yang</p>
+        <p class="footer-note">&copy; 2025 Chenghao Yang · Last updated Mar 2026</p>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="index.html">Homepage</a>
+        <a href="mailto:yangchenghao@mail.ustc.edu.cn">Email</a>
+        <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a>
+        <a href="https://github.com/Syuchin" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
 
-    // 截断文本函数
-    function truncateText(text, maxLength = 25) {
-      if (text.length <= maxLength) return text;
-      return text.substring(0, maxLength) + '...';
-    }
-
-    // 数据加载函数
-    async function loadCitationData() {
-      try {
-        console.log('Loading citation data...');
-        const response = await fetch('data/scholar_data.json');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        
-        // 保存数据到全局变量
-        chartData = data;
-        
-        // 隐藏加载指示器
-        hideLoadingIndicator();
-        
-        // 更新总体指标
-        document.getElementById('total-citations').textContent = data.total_citations || 0;
-        document.getElementById('h-index').textContent = data.h_index || 0;
-        document.getElementById('total-papers').textContent = Object.keys(data.papers).length || 0;
-        
-        // 更新日期显示
-        document.getElementById('updateDate').textContent = formatDate(data.last_updated);
-
-        // 计算增长率和其他统计
-        const trends = data.citation_trend;
-        if (trends.length >= 2) {
-          const lastMonth = trends[trends.length - 1];
-          const prevMonth = trends[trends.length - 2];
-          const growthRate = ((lastMonth.citations - prevMonth.citations) / prevMonth.citations * 100).toFixed(1);
-          document.getElementById('growth-rate').textContent = `${growthRate > 0 ? '+' : ''}${growthRate}%`;
-        }
-
-        // 生成论文卡片
-        generatePaperCards(data.papers);
-
-        // 准备图表数据
-        const recentTrends = data.citation_trend.slice(-6);
-        
-        // 引用趋势图
-        new Chart(document.getElementById('citationTrends'), {
-          type: 'line',
-          data: {
-            labels: recentTrends.map(item => item.date),
-            datasets: [{
-              label: 'Citations',
-              data: recentTrends.map(item => item.citations),
-              borderColor: '#4299e1',
-              backgroundColor: 'rgba(66, 153, 225, 0.1)',
-              fill: true,
-              tension: 0.4,
-              pointBackgroundColor: '#4299e1',
-              pointBorderColor: '#ffffff',
-              pointBorderWidth: 2,
-              pointRadius: 4
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false }
-            },
-            scales: {
-              y: {
-                beginAtZero: true,
-                grid: { color: 'rgba(0, 0, 0, 0.1)' },
-                ticks: { color: '#718096', precision: 0 }
-              },
-              x: {
-                grid: { display: false },
-                ticks: { color: '#718096' }
-              }
-            }
-          }
-        });
-
-        // 引用分布图
-        const papers = Object.entries(data.papers)
-          .map(([title, info]) => ({
-            title: title,
-            citations: info.citations || 0
-          }))
-          .sort((a, b) => b.citations - a.citations);
-
-        const colors = [
-          '#4299e1',
-          '#48bb78',
-          '#ed8936',
-          '#f56565',
-          '#9f7aea'
-        ];
-
-        new Chart(document.getElementById('citationDistribution'), {
-          type: 'doughnut',
-          data: {
-            labels: papers.map(paper => truncateText(paper.title, 20)),
-            datasets: [{
-              data: papers.map(paper => Math.max(0.1, paper.citations)),
-              backgroundColor: papers.map((_, index) => colors[index % colors.length]),
-              borderWidth: 0,
-              hoverBorderWidth: 2,
-              hoverBorderColor: '#ffffff'
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: 'bottom',
-                labels: {
-                  padding: 20,
-                  usePointStyle: true,
-                  color: '#718096'
-                }
-              },
-              tooltip: {
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                titleColor: '#2d3748',
-                bodyColor: '#4a5568',
-                borderColor: '#e2e8f0',
-                borderWidth: 1,
-                padding: 12,
-                cornerRadius: 8,
-                callbacks: {
-                  label: function(context) {
-                    const actualCitations = papers[context.dataIndex].citations;
-                    return `Citations: ${actualCitations}`;
-                  }
-                }
-              }
-            },
-            cutout: '60%'
-          }
-        });
-
-        initializeModalEvents();
-        
-      } catch (error) {
-        console.error('Error loading citation data:', error);
-        hideLoadingIndicator();
-        document.getElementById('updateDate').textContent = 'Failed to load';
-      }
-    }
-
-    // 导航栏滚动效果
-    window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 10) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // 页面加载完成后初始化
-    document.addEventListener('DOMContentLoaded', function() {
-      loadCitationData();
-    });
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>

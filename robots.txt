@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: / 
+Allow: /
+
+Sitemap: https://syuchin.github.io/sitemap.xml

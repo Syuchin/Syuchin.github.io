@@ -2,1510 +2,518 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chenghao Yang@USTC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <!-- 网页图标（可选） -->
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/11820/11820511.png" type="image/png">
-  <!-- 添加 Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- 导入style -->
-  <link rel="stylesheet" href="static/w3.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
+  <title>Chenghao Yang | USTC - LLM Safety &amp; Evaluation</title>
+  <meta name="description" content="Chenghao Yang is a USTC master's student working on LLM evaluation, safety, alignment, and AI-driven cybersecurity.">
+  <meta name="keywords" content="Chenghao Yang, USTC, LLM Evaluation, LLM Safety, Alignment, AI Security, Academic Homepage">
+  <meta name="author" content="Chenghao Yang">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#f6f5f2">
+  <link rel="canonical" href="https://syuchin.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Chenghao Yang">
+  <meta property="og:title" content="Chenghao Yang | USTC - LLM Safety &amp; Evaluation">
+  <meta property="og:description" content="Academic homepage for Chenghao Yang, featuring publications, experience, awards, and citation trends.">
+  <meta property="og:url" content="https://syuchin.github.io/">
+  <meta property="og:image" content="https://syuchin.github.io/data/profile.jpg">
+  <meta property="og:image:alt" content="Portrait of Chenghao Yang">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Chenghao Yang | USTC - LLM Safety &amp; Evaluation">
+  <meta name="twitter:description" content="Academic homepage for Chenghao Yang, featuring publications, experience, awards, and citation trends.">
+  <meta name="twitter:image" content="https://syuchin.github.io/data/profile.jpg">
+  <link rel="icon" href="data/logos/Logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Chenghao Yang",
+      "url": "https://syuchin.github.io/",
+      "image": "https://syuchin.github.io/data/profile.jpg",
+      "email": "mailto:yangchenghao@mail.ustc.edu.cn",
+      "jobTitle": "M.Eng. Student, Cyberspace Security",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Science and Technology of China",
+        "url": "https://www.ustc.edu.cn/"
+      },
+      "sameAs": [
+        "https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en",
+        "https://github.com/Syuchin"
+      ]
     }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: Arial, sans-serif;
-    }
-    #news li i {
-      font-family: "Arial Rounded MT Bold", "Arial Rounded", Arial, sans-serif;
-      font-style: italic;
-    }
-    .quote {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.5em;
-      font-weight: 500;
-      color: #4a5568;
-      line-height: 1.4;
-      letter-spacing: 0.5px;
-    }
-    .news-announcement {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 500;
-      font-size: 1.1em;
-      color: #2d3748;
-      line-height: 1.6;
-    }
-    .last-updated {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.85rem;
-      color: #718096;
-      opacity: 0.8;
-      padding: 8px 0;
-      margin-bottom: 15px;
-      border-bottom: 1px dashed #e2e8f0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .last-updated i {
-      font-size: 0.8rem;
-      color: #a0aec0;
-    }
-    /* 部门信息样式 */
-    .department-info {
-      position: relative;
-      cursor: default;
-    }
-    
-    .dept-history-container {
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 0;
-      margin: 0;
-      background: rgba(66, 153, 225, 0.05);
-      border-radius: 8px;
-      transform: translateY(-10px) translateZ(0);
-      will-change: transform, max-height;
-      width: 100%;
-      position: relative;
-      backface-visibility: hidden;
-    }
-    
-    .dept-history-container.show {
-      max-height: 200px;
-      opacity: 1;
-      margin: 1rem 0;
-      padding: 0;
-      border-left: 3px solid var(--accent-color, #4299e1);
-      transform: translateY(0) translateZ(0);
-    }
-    
-    .history-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: rgba(0, 0, 0, 0.03);
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      color: #718096;
-      cursor: pointer;
-      border: none;
-      margin-left: 10px;
-      vertical-align: middle;
-    }
-    
-    .history-btn i {
-      font-size: 0.8rem;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: transform;
-    }
-    
-    .history-btn:hover {
-      background: rgba(0, 0, 0, 0.05);
-      transform: translateY(-1px);
-    }
-    
-    .history-btn.active {
-      background: rgba(0, 0, 0, 0.07);
-    }
-    
-    .history-btn.active i {
-      transform: rotate(180deg);
-    }
-    
-    .history-header {
-      background-color: #f8f9fa;
-      padding: 8px 12px;
-      font-weight: 600;
-      color: #2d3748;
-      border-bottom: 1px solid #edf2f7;
-    }
-    
-    .history-content {
-      padding: 0;
-    }
-    
-    .department-change {
-      padding: 10px 15px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      border-bottom: 1px solid #f0f0f0;
-      transition: all 0.3s ease;
-    }
-    
-    .department-change:last-child {
-      border-bottom: none;
-    }
-    
-    .department-change.current {
-      background-color: #ebf8ff;
-      padding: 14px 15px;
-    }
-    
-    .department-change:not(.current) {
-      opacity: 0.7;
-    }
-    
-    .department-change .date {
-      color: #718096;
-      font-size: 0.85em;
-      padding-right: 15px;
-    }
-    
-    .department-change .dept {
-      color: #2d3748;
-      font-weight: 500;
-      font-size: 0.9em;
-      text-align: right;
-    }
-    
-    .department-change.current .dept {
-      font-weight: 600;
-      color: #2c5282;
-    }
-    
-    /* 响应式布局调整 */
-    @media (max-width: 1200px) {
-      .dept-change-box {
-        position: relative;
-        right: 0;
-        top: 0;
-        margin-top: 15px;
-        width: 100%;
-      }
-    }
-    /* Biography可视化样式 - 压缩版 */
-    .bio-container {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    
-    .bio-main {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    
-    .bio-intro h3 {
-      margin-bottom: 8px !important;
-    }
-    
-    .bio-intro p {
-      margin-bottom: 15px !important;
-    }
-    
-    /* 研究兴趣和联系方式 - 两个小卡片 */
-    .interests-contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 5px;
-    }
-    
-    .interest-card-wrapper,
-    .contact-card-wrapper {
-      background: #f9fafc;
-      border-radius: 8px;
-      padding: 15px;
-      border: 1px solid #edf2f7;
-      transition: all 0.3s ease;
-    }
-    
-    .interest-card-wrapper:hover,
-    .contact-card-wrapper:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      border-color: #e2e8f0;
-    }
-    
-    .interest-card-wrapper h4,
-    .contact-card-wrapper h4 {
-      margin-bottom: 10px !important;
-      color: #4a5568;
-    }
-    
-    .interest-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    
-    .interest-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 0;
-      transition: all 0.3s ease;
-    }
-    
-    .interest-item:hover {
-      transform: translateX(3px);
-    }
-    
-    .interest-bullet {
-      color: #4299e1;
-      font-size: 0.9rem;
-      width: 16px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-    
-    .interest-item span {
-      color: #2d3748;
-      font-size: 0.9rem;
-      font-weight: 500;
-      line-height: 1.4;
-    }
-    
-    .contact-card-wrapper p {
-      color: #4a5568;
-      font-size: 0.9rem;
-      line-height: 1.4;
-      margin-bottom: 12px !important;
-    }
-    
-    .contact-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    
-    .contact-link, .email-copy-btn {
-      display: inline-flex;
-      align-items: center;
-      vertical-align: middle;
-      gap: 8px;
-      background: #f7fafc;
-      border-radius: 8px;
-      color: #4a5568;
-      font-size: 0.9rem;
-      border: 1px solid #edf2f7;
-      transition: all 0.3s ease;
-      box-sizing: border-box;
-    }
-    
-    /* 为 a 标签设置特定样式 */
-    a.contact-link {
-      padding: 8px 15px;
-      line-height: normal;
-    }
-    
-    /* 为 button 标签设置特定样式 */
-    button.contact-link.email-copy-btn {
-      padding: 10px 15px;
-      line-height: normal;
-      /* 添加 appearance 重置 */
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      /* 如果需要，可以在这里微调 button 的 padding */
-    }
-    
-    .contact-link i, .email-copy-btn i {
-      font-size: 1rem;
-    }
-    
-    .contact-link:hover, .email-copy-btn:hover {
-      background: #edf2f7;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      color: #3182ce;
-      border-color: #bee3f8;
-      text-decoration: none !important;
-    }
-
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-      .interests-contact-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      
-      .interest-card-wrapper,
-      .contact-card-wrapper {
-        padding: 12px;
-      }
-      
-      .interest-item {
-        padding: 4px 0;
-      }
-      
-      .interest-item span {
-        font-size: 0.85rem;
-      }
-      
-      .contact-card-wrapper p {
-        font-size: 0.85rem;
-      }
-    }
-  </style>
-  <meta name="icons-source" content="Icons by Freepik, prettycons, Tomas Knop, Becris, and wanicon from www.flaticon.com">
-  <!-- 添加更多meta标签 -->
-  <meta name="description" content="Chenghao Yang's academic homepage - USTC student researching AI security and LLMs">
-  <meta name="keywords" content="Chenghao Yang, USTC, AI Security, LLMs, Machine Learning">
+  </script>
 </head>
+<body class="page-home">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-<body>
-
-  <!-- 顶部导航条 -->
-  <header>
-    <div class="navbar">
-      <div class="brand">Chenghao Yang@USTC</div>
-      <nav>
-        <ul>
-          <li><a href="#biography">Biography</a></li>
-          <li><a href="#news">News</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#internships">Internships</a></li>
-          <!-- <li><a href="cv.html">CV</a></li> -->
-          <li><a href="trends.html">Trends</a></li>
+  <header class="site-header" data-site-header>
+    <div class="nav-shell">
+      <a class="brand" href="index.html">Chenghao Yang</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <span class="visually-hidden">Toggle navigation</span>
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary" data-site-nav>
+        <ul class="site-nav-list">
+          <li><a class="nav-link" href="#overview" data-section-link>Overview</a></li>
+          <li><a class="nav-link" href="#news" data-section-link>News</a></li>
+          <li><a class="nav-link" href="#publications" data-section-link>Publications</a></li>
+          <li><a class="nav-link" href="#experience" data-section-link>Experience</a></li>
+          <li><a class="nav-link" href="#awards" data-section-link>Awards</a></li>
+          <li><a class="nav-link" href="trends.html">Trends</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- 主体内容容器 -->
-  <div class="container">
-    <div class="top-section">
-      <!-- 左侧文字 -->
-      <div class="profile-text">
-        <!-- 根据需要替换姓名、邮箱和个性签名 -->
-        <h1>Chenghao Yang</h1>
-        <p class="email">yangchenghao@mail.ustc.edu.cn</p>
-        <p class="quote">If you get tangled up, you just tango on.</p>
+  <main class="site-shell">
+    <aside class="left-rail">
+      <div class="rail-stack">
+        <img class="rail-photo" src="data/profile.jpg" alt="Portrait of Chenghao Yang" width="180" height="180">
+        <h1 class="rail-name">Chenghao Yang</h1>
+        <p class="rail-role">M.Eng. Student, Cyberspace Security, USTC</p>
+        <p class="rail-summary">Research on LLM evaluation, safety, alignment, and AI-driven cybersecurity.</p>
       </div>
-      <img 
-        src="data/profile.jpg"       
-        alt="My Profile" 
-        class="profile-img"
-        loading="lazy"              
-        width="200" 
-        height="200">
-    </div>
 
-    <!-- Biography -->
-    <div class="section-card" id="biography">
-      <h2>Biography</h2>
-      <div class="bio-container">
-        <!-- 简介和研究兴趣合并 -->
-        <div class="bio-main">
-          <div class="bio-intro">
-            <h3 style="color: #2d3748;">Hello! I'm chyang.</h3>
-            <p>
-              I am a first-year Master's student at <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">University of Science and Technology of China</a>, 
-              advised by <a href="https://scholar.google.com/citations?hl=en&user=7620QAMAAAAJ" target="_blank" rel="noopener">Prof. Nenghai Yu</a> and 
-              <a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ" target="_blank" rel="noopener">Prof. Qi Chu</a>. 
-              My academic journey is driven by a deep curiosity for artificial intelligence and its transformative potential.
-            </p>
-          </div>
-          
-          <!-- 研究兴趣和联系方式 - 两个小卡片 -->
-          <div class="interests-contact-grid">
-            <div class="interest-card-wrapper">
-              <h4>Research Interests</h4>
-              <div class="interest-list">
-                <div class="interest-item">
-                  <i class="fas fa-chart-line interest-bullet"></i>
-                  <span>LLM Evaluation & Benchmarking</span>
-                </div>
-                <div class="interest-item">
-                  <i class="fas fa-cog interest-bullet"></i>
-                  <span>LLM Safety & Alignment</span>
-                </div>
-                <div class="interest-item">
-                  <i class="fas fa-shield-alt interest-bullet"></i>
-                  <span>AI-driven Cybersecurity</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="contact-card-wrapper">
-              <h4>Contact & Collaboration</h4>
-              <p>
-                I'm enthusiastic about innovative projects and meaningful discussions. Feel free to reach out if you share similar interests!
-              </p>
-              <div class="contact-links">
-                <button onclick="copyEmail()" class="contact-link email-copy-btn"><i class="fas fa-envelope"></i>Email</button>
-                <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&hl=en" target="_blank" rel="noopener" class="contact-link"><i class="fas fa-graduation-cap"></i>Google Scholar</a>
-                <a href="https://github.com/Syuchin" target="_blank" rel="noopener" class="contact-link"><i class="fab fa-github"></i>GitHub</a>
-              </div>
-            </div>
+      <section class="rail-section" aria-label="Affiliations">
+        <p class="rail-label">Affiliation</p>
+        <ul class="meta-list">
+          <li>University of Science and Technology of China</li>
+          <li>Former Algorithm Intern, ByteDance Seed</li>
+          <li>Hefei / Beijing</li>
+        </ul>
+      </section>
+
+      <section class="rail-section" aria-label="Advisors">
+        <p class="rail-label">Advisors</p>
+        <ul class="meta-list meta-list-inline">
+          <li><a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ" target="_blank" rel="noopener">Prof. Qi Chu</a></li>
+          <li><a href="https://scholar.google.com/citations?hl=en&amp;user=7620QAMAAAAJ" target="_blank" rel="noopener">Prof. Nenghai Yu</a></li>
+        </ul>
+      </section>
+
+      <section class="rail-section" aria-label="Keywords">
+        <p class="rail-label">Keywords</p>
+        <p class="rail-keywords">LLM evaluation, safety &amp; alignment, dialogue systems, reasoning benchmarks, AI-driven cybersecurity.</p>
+      </section>
+
+      <section class="rail-section" aria-label="Links">
+        <p class="rail-label">Links</p>
+        <ul class="rail-links">
+          <li><a href="mailto:yangchenghao@mail.ustc.edu.cn">Email</a></li>
+          <li><a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></li>
+          <li><a href="https://github.com/Syuchin" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="trends.html">Trends</a></li>
+        </ul>
+      </section>
+
+      <nav class="rail-section rail-nav desktop-only" aria-label="Section navigation">
+        <p class="rail-label">Navigate</p>
+        <a href="#overview" data-section-link>Overview</a>
+        <a href="#news" data-section-link>News</a>
+        <a href="#publications" data-section-link>Publications</a>
+        <a href="#experience" data-section-link>Experience</a>
+        <a href="#awards" data-section-link>Awards</a>
+        <a href="trends.html">Trends</a>
+      </nav>
+    </aside>
+
+    <div class="main-column" id="main-content">
+      <section class="content-section" id="overview">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Academic profile</p>
+            <h2>Overview</h2>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- News -->
-    <div class="section-card" id="news">
-      <h2>News</h2>
-      <div class="last-updated">
-        <i class="fas fa-clock"></i>
-        Last updated: <span id="updateDate"></span>
-      </div>
-      <p class="news-announcement">Keep an eye on this space for the latest news or announcements.</p>
-      
-      <div class="news-timeline">
-        <div class="visible-news">
-          <div class="timeline-item">
-            <div class="timeline-date">2025-09-16</div>
-            <div class="timeline-content">The work titled <i>"FinSearchComp: Towards a Realistic, Expert-Level Evaluation of Financial Search and Reasoning"</i> that I participated in is now available on arXiv, and the data can be accessed on HuggingFace!</div>
-            <div class="timeline-links">
-              <a href="https://arxiv.org/abs/2509.13160" target="_blank" rel="noopener" class="icon-link paper-link" title="View Paper">
-                <i class="fa-regular fa-file-lines"></i>
-              </a> 
-              <a href="https://huggingface.co/datasets/ByteSeedXpert/FinSearchComp" target="_blank" rel="noopener" class="icon-link code-link" title="View Code">
-                <img src="https://cdn.simpleicons.org/huggingface/4a5568/e2e8f0" alt="Hugging Face" style="width: 18px; height: 18px;">
-              </a>
-            </div>
+        <div class="intro-copy">
+          <p>
+            I am a Master's student in Cyberspace Security at
+            <a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">USTC</a>, advised by
+            <a href="https://scholar.google.com/citations?user=JZjOMdsAAAAJ" target="_blank" rel="noopener">Prof. Qi Chu</a>
+            and
+            <a href="https://scholar.google.com/citations?hl=en&amp;user=7620QAMAAAAJ" target="_blank" rel="noopener">Prof. Nenghai Yu</a>.
+          </p>
+          <p>
+            My research focuses on LLM evaluation, safety, alignment, and realistic benchmark design, with recent work on dialogue, search, reasoning, and multimodal systems; from Nov. 2024 to Dec. 2025, I was an algorithm intern at ByteDance Seed, where I worked on evaluation-centric systems for large-model applications.
+          </p>
+        </div>
+        <dl class="overview-grid">
+          <div class="overview-row">
+            <dt>Position</dt>
+            <dd>M.Eng. student at USTC; former algorithm intern at ByteDance Seed (2024.11&ndash;2025.12).</dd>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2025-09-01</div>
-            <div class="timeline-content">The paper <i>"MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation"</i> has been accepted by EMNLP 2025 (Findings)!</div>
-            <div class="timeline-links">
-              <a href="https://arxiv.org/abs/2505.23810" target="_blank" rel="noopener" class="icon-link paper-link" title="View Paper">
-                <i class="fa-regular fa-file-lines"></i>
-              </a> 
-              <a href="https://github.com/Syuchin/MARS-Bench" target="_blank" rel="noopener" class="icon-link code-link" title="View Code">
-                <i class="fa-brands fa-github"></i>
-              </a>
-            </div>
+          <div class="overview-row">
+            <dt>Research</dt>
+            <dd>LLM evaluation, safety, alignment, reasoning benchmarks, and AI security.</dd>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2025-06-02</div>
-            <div class="timeline-content">
-              The paper <i>"MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation"</i> has been published on arXiv!
-            </div>
-            <div class="timeline-links">
-              <a href="https://arxiv.org/abs/2505.23810" target="_blank" rel="noopener" class="icon-link paper-link" title="View Paper">
-                <i class="fa-regular fa-file-lines"></i>
-              </a> 
-              <a href="https://github.com/Syuchin/MARS-Bench" target="_blank" rel="noopener" class="icon-link code-link" title="View Code">
-                <i class="fa-brands fa-github"></i>
-              </a>
-            </div>
+          <div class="overview-row">
+            <dt>Approach</dt>
+            <dd>Build realistic testbeds and evaluation frameworks that reveal hidden model weaknesses.</dd>
           </div>
+          <div class="overview-row">
+            <dt>Links</dt>
+            <dd class="inline-links">
+              <a href="mailto:yangchenghao@mail.ustc.edu.cn">Email</a>
+              <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+              <a href="https://github.com/Syuchin" target="_blank" rel="noopener">GitHub</a>
+              <a href="trends.html">Citation trends</a>
+            </dd>
+          </div>
+        </dl>
+      </section>
 
-          <div class="timeline-item">
-            <div class="timeline-date">2025-02-09</div>
-            <div class="timeline-content">
-              The paper <i>"CryptoX: Compositional Reasoning Evaluation of Large Language Models"</i> has been published on arXiv!
-            </div>
-            <div class="timeline-links">
-              <a href="https://arxiv.org/abs/2502.07813" target="_blank" rel="noopener" class="icon-link paper-link" title="View Paper">
-                <i class="fa-regular fa-file-lines"></i>
-              </a> 
-              <a href="https://github.com/multimodal-art-projection/CryptoX" target="_blank" rel="noopener" class="icon-link code-link" title="View Code">
-                <i class="fa-brands fa-github"></i>
-              </a>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-date">2025-01-23</div>
-            <div class="timeline-content">
-              🎉 Our Paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been accepted by 
-              <span style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #4a5568;">2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics</span> (<b>NAACL 2025</b>).
-            </div>
-            <div class="timeline-links">
-              <a href="https://aclanthology.org/2025.naacl-long.272/" target="_blank" rel="noopener" class="icon-link paper-link" title="View Paper">
-                <i class="fa-regular fa-file-lines"></i>
-              </a> 
-              <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener" class="icon-link code-link" title="View Code">
-                <i class="fa-brands fa-github"></i>
-              </a>
-            </div>
+      <section class="content-section" id="news">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Recent updates</p>
+            <h2>News</h2>
           </div>
         </div>
-        
-        <div class="hidden-news">
-          <div class="timeline-item">
-            <div class="timeline-date">2024-06-09</div>
-            <div class="timeline-content">
-              Our paper <i>"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue"</i> has been published on arXiv.
-            </div>
-            <div class="timeline-links">
-              <a href="https://aclanthology.org/2025.naacl-long.272/" target="_blank" rel="noopener" class="icon-link paper-link" title="View Paper">
-                <i class="fa-regular fa-file-lines"></i>
-              </a> 
-              <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener" class="icon-link code-link" title="View Code">
-                <i class="fa-brands fa-github"></i>
-              </a>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-date">2023-12-15</div>
-            <div class="timeline-content">
-            I embarked on my research journey at the LDS Laboratory, University of Science and Technology of China (USTC).
-            </div>
-            <div class="timeline-links">
-              <div class="icon-link-placeholder"></div>
-            </div>
-          </div>
-        </div>
-        
-        <button id="news-toggle-btn" class="news-toggle-btn" onclick="toggleNews()">
-          <span class="show-more">View More <i class="fas fa-chevron-down"></i></span>
-          <span class="show-less">View Less <i class="fas fa-chevron-up"></i></span>
-        </button>
-      </div>
-    </div>
-    
-    <style>
-      /* News时间线样式 */
-      .news-timeline {
-        position: relative;
-        margin-left: 20px;
-        margin-top: 30px;
-      }
-      
-      .news-timeline::before {
-        content: '';
-        position: absolute;
-        left: 10px;
-        top: 0;
-        bottom: 0;
-        width: 1px;
-        background: linear-gradient(to bottom, 
-          rgba(59, 130, 246, 0), 
-          rgba(59, 130, 246, 0.2),
-          rgba(59, 130, 246, 0)
-        );
-      }
-      
-      .hidden-news {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: all 0.5s ease;
-      }
-      
-      .hidden-news.expanded {
-        max-height: 1000px;
-        opacity: 1;
-        margin-bottom: 20px;
-      }
-      
-      .news-toggle-btn {
-        background: transparent;
-        border: none;
-        padding: 8px 16px;
-        margin-left: 40px;
-        margin-top: 10px;
-        cursor: pointer;
-        color: #3b82f6;
-        font-size: 0.9rem;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        transition: all 0.3s ease;
-      }
-      
-      .news-toggle-btn:hover {
-        color: #2563eb;
-        transform: translateY(-2px);
-      }
-      
-      .news-toggle-btn .show-less {
-        display: none;
-      }
-      
-      .news-toggle-btn.expanded .show-more {
-        display: none;
-      }
-      
-      .news-toggle-btn.expanded .show-less {
-        display: inline-flex;
-        align-items: center;
-      }
-      
-      .news-toggle-btn i {
-        margin-left: 5px;
-        font-size: 0.8rem;
-      }
-      
-      .timeline-item {
-        position: relative;
-        display: grid;
-        grid-template-columns: 90px 1fr auto;
-        grid-gap: 8px;
-        margin-bottom: 30px;
-        padding-left: 40px;
-      }
-      
-      .timeline-item::before {
-        content: '';
-        position: absolute;
-        left: 6px;
-        top: 8px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #3b82f6;
-        transition: all 0.3s ease;
-      }
-      
-      .timeline-item:hover::before {
-        transform: scale(1.2);
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-      }
-      
-      .timeline-date {
-        font-family: 'Nunito', sans-serif;
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: #4b5563;
-        margin-bottom: 8px;
-        width: auto;
-      }
-      
-      .timeline-content {
-        font-family: 'Nunito', sans-serif;
-        font-size: 1rem;
-        color: #1f2937;
-        line-height: 1.6;
-      }
-      
-      .timeline-content i {
-        font-family: "Arial Rounded MT Bold", "Arial Rounded", Arial, sans-serif;
-        font-style: italic;
-      }
-      
-      .timeline-links {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        align-items: center;
-        justify-content: flex-end;
-      }
-      
-      /* 链接占位符样式 */
-      .icon-link-placeholder {
-        height: 0;
-        min-width: 0;
-        margin: 0;
-        padding: 0;
-        visibility: hidden;
-        display: block;
-      }
-      
-      /* 链接图标样式 */
-      .icon-link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8px;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-        font-size: 1rem;
-        text-decoration: none;
-        width: 36px;
-        height: 36px;
-      }
-      
-      .paper-link {
-        background-color: rgba(234, 88, 12, 0.1);
-        color: #ea580c;
-      }
-      
-      .code-link {
-        background-color: rgba(37, 99, 235, 0.1);
-        color: #2563eb;
-      }
-      
-      .icon-link:hover {
-        transform: translateY(-2px);
-      }
-      
-      .paper-link:hover {
-        background-color: rgba(234, 88, 12, 0.2);
-      }
-      
-      .code-link:hover {
-        background-color: rgba(37, 99, 235, 0.2);
-      }
-      
-      /* 响应式设计 */
-      @media (max-width: 768px) {
-        .timeline-item {
-          grid-template-columns: 1fr;
-          grid-gap: 8px;
-        }
-        
-        .timeline-links {
-          flex-direction: row;
-          margin-top: 8px;
-          align-items: flex-start;
-        }
-        
-        .timeline-date {
-          margin-bottom: 4px;
-        }
-      }
-    </style>
-    <!-- Publications -->
-    <div class="section-card" id="publications">
-      <h2>Publications</h2>
-      <p style="color: #666; font-size: 0.8rem; text-align: right; margin-top: -10px; margin-bottom: 15px;">
-        <span style="color:#bf0000;"><b>*</b></span> equal contribution&nbsp;&nbsp;
-        <span style="color:#bf0000;"><b>†</b></span> corresponding authors&nbsp;&nbsp;
-        <span style="color:#bf0000;"><b>‡</b></span> Work done at ByteDance Seed&nbsp;&nbsp;
-      </p>
-      <table>
-        <tr>
-          <td class="logo-cell" style="width:250px;">
-            <img src="data/paper/LDAgent.png" alt="LDAgent Paper" class="enlargeable" style="cursor: zoom-in;">
-          </td>
-          <td>
-            <div class="pub-title">
-              Hello Again! LLM-powered Personalized Agent for Long-term Dialogue
-            </div>
-            <div class="institution">
-              <i class="fas fa-university"></i>
-              National University of Singapore & University of Science and Technology of China
-            </div>
-            <div class="paper-metrics">
-              <span class="metric">
-                <i class="fas fa-quote-right"></i>
-                <a href="https://scholar.google.com/scholar?hl=en&cites=10848223836082559000" 
-                   target="_blank" 
-                   rel="noopener" 
-                   class="citation-link">
-                  <span id="ldagent-citations">32 citations</span>
-                </a>
-              </span>
-              <span class="metric">
-                <i class="fas fa-star"></i>
-                <span id="ldagent-stars">41 stars</span>
-              </span>
-              <!-- 添加摘要按钮 -->
-              <button class="abstract-btn" 
-                      onclick="toggleAbstract('ldagent-abstract')"
-                      aria-label="Toggle abstract visibility">
-                <i class="fas fa-align-left"></i>
-                Abstract
-              </button>
-            </div>
-            <br>
-            <i>
-              Hao Li<span style="color:#bf0000;"><b>*</b></span>, 
-              <b><u>Chenghao Yang<span style="color:#bf0000;"><b>*</b></span></u></b>, 
-              An Zhang<span style="color:#bf0000;"><b><sup>†</sup></b></span>, 
-              Yang Deng, Xiang Wang, Tat-Seng Chua
-            </i><br>
-            <span style="display: inline-flex; align-items: center; gap: 4px;">
-              <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="Conference" style="width: 16px;">
-              <font style="color: gray; font-weight: bold;">NAACL 2025 (Main)</font>
-            </span> · 
-            <a href="https://aclanthology.org/2025.naacl-long.272/" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/8304/8304411.png" alt="PDF" style="width: 16px">
-              <span>Paper</span>
-            </a> · 
-            <a href="https://github.com/leolee99/LD-Agent" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 16px;">
-              <span>Github</span>
-            </a>
-          </td>
-        </tr>
-      </table>
-      
-      <!-- 将摘要容器移到表格外面 -->
-      <div id="ldagent-abstract" class="abstract-container">
-        <p>
-          Open-domain dialogue systems have seen remarkable advancements with the development of large language models (LLMs). Nonetheless, most existing dialogue systems predominantly focus on brief single-session interactions, neglecting the real-world demands for long-term companionship and personalized interactions with chatbots. Crucial to addressing this real-world need are event summary and persona management, which enable reasoning for appropriate long-term dialogue responses. Recent progress in the human-like cognitive and reasoning capabilities of LLMs suggests that LLM-based agents could significantly enhance automated perception, decision-making, and problem-solving. In response to this potential, we introduce a model-agnostic framework, the Long-term Dialogue Agent (LD-Agent), which incorporates three independently tunable modules dedicated to event perception, persona extraction, and response generation. For the event memory module, long and short-term memory banks are employed to separately focus on historical and ongoing sessions, while a topic-based retrieval mechanism is introduced to enhance the accuracy of memory retrieval. Furthermore, the persona module conducts dynamic persona modeling for both users and agents. The integration of retrieved memories and extracted personas is subsequently fed into the generator to induce appropriate responses. The effectiveness, generality, and cross-domain capabilities of LD-Agent are empirically demonstrated across various illustrative benchmarks, models, and tasks. The code is released at this URL: <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener">https://github.com/leolee99/LD-Agent</a> 
-        </p>
-      </div>
-
-      <table>
-        <tr>
-          <td class="logo-cell" style="width:250px;">
-            <img src="data/paper/CryptoX.png" alt="LDAgent Paper" class="enlargeable" style="cursor: zoom-in;">
-          </td>
-          <td style="vertical-align: top;">
-            <div class="pub-title">
-              CryptoX: Compositional Reasoning Evaluation of Large Language Models
-            </div>
-            <div class="institution">
-              <i class="fas fa-university"></i>
-              Beihang University & M-A-P Lab & ByteDance Inc.
-            </div>
-            <div class="paper-metrics">
-              <span class="metric">
-                <i class="fas fa-quote-right"></i>
-                <a href="https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6500763536884533109" 
-                   target="_blank" 
-                   rel="noopener" 
-                   class="citation-link">
-                  <span id="cryptox-citations">1 citations</span>
-                </a>
-              </span>
-              <span class="metric">
-                <i class="fas fa-star"></i>
-                <span id="cryptox-stars">5 stars</span>
-              </span>
-              <!-- 添加摘要按钮 -->
-              <button class="abstract-btn" onclick="toggleAbstract('cryptox-abstract')">
-                <i class="fas fa-align-left"></i>
-                Abstract
-              </button>
-              <span class="metric">
-                <i class="fas fa-trophy"></i> <a href="https://razor233.github.io/CryptoX/" target="_blank" rel="noopener" style="color: #323853; text-decoration: none;">Leaderboard</a>
-              </span>
-            </div>
-            <br>
-            <!-- # Jiajun Shi, Chaoren Wei, Liqun Yang, Zekun Moore Wang, Chenghao Yang, Ge Zhang, Stephen Huang, Tao Peng, Jian Yang, Zhoufutu Wen -->
-            <i>
-              Jiajun Shi<span style="color:#bf0000;"><b>*</b></span>, 
-              Chaoren Wei<span style="color:#bf0000;"><b>*</b></span>, 
-              Liqun Yang<span style="color:#bf0000;"><b>*</b></span>, 
-              Zekun Moore Wang, 
-              <b><u>Chenghao Yang</u></b>, 
-              Ge Zhang, 
-              Stephen Huang, 
-              Tao Peng, 
-              Jian Yang<span style="color:#bf0000;"><sup>†</sup></span>, 
-              Zhoufutu Wen<span style="color:#bf0000;"><sup>†</sup></span>
-            </i><br>
-            <span style="display: inline-flex; align-items: center; gap: 4px;">
-              <img src="https://cdn-icons-png.flaticon.com/512/11987/11987382.png" alt="arXiv" style="width: 16px;">
-              <font style="color: gray; font-weight: bold;">arXiv</font>
-            </span> · 
-            <a href="https://arxiv.org/abs/2502.07813" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/8304/8304411.png" alt="PDF" style="width: 16px">
-              <span>Paper</span>
-            </a> · 
-            <a href="https://github.com/multimodal-art-projection/CryptoX" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 16px;">
-              <span>Github</span>
-            </a>
-          </td>
-        </tr>
-      </table>
-      <!-- CryptoX的摘要容器 -->
-      <div id="cryptox-abstract" class="abstract-container">
-        <p>
-          The compositional reasoning ability has long been regarded as critical to the generalization and intelligence emergence of large language models (LLMs). However, despite numerous reasoning-related benchmarks, the compositional reasoning capacity of LLMs is rarely studied or quantified in the existing benchmarks. In this paper, we introduce CryptoX, an evaluation framework that, for the first time, combines existing benchmarks and cryptographic principles to quantify the compositional reasoning capacity of LLMs. Building upon CryptoX, we construct CryptoBench, which integrates these principles into several benchmarks for systematic evaluation. We conduct detailed experiments on widely used open-source and closed-source LLMs using CryptoBench, revealing a huge gap between open-source and closed-source LLMs. We further conduct thorough mechanistic interpretability experiments to reveal the inner mechanism of LLMs' compositional reasoning, involving subproblem decomposition, subproblem inference, and summarizing subproblem conclusions. Through analysis based on CryptoBench, we highlight the value of independently studying compositional reasoning and emphasize the need to enhance the compositional reasoning abilities of LLMs.
-        </p>
-      </div>
-
-      <table>
-        <tr>
-          <td class="logo-cell" style="width:250px;">
-            <img src="data/paper/MARS-Bench.png" alt="MARS-Bench Paper" class="enlargeable" style="cursor: zoom-in;">
-          </td>
-          <td style="vertical-align: top;">
-            <div class="pub-title">
-              MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation
-            </div>
-            <div class="institution">
-              <i class="fas fa-university"></i>
-              ByteDance Seed & University of Science and Technology of China
-            </div>
-            <div class="paper-metrics">
-              <span class="metric">
-                <i class="fas fa-quote-right"></i>
-                <a href="https://scholar.google.com/scholar?hl=en&cites=" 
-                   target="_blank" 
-                   rel="noopener" 
-                   class="citation-link">
-                  <span id="marsbench-citations">0 citations</span>
-                </a>
-              </span>
-              <span class="metric">
-                <i class="fas fa-star"></i>
-                <span id="marsbench-stars">1 stars</span>
-              </span>
-              <!-- 添加摘要按钮 -->
-              <button class="abstract-btn" onclick="toggleAbstract('marsbench-abstract')">
-                <i class="fas fa-align-left"></i>
-                Abstract
-              </button>
-              <span class="metric">
-                <i class="fas fa-globe"></i> <a href="https://syuchin.github.io/MARS-Bench/" target="_blank" rel="noopener" style="color: #323853; text-decoration: none;">Project</a>
-              </span>
-            </div>
-            <br>
-            <i>
-              <b><u>Chenghao Yang<span style="color:#bf0000;"><b>*,‡</b></span></u></b>, 
-              Yinbo Luo<span style="color:#bf0000;"><b>*</b></span>, 
-              Zhoufutu Wen<span style="color:#bf0000;"><sup>†</sup></span>, 
-              Qi Chu<span style="color:#bf0000;"><sup>†</sup></span>, 
-              Tao Gong, 
-              Longxiang Liu, 
-              Kaiyuan Zhang, 
-              Jianpeng Jiao, 
-              Ge Zhang, 
-              Wenhao Huang, 
-              Nenghai Yu
-            </i><br>
-            <span style="display: inline-flex; align-items: center; gap: 4px;">
-              <img src="https://cdn-icons-png.flaticon.com/512/11987/11987382.png" alt="arXiv" style="width: 16px;">
-              <font style="color: gray; font-weight: bold;">EMNLP 2025 Findings</font>
-            </span> · 
-            <a href="https://arxiv.org/abs/2505.23810" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/8304/8304411.png" alt="PDF" style="width: 16px">
-              <span>Paper</span>
-            </a> · 
-            <a href="https://github.com/Syuchin/MARS-Bench" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 16px;">
-              <span>Github</span>
-            </a> · 
-            <a href="https://syuchin.github.io/MARS-Bench/" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Project" style="width: 16px;">
-              <span>Project</span>
-            </a>
-          </td>
-        </tr>
-      </table>
-      <!-- MARS-Bench的摘要容器 -->
-      <div id="marsbench-abstract" class="abstract-container">
-        <p>
-          Large Language Models (LLMs), e.g. ChatGPT, have been widely adopted in real-world dialogue applications. However, LLMs' robustness, especially in handling long complex dialogue sessions, including frequent motivation transfer, sophisticated cross-turn dependency, is criticized all along. Nevertheless, no existing benchmarks can fully reflect these weaknesses. We present MARS-Bench, a Multi-turn Athletic Real-world Scenario Dialogue Benchmark, designed to remedy the gap. MARS-Bench is constructed from play-by-play text commentary so to feature realistic dialogues specifically designed to evaluate three critical aspects of multi-turn conversations: Ultra Multi-turn, Interactive Multi-turn, and Cross-turn Tasks. Extensive experiments on MARS-Bench also reveal that closed-source LLMs significantly outperform open-source alternatives, explicit reasoning significantly boosts LLMs' robustness on handling long complex dialogue sessions, and LLMs indeed face significant challenges when handling motivation transfer and sophisticated cross-turn dependency. Moreover, we provide mechanistic interpretability on how attention sinks due to special tokens lead to LLMs' performance degradation when handling long complex dialogue sessions based on attention visualization experiment in Qwen2.5-7B-Instruction.
-        </p>
-      </div>
-      
-      <!-- FinSearchComp -->
-      <table>
-        <tr>
-          <td class="logo-cell" style="width:250px;">
-            <img src="data/paper/FinSearchComp.png" alt="FinSearchComp" class="enlargeable" style="cursor: zoom-in; width: 150px; height: 150px; object-fit: contain;">
-          </td>
-          <td style="vertical-align: top;">
-            <div class="pub-title">
-              FinSearchComp: Towards a Realistic, Expert-Level Evaluation of Financial Search and Reasoning
-            </div>
-            <div class="institution">
-              <i class="fas fa-university"></i>
-              ByteDance Seed
-            </div>
-            <div class="paper-metrics">
-              <span class="metric">
-                <i class="fas fa-quote-right"></i>
-                <a href="https://scholar.google.com/scholar?hl=en&cites=" 
-                   target="_blank" 
-                   rel="noopener" 
-                   class="citation-link">
-                  <span id="finsearchcomp-citations">0 citations</span>
-                </a>
-              </span>
-              <span class="metric">
-                <i class="fas fa-star"></i>
-                <span id="finsearchcomp-stars">0 stars</span>
-              </span>
-              <!-- 摘要按钮 -->
-              <button class="abstract-btn" onclick="toggleAbstract('finsearchcomp-abstract')">
-                <i class="fas fa-align-left"></i>
-                Abstract
-              </button>
-              <span class="metric">
-                <i class="fas fa-globe"></i> <a href="https://randomtutu.github.io/FinSearchComp/" target="_blank" rel="noopener" style="color: #323853; text-decoration: none;">Project</a>
-              </span>
-              <span class="metric">
-                <img src="https://cdn.simpleicons.org/huggingface/4a5568/e2e8f0" alt="Hugging Face" style="width: 16px;"> <a href="https://huggingface.co/datasets/ByteSeedXpert/FinSearchComp" target="_blank" rel="noopener" style="color: #323853; text-decoration: none;">HuggingFace</a>
-              </span>
-            </div>
-            <br>
-            <i><b><u>Chenghao Yang</u></b> (contributor)</i><br>
-            <span style="display: inline-flex; align-items: center; gap: 4px;">
-              <img src="https://cdn-icons-png.flaticon.com/512/11987/11987382.png" alt="arXiv" style="width: 16px;">
-              <font style="color: gray; font-weight: bold;">arXiv</font>
-            </span> · 
-            <a href="https://arxiv.org/pdf/2509.13160" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/8304/8304411.png" alt="PDF" style="width: 16px">
-              <span>Paper</span>
-            </a>
-            · 
-            <a href="https://github.com/randomtutu/FinSearchComp" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 16px;">
-              <span>Github</span>
-            </a>
-
-          </td>
-        </tr>
-      </table>
-      <!-- FinSearchComp 摘要容器 -->
-      <div id="finsearchcomp-abstract" class="abstract-container">
-        <p>
-          Search has emerged as core infrastructure for LLM-based agents and is widely viewed as critical on the path toward more general intelligence. Finance is a particularly demanding proving ground: analysts routinely conduct complex, multi-step searches over time-sensitive, domain-specific data, making it ideal for assessing both search proficiency and knowledge-grounded reasoning. Yet no existing open financial datasets evaluate data searching capability of end-to-end agents, largely because constructing realistic, complicated tasks requires deep financial expertise and time-sensitive data is hard to evaluate. We present FinSearchComp, the first fully open-source agent benchmark for realistic, open-domain financial search and reasoning. FinSearchComp comprises three tasks—Time-Sensitive Data Fetching, Simple Historical Lookup, and Complex Historical Investigation—closely reproduce real-world financial analyst workflows. To ensure difficulty and reliability, we engage 70 professional financial experts for annotation and implement a rigorous multi-stage quality-assurance pipeline. The benchmark includes 635 questions spanning global and Greater China markets, and we evaluate 21 models (products) on it. Grok 4 (web) tops the global subset, approaching expert-level accuracy. DouBao (web) leads on the Greater China subset. Experimental analyses show that equipping agents with web search and financial plugins substantially improves results on FinSearchComp, and the country origin of models and tools impact performance significantly. By aligning with realistic analyst tasks and providing end-to-end evaluation, FinSearchComp offers a professional, high-difficulty testbed for complex financial search and reasoning.
-        </p>
-      </div>
-      <!-- 新工作 -->
-    </div>
-    <!-- Internships -->
-    <div class="section-card" id="internships">
-      <h2>Internships</h2>
-      <table>
-        <tr>
-          <td class="logo-cell" style="width: 200px;">
-            <img src="data/logos/ByteDance.svg" alt="ByteDance Logo" style="width: 150px; height: 150px; object-fit: contain;">
-          </td>
-          <td style="padding-left: 20px; position: relative;">
-            <h3 style="margin: 0; font-size: 1.2rem; color: #2d3748;">ByteDance Inc.</h3>
-            <div style="margin: 4px 0;">
-              <span style="color: #718096; font-size: 0.9rem;">Nov 2024 - Present</span>
-            </div>
-            <div style="margin: 4px 0;">
-              <span style="color: #718096; font-size: 0.9rem;" class="department-info">
-               Algorithm Intern, Research & Development | Seed-Evaluation
-               <button class="history-btn" 
-                       onclick="toggleDeptHistory('dept-history')"
-                       aria-label="Toggle department history">
-                 <i class="fas fa-search"></i>
-                 History
-               </button>
-              </span>
-            </div>
-            
-            <div id="dept-history" class="dept-history-container">
-              <div class="history-header">Department Change History</div>
-              <div class="history-content">
-                <div class="department-change current">
-                 <span class="date">Apr 2025 - Present</span>
-                  <span class="dept">Seed-Evaluation</span>
-                </div>
-                <div class="department-change">
-                 <span class="date">Nov 2024 - Apr 2025</span>
-                  <span class="dept">Seed-LLM-Evaluation</span>
-                </div>
+        <ol class="news-list">
+          <li class="news-item">
+            <div class="news-date">2026-02</div>
+            <div class="news-copy">
+              <p><em>WorldTravel</em> introduced a realistic multimodal travel-planning benchmark spanning 150 real-world scenarios and 2,000+ rendered webpages, revealing a sharp drop in feasibility from text-only to multimodal settings.</p>
+              <div class="inline-links">
+                <span class="pub-type">arXiv</span>
+                <a href="https://arxiv.org/abs/2602.08367" target="_blank" rel="noopener">Paper</a>
               </div>
             </div>
-            
-            <div style="margin: 4px 0;">
-              <span style="color: #718096; font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> Beijing, China</span>
+          </li>
+          <li class="news-item">
+            <div class="news-date">2025-11</div>
+            <div class="news-copy">
+              <p><em>DiscoX</em> introduced an expert-domain discourse-level translation benchmark focused on document coherence, terminology consistency, and cross-sentence faithfulness.</p>
+              <div class="inline-links">
+                <span class="pub-type">arXiv</span>
+                <a href="https://arxiv.org/abs/2511.10984" target="_blank" rel="noopener">Paper</a>
+              </div>
             </div>
-          </td>
-        </tr>
-
-        <tr style="margin-top: 24px;">
-          <td class="logo-cell" style="width: 200px;">
-            <img src="data/logos/nus.jpg" alt="NUS Logo" style="width: 150px; height: 150px; object-fit: contain;">
-          </td>
-          <td style="padding-left: 20px;">
-            <h3 style="margin: 0; font-size: 1.2rem; color: #2d3748;">National University of Singapore</h3>
-            <div style="margin: 4px 0;">
-              <span style="color: #718096; font-size: 0.9rem;">Dec 2023 - Jun 2024</span>
+          </li>
+          <li class="news-item">
+            <div class="news-date">2025-11</div>
+            <div class="news-copy">
+              <p><em>MME-CC</em> introduced a multimodal benchmark for cognitive-capacity evaluation that stresses reasoning-intensive visual-language understanding rather than shallow perception.</p>
+              <div class="inline-links">
+                <span class="pub-type">arXiv</span>
+                <a href="https://arxiv.org/abs/2511.03146" target="_blank" rel="noopener">Paper</a>
+              </div>
             </div>
-            <div style="margin: 4px 0;">
-              <span style="color: #718096; font-size: 0.9rem;">Research Intern (Remote), Agent  | <a href="https://www.nextcenter.org/" target="_blank" rel="noopener" style="color: #4299e1; text-decoration: none; border-bottom: 1px dashed #4299e1;">NExT++ Lab</a></span>
+          </li>
+          <li class="news-item">
+            <div class="news-date">2025-09</div>
+            <div class="news-copy">
+              <p><em>FinSearchComp</em> introduced a financial search-and-reasoning benchmark with open data, simulating analyst-style workflows such as time-sensitive retrieval, evidence synthesis, and multi-step investigation.</p>
+              <div class="inline-links">
+                <span class="pub-type">arXiv</span>
+                <a href="https://arxiv.org/abs/2509.13160" target="_blank" rel="noopener">Paper</a>
+                <a href="https://huggingface.co/datasets/ByteSeedXpert/FinSearchComp" target="_blank" rel="noopener">Data</a>
+              </div>
             </div>
-            <div style="margin: 4px 0; display: flex; align-items: center; gap: 12px;">
-              <span style="color: #718096; font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> Singapore</span>
-              <span style="color: #718096; font-size: 0.9rem;">|</span>
-              <span style="color: #718096; font-size: 0.9rem;">
-                Supervised by Research Fellow
-                <a href="https://github.com/anzhang314" 
-                   target="_blank" 
-                   rel="noopener" 
-                   style="color: #4299e1; text-decoration: none; border-bottom: 1px dashed #4299e1;">
-                  An Zhang
-                </a>
-              </span>
+          </li>
+          <li class="news-item">
+            <div class="news-date">2025-09</div>
+            <div class="news-copy">
+              <p><em>MARS-Bench</em> was accepted to EMNLP 2025 Findings as a benchmark for long interactive sports-commentary dialogue, emphasizing motivation transfer, cross-turn dependency, and multi-turn robustness.</p>
+              <div class="inline-links">
+                <span class="pub-type">Accepted</span>
+                <a href="https://arxiv.org/abs/2505.23810" target="_blank" rel="noopener">Paper</a>
+                <a href="https://syuchin.github.io/MARS-Bench/" target="_blank" rel="noopener">Project</a>
+              </div>
             </div>
-          </td>
-        </tr>
-      </table>
+          </li>
+        </ol>
+        <details class="news-archive">
+          <summary>Show older news</summary>
+          <ol class="news-list">
+            <li class="news-item">
+              <div class="news-date">2025-02</div>
+              <div class="news-copy">
+                <p><em>CryptoX</em> introduced a compositional reasoning benchmark for LLMs, using cryptography-inspired structure to isolate reasoning gaps that broad QA evaluations often obscure.</p>
+                <div class="inline-links">
+                  <span class="pub-type">arXiv</span>
+                  <a href="https://arxiv.org/abs/2502.07813" target="_blank" rel="noopener">Paper</a>
+                  <a href="https://github.com/multimodal-art-projection/CryptoX" target="_blank" rel="noopener">Code</a>
+                </div>
+              </div>
+            </li>
+            <li class="news-item">
+              <div class="news-date">2025-01</div>
+              <div class="news-copy">
+                <p><em>Hello Again!</em> was accepted to NAACL 2025 for its study of long-term personalized dialogue with memory retrieval and dynamic persona modeling across sessions.</p>
+                <div class="inline-links">
+                  <span class="pub-type">Accepted</span>
+                  <a href="https://aclanthology.org/2025.naacl-long.272/" target="_blank" rel="noopener">Paper</a>
+                </div>
+              </div>
+            </li>
+            <li class="news-item">
+              <div class="news-date">2024-06</div>
+              <div class="news-copy">
+                <p>The preprint version of <em>Hello Again!</em> introduced a model-agnostic personalized dialogue agent for long-term memory and persona-aware interaction.</p>
+              </div>
+            </li>
+            <li class="news-item">
+              <div class="news-date">2023-12</div>
+              <div class="news-copy">
+                <p>Joined LDS Lab at USTC and began research on LLM evaluation, dialogue systems, and safety-oriented questions.</p>
+              </div>
+            </li>
+          </ol>
+        </details>
+      </section>
+
+      <section class="content-section" id="publications">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Research output</p>
+            <h2>Publications</h2>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <p class="subsection-label">Publications</p>
+          <ol class="pub-list">
+            <li class="pub-row">
+              <div class="pub-side">
+                <span class="pub-year">2026</span>
+                <span class="pub-type">ICLR</span>
+              </div>
+              <div class="pub-body">
+                <h3 class="pub-title"><a href="https://arxiv.org/abs/2509.13160" target="_blank" rel="noopener">FinSearchComp: Towards a Realistic, Expert-Level Evaluation of Financial Search and Reasoning</a></h3>
+                <p class="pub-authors">Liang Hu, Jianpeng Jiao, Jiashuo Liu, Yanle Ren, Zhoufutu Wen, Kaiyuan Zhang, Xuanliang Zhang, Xiang Gao, Tianci He, Fei Hu, Yali Liao, Zaiyuan Wang, <strong><u>Chenghao Yang</u></strong>, Qianyu Yang, Mingren Yin, Zhiyuan Zeng, Ge Zhang, Xinyi Zhang, Xiying Zhao, Zhenwei Zhu, Hongseok Namkoong, Wenhao Huang, Yuwen Tang</p>
+                <p class="pub-meta">ICLR 2026 Poster · ByteDance Seed</p>
+                <div class="pub-links">
+                  <a href="https://arxiv.org/pdf/2509.13160" target="_blank" rel="noopener">Paper</a>
+                  <a href="https://github.com/randomtutu/FinSearchComp" target="_blank" rel="noopener">Code</a>
+                  <a href="https://randomtutu.github.io/FinSearchComp/" target="_blank" rel="noopener">Project</a>
+                  <a href="https://huggingface.co/datasets/ByteSeedXpert/FinSearchComp" target="_blank" rel="noopener">Data</a>
+                </div>
+              </div>
+            </li>
+            <li class="pub-row">
+              <div class="pub-side">
+                <span class="pub-year">2026</span>
+                <span class="pub-type">ICLR</span>
+              </div>
+              <div class="pub-body">
+                <h3 class="pub-title"><a href="https://arxiv.org/abs/2511.10984" target="_blank" rel="noopener">DiscoX: Benchmarking Discourse-Level Translation in Expert Domains</a></h3>
+                <p class="pub-authors">Xiying Zhao, Zhoufutu Wen, Zhixuan Chen, Jingzhe Ding, Jianpeng Jiao, Shuai Li, Xi Li, Danni Liang, Shengda Long, Qianqian Liu, Xianbo Wu, Hongwan Gao, Xiang Gao, Liang Hu, Jiashuo Liu, Mengyun Liu, Weiran Shi, <strong><u>Chenghao Yang</u></strong>, Qianyu Yang, Xuanliang Zhang, Ge Zhang, Wenhao Huang</p>
+                <p class="pub-meta">ICLR 2026 Poster</p>
+                <div class="pub-links">
+                  <a href="https://arxiv.org/pdf/2511.10984" target="_blank" rel="noopener">Paper</a>
+                  <a href="https://randomtutu.github.io/DiscoX/" target="_blank" rel="noopener">Project</a>
+                  <a href="https://github.com/ByteDance-Seed/DiscoX" target="_blank" rel="noopener">Code</a>
+                  <a href="https://huggingface.co/datasets/ByteDance-Seed/DiscoX" target="_blank" rel="noopener">Data</a>
+                </div>
+              </div>
+            </li>
+            <li class="pub-row">
+              <div class="pub-side">
+                <span class="pub-year">2025</span>
+                <span class="pub-type">NAACL</span>
+              </div>
+              <div class="pub-body">
+                <h3 class="pub-title"><a href="https://aclanthology.org/2025.naacl-long.272/" target="_blank" rel="noopener">Hello Again! LLM-powered Personalized Agent for Long-term Dialogue</a></h3>
+                <p class="pub-authors">Hao Li<sup>*</sup>, <strong><u>Chenghao Yang</u></strong><sup>*</sup>, An Zhang<sup>†</sup>, Yang Deng, Xiang Wang, Tat-Seng Chua</p>
+                <p class="pub-meta">NAACL 2025 (Long Paper) · * equal contribution · † corresponding author</p>
+                <div class="pub-links">
+                  <a href="https://aclanthology.org/2025.naacl-long.272.pdf" target="_blank" rel="noopener">Paper</a>
+                  <a href="https://github.com/leolee99/LD-Agent" target="_blank" rel="noopener">Code</a>
+                </div>
+              </div>
+            </li>
+            <li class="pub-row">
+              <div class="pub-side">
+                <span class="pub-year">2025</span>
+                <span class="pub-type">EMNLP</span>
+              </div>
+              <div class="pub-body">
+                <h3 class="pub-title"><a href="https://arxiv.org/abs/2505.23810" target="_blank" rel="noopener">MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation</a></h3>
+                <p class="pub-authors"><strong><u>Chenghao Yang</u></strong><sup>*</sup>, Yinbo Luo<sup>*</sup>, Zhoufutu Wen<sup>†</sup>, Qi Chu<sup>†</sup>, Tao Gong, Longxiang Liu, Kaiyuan Zhang, Jianpeng Jiao, Ge Zhang, Wenhao Huang, Nenghai Yu</p>
+                <p class="pub-meta">EMNLP 2025 Findings · * equal contribution · † corresponding author</p>
+                <div class="pub-links">
+                  <a href="https://arxiv.org/pdf/2505.23810" target="_blank" rel="noopener">Paper</a>
+                  <a href="https://github.com/Syuchin/MARS-Bench" target="_blank" rel="noopener">Code</a>
+                  <a href="https://syuchin.github.io/MARS-Bench/" target="_blank" rel="noopener">Project</a>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="subsection">
+          <p class="subsection-label">Preprints &amp; Manuscripts</p>
+          <ol class="pub-list">
+            <li class="pub-row">
+              <div class="pub-side">
+                <span class="pub-year">2026</span>
+                <span class="pub-type">arXiv</span>
+              </div>
+              <div class="pub-body">
+                <p class="pub-accent">Recent preprint</p>
+                <h3 class="pub-title"><a href="https://arxiv.org/abs/2602.08367" target="_blank" rel="noopener">WorldTravel: A Realistic Multimodal Travel-Planning Benchmark with Tightly Coupled Constraints</a></h3>
+                <p class="pub-authors">Zexuan Wang<sup>*</sup>, <strong><u>Chenghao Yang</u></strong><sup>*</sup>, Yingqi Que, Zhenzhu Yang, Huaqing Yuan, Yiwen Wang, Zhengxuan Jiang, Shengjie Fang, Zhenhe Wu, Zhaohui Wang, Zhixin Yao, Jiashuo Liu, Jincheng Ren, Yuzhen Li, Yang Yang, Jiaheng Liu, Jian Yang, Zaiyuan Wang, Ge Zhang, Zhoufutu Wen<sup>†</sup>, Wenhao Huang</p>
+                <p class="pub-meta">arXiv preprint, 2026 · * equal contribution · † corresponding author</p>
+                <div class="pub-links">
+                  <a href="https://arxiv.org/pdf/2602.08367" target="_blank" rel="noopener">Paper</a>
+                </div>
+              </div>
+            </li>
+            <li class="pub-row">
+              <div class="pub-side">
+                <span class="pub-year">2026</span>
+                <span class="pub-type">Manuscript</span>
+              </div>
+              <div class="pub-body">
+                <h3 class="pub-title">Agent4Weakness: An Agentic Framework for In-Depth Model Weakness Discovery</h3>
+                <p class="pub-authors">Xuanliang Zhang<sup>*</sup>, <strong><u>Chenghao Yang</u></strong><sup>*</sup>, Zhoufutu Wen<sup>†</sup>, Dingzirui Wang, Ge Zhang, Xiying Zhao, Tianren Feng, Jianpeng Jiao, Jingkai Liu, Zaiyuan Wang, Zuo Wang, Wenya Wu, Zhou Huan, Jin Chen, Wenhao Huang, Qingfu Zhu, Wanxiang Che</p>
+                <p class="pub-meta">ACL ARR 2026 submission · under review · * equal contribution · † corresponding author</p>
+              </div>
+            </li>
+            <li class="pub-row">
+              <div class="pub-side">
+                <span class="pub-year">2026</span>
+                <span class="pub-type">Manuscript</span>
+              </div>
+              <div class="pub-body">
+                <h3 class="pub-title">When Agents Look the Same: Quantifying Distillation-Induced Similarity in Tool-Use Behaviors</h3>
+                <p class="pub-authors"><strong><u>Chenghao Yang</u></strong>, Yuning Zhang, Zhoufutu Wen, Jiaheng Liu, Qi Chu, Tao Gong, Nenghai Yu</p>
+                <p class="pub-meta">ACL ARR 2026 submission · under review</p>
+              </div>
+            </li>
+            <li class="pub-row">
+              <div class="pub-side">
+                <span class="pub-year">2025</span>
+                <span class="pub-type">arXiv</span>
+              </div>
+              <div class="pub-body">
+                <h3 class="pub-title"><a href="https://arxiv.org/abs/2511.03146" target="_blank" rel="noopener">MME-CC: A Challenging Multi-Modal Evaluation Benchmark of Cognitive Capacity</a></h3>
+                <p class="pub-authors">Kaiyuan Zhang<sup>*</sup>, <strong><u>Chenghao Yang</u></strong><sup>*</sup>, Zhoufutu Wen<sup>†</sup>, Sihang Yuan, Qiuyue Wang, Chaoyi Huang, Guosheng Zhu, He Wang, Huawenyu Lu, Jianing Wen, Jianpeng Jiao, Lishu Luo, Longxiang Liu, Sijin Wu, Xiaolei Zhu, Xuanliang Zhang, Ge Zhang, Yi Lin, Guang Shi, Chaoyou Fu, Wenhao Huang</p>
+                <p class="pub-meta">arXiv 2025 · * equal contribution · † corresponding author</p>
+                <div class="pub-links">
+                  <a href="https://arxiv.org/abs/2511.03146" target="_blank" rel="noopener">Paper</a>
+                </div>
+              </div>
+            </li>
+            <li class="pub-row">
+              <div class="pub-side">
+                <span class="pub-year">2025</span>
+                <span class="pub-type">arXiv</span>
+              </div>
+              <div class="pub-body">
+                <h3 class="pub-title"><a href="https://arxiv.org/abs/2502.07813" target="_blank" rel="noopener">CryptoX: Compositional Reasoning Evaluation of Large Language Models</a></h3>
+                <p class="pub-authors">Jiajun Shi<sup>*</sup>, Chaoren Wei<sup>*</sup>, Liqun Yang<sup>*</sup>, Zekun Moore Wang, <strong><u>Chenghao Yang</u></strong>, Ge Zhang, Stephen Huang, Tao Peng, Jian Yang<sup>†</sup>, Zhoufutu Wen<sup>†</sup></p>
+                <p class="pub-meta">arXiv 2025 · * equal contribution · † corresponding author</p>
+                <div class="pub-links">
+                  <a href="https://arxiv.org/pdf/2502.07813" target="_blank" rel="noopener">Paper</a>
+                  <a href="https://github.com/multimodal-art-projection/CryptoX" target="_blank" rel="noopener">Code</a>
+                  <a href="https://razor233.github.io/CryptoX/" target="_blank" rel="noopener">Leaderboard</a>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="content-section" id="experience">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Education &amp; Experience</p>
+            <h2>Experience</h2>
+          </div>
+        </div>
+        <ol class="ledger">
+          <li class="ledger-row">
+            <div class="ledger-date">2025-</div>
+            <div class="ledger-body">
+              <h3 class="ledger-title">M.Eng., Cyberspace Security</h3>
+              <p class="ledger-org">University of Science and Technology of China</p>
+              <p class="ledger-meta">Advisors: Prof. Qi Chu &amp; Prof. Nenghai Yu</p>
+              <p class="ledger-note">Research on LLM safety, evaluation, alignment, and benchmark design.</p>
+            </div>
+          </li>
+          <li class="ledger-row">
+            <div class="ledger-date">2024.11&ndash;2025.12</div>
+            <div class="ledger-body">
+              <h3 class="ledger-title">Algorithm Intern</h3>
+              <p class="ledger-org">ByteDance Seed, Seed-Evaluation Team</p>
+              <p class="ledger-meta">Beijing, China</p>
+              <p class="ledger-note">Developed realistic evaluation pipelines and benchmark suites for large-model applications.</p>
+            </div>
+          </li>
+          <li class="ledger-row">
+            <div class="ledger-date">2023-2024</div>
+            <div class="ledger-body">
+              <h3 class="ledger-title">Research Intern</h3>
+              <p class="ledger-org">NExT++ Lab, National University of Singapore</p>
+              <p class="ledger-meta">Remote · Supervised by Research Fellow An Zhang</p>
+              <p class="ledger-note">Conducted research on LLM-based dialogue agents for long-term personalization and memory-aware response generation.</p>
+            </div>
+          </li>
+          <li class="ledger-row">
+            <div class="ledger-date">2021-2025</div>
+            <div class="ledger-body">
+              <h3 class="ledger-title">B.Eng., Information Security</h3>
+              <p class="ledger-org">University of Science and Technology of China</p>
+              <p class="ledger-note">Coursework and early research in information security, machine learning, and AI security.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="content-section" id="awards">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Recognition</p>
+            <h2>Awards</h2>
+          </div>
+        </div>
+        <ol class="awards-list">
+          <li class="award-row">
+            <span class="award-name">Outstanding Graduate Award</span>
+            <span class="award-org">USTC</span>
+            <span class="award-year">2025</span>
+          </li>
+          <li class="award-row">
+            <span class="award-name">Outstanding Student Bronze Award</span>
+            <span class="award-org">USTC</span>
+            <span class="award-year">2024</span>
+          </li>
+          <li class="award-row">
+            <span class="award-name">Wang Xiaomo Talent Program Scholarship ×4</span>
+            <span class="award-org">USTC</span>
+            <span class="award-year">2021-2024</span>
+          </li>
+        </ol>
+      </section>
     </div>
+  </main>
 
-
-    <!-- Education -->
-    <div class="section-card" id="education">
-      <h2>Education</h2>
-      <table>
-        <!-- 研究生 -->
-        <tr>
-          <td class="logo-cell" style="width: 150px;">
-            <img src="data/logos/ustc.png" alt="USTC Logo" style="max-width: 100%; height: auto; border-radius: 4px;">
-          </td>
-          <td>
-            <b>University of Science and Technology of China</b><br>
-            <span class="calendar" style="color: #555; font-size: 0.9rem;">
-              Sep 2025 - Present
-            </span><br>
-            M.Eng. in Cyberspace Security (0838)<br>
-            <span style="color: #777;">Research Focus: Large Language Model Security</span><br>
-            <span style="color: #718096; font-size: 0.9rem; font-style: italic;">Recommended for Graduate Admission</span>
-          </td>
-        </tr>
-        <!-- 本科 -->
-        <tr>
-          <td class="logo-cell" style="width: 150px;">
-            <img src="data/logos/ustc.png" alt="USTC Logo" style="max-width: 100%; height: auto; border-radius: 4px;">
-          </td>
-          <td>
-            <b>University of Science and Technology of China</b><br>
-            <span class="calendar" style="color: #555; font-size: 0.9rem;">
-              Sep 2021 - Jun 2025
-            </span><br>
-            B.Eng. in Information Security
-          </td>
-        </tr>
-      </table>
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div>
+        <p class="footer-title">Chenghao Yang</p>
+        <p class="footer-note">&copy; 2025&ndash;2026 Chenghao Yang</p>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="mailto:yangchenghao@mail.ustc.edu.cn">Email</a>
+        <a href="https://scholar.google.com/citations?user=8RnQ3EEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a>
+        <a href="https://github.com/Syuchin" target="_blank" rel="noopener">GitHub</a>
+        <a href="trends.html">Trends</a>
+      </div>
     </div>
+  </footer>
 
-    <!-- Awards -->
-    <div class="section-card" id="awards">
-      <h2>Awards</h2>
-      <table>
-        <tr>
-          <td>◆ University-level Outstanding Graduate Award, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
-          <td class="text-right">2025</td>
-        </tr>
-        <tr>
-          <td>◆ Outstanding Student Bronze Award , <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
-          <td class="text-right ">2024</td>
-        </tr>
-        <tr>
-          <td>◆ Longfor Scholarship, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
-          <td class="text-right">2023</td>
-        </tr>
-        <tr>
-          <td style="width:80%">◆ Endeavor Scholarship, <i><a href="https://www.ustc.edu.cn/">USTC</a></i></td>
-          <td class="text-right">2022</td>
-        </tr>
-        <tr>
-          <td>
-            ◆ Wang Xiaomo Talent Program in Cyber Science and Technology Scholarship 
-            <span style="color:#bf0000;"><b>× 4</b></span>, 
-            <i><a href="https://www.ustc.edu.cn">USTC</a></i>
-          </td>
-          <td class="text-right">
-            2021 ～ 2024
-          </td>
-        </tr>
-      </table>
-    </div>
-         <!-- Visitor Counter -->
-  <!-- <div style="text-align: center; padding: 10px 20px; margin-top: 10px; color: #666;">
-    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.8); 
-         padding: 6px 14px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-         transition: all 0.3s ease;
-         cursor: default;">
-      <i class="fas fa-eye" style="color: #4a5568;"></i>
-      <span style="font-size: 0.9rem; color: #4a5568;">
-        Total Visitors: 
-        <span style="margin-left: 4px;">
-          <span id="visits" style="font-weight: 600; color: #000000;">
-            <span id="visitor_count">0</span>
-          </span>
-        </span>
-      </span>
-    </div>
-  </div> -->
-    </div>
-</div><!-- /.container -->
-
-  <!-- Modal for enlargeable images -->
-  <div id="imgModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modal-img">
-  </div>
-  <!-- 访问计数器 -->
-  <div style="text-align: center; padding: 10px 20px; margin-top: 10px; color: #666;">
-    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.8); 
-         padding: 6px 14px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-         transition: all 0.3s ease;
-         cursor: default;">
-      <i class="fas fa-eye" style="color: #4a5568;"></i>
-      <span style="font-size: 0.9rem; color: #4a5568;">
-        Total Visitors: 
-        <span style="margin-left: 4px;">
-          <span id="busuanzi_value_site_uv" style="font-weight: 600; color: #000000;">0</span>
-        </span>
-      </span>
-    </div>
-  </div>
-
-  <!-- 不蒜子统计脚本 -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  
-  <!-- 备用计数器（使用你的GitHub Pages域名） -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // 如果不蒜子加载失败，使用CountAPI作为备用
-      setTimeout(() => {
-        const busuanziElement = document.getElementById('busuanzi_value_site_uv');
-        if (!busuanziElement || busuanziElement.textContent === '0') {
-          // 使用你的GitHub Pages域名
-          fetch('https://api.countapi.xyz/hit/syuchin.github.io/visits')
-            .then(response => response.json())
-            .then(data => {
-              busuanziElement.textContent = data.value;
-            })
-            .catch(error => {
-              console.log('CountAPI也失败了，使用本地计数');
-              // 本地计数作为最后的备用方案
-              let count = localStorage.getItem('localVisitCount') || 0;
-              count = parseInt(count) + 1;
-              localStorage.setItem('localVisitCount', count);
-              busuanziElement.textContent = count;
-            });
-        }
-      }, 2000);
-    });
-  </script>
-  <script>
-    // 为日期徽章设置随机背景色
-    document.querySelectorAll('.date-badge').forEach(badge => {
-      // 使用更柔和的颜色范围：200-235
-      const r = Math.floor(Math.random() * 35) + 200;  // 200-235
-      const g = Math.floor(Math.random() * 35) + 200;  // 200-235
-      const b = Math.floor(Math.random() * 35) + 200;  // 200-235
-      badge.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.2)`;  // 降低不透明度到0.2
-      badge.style.border = '1px solid rgba(0, 0, 0, 0.05)';  // 添加淡淡的边框
-    });
-
-    // 获取 Modal 元素
-    const modal = document.getElementById('imgModal');
-    const modalImg = document.getElementById('modal-img');
-    const closeBtn = document.querySelector('#imgModal .close');
-    
-    // 为所有带有 "enlargeable" 类的图片添加点击事件
-    document.querySelectorAll('.enlargeable').forEach(img => {
-      img.addEventListener('click', function() {
-        modal.style.display = 'block';
-        modalImg.src = this.src;
-      });
-    });
-
-    // 点击 (×) 按钮关闭 Modal
-    closeBtn.addEventListener('click', function() {
-      modal.style.display = 'none';
-    });
-
-    // 点击 Modal 背景关闭
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-  </script>
-
-  <!-- 显示最后修改时间脚本 -->
-  <script>
-    const dateEl = document.getElementById("updateDate");
-    if (dateEl) {
-      const lastModified = new Date(document.lastModified);
-      const yyyy = lastModified.getFullYear();
-      const mm = String(lastModified.getMonth()+1).padStart(2,"0"); 
-      const dd = String(lastModified.getDate()).padStart(2,"0");
-      dateEl.textContent = `${yyyy}-${mm}-${dd}`;
-    }
-  </script>
-
-  <script>
-    window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 10) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-  </script>
-
-  <script>
-    // 为每个section添加延迟动画
-    document.querySelectorAll('.section-card').forEach((card, index) => {
-      card.style.animationDelay = `${index * 0.2}s`;
-    });
-  </script>
-
-  <script>
-    window.addEventListener('scroll', () => {
-      const scrolled = document.documentElement.scrollTop;
-      const maxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrollPercent = scrolled / maxHeight;
-      document.documentElement.style.setProperty('--scroll', scrollPercent);
-    });
-  </script>
-
-  <script>
-    // 统一按标题大小写无关匹配论文条目，避免键名大小写不一致导致不更新
-    function getPaperByTitle(papers, title) {
-      if (papers[title]) return papers[title];
-      const lower = title.toLowerCase();
-      const key = Object.keys(papers).find(k => k.toLowerCase() === lower);
-      return key ? papers[key] : null;
-    }
-
-    // 合并之前的 updateCitations 和 updateMetrics 函数
-    async function updateMetrics() {
-      try {
-        const response = await fetch('data/scholar_data.json');
-        const data = await response.json();
-        
-        // 更新 LD-Agent 论文引用数和星标数
-        const ldAgentPaper = getPaperByTitle(data.papers, 'Hello again! llm-powered personalized agent for long-term dialogue');
-        if (ldAgentPaper) {
-          document.getElementById('ldagent-citations').textContent = `${ldAgentPaper.citations} citations`;
-        }
-        
-        // 更新 CryptoX 论文引用数和星标数（大小写无关匹配）
-        const cryptoXPaper = getPaperByTitle(data.papers, 'CryptoX: Compositional Reasoning Evaluation of Large Language Models');
-        if (cryptoXPaper) {
-          document.getElementById('cryptox-citations').textContent = `${cryptoXPaper.citations} citations`;
-        }
-        
-        // 更新 MARS-Bench 论文引用数和星标数
-        const marsBenchPaper = getPaperByTitle(data.papers, 'MARS-Bench: A Multi-turn Athletic Real-world Scenario Benchmark for Dialogue Evaluation');
-        if (marsBenchPaper) {
-          document.getElementById('marsbench-citations').textContent = `${marsBenchPaper.citations} citations`;
-        }
-        
-        // 更新 FinSearchComp 论文引用数
-        const finSearchCompPaper = getPaperByTitle(data.papers, 'Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning');
-        if (finSearchCompPaper) {
-          document.getElementById('finsearchcomp-citations').textContent = `${finSearchCompPaper.citations} citations`;
-        }
-        
-        // 更新 GitHub 星标数
-        if (data.github_stars) {
-          document.getElementById('ldagent-stars').textContent = 
-            `${data.github_stars["leolee99/LD-Agent"] || 0} stars`;
-          
-          document.getElementById('cryptox-stars').textContent = 
-            `${data.github_stars["multimodal-art-projection/CryptoX"] || 0} stars`;
-            
-          document.getElementById('marsbench-stars').textContent = 
-            `${data.github_stars["Syuchin/MARS-Bench"] || 0} stars`;
-
-          document.getElementById('finsearchcomp-stars').textContent = 
-            `${data.github_stars["randomtutu/FinSearchComp"] || 0} stars`;
-        }
-      } catch (error) {
-        console.error('Error loading metrics data:', error);
-      }
-    }
-
-    // 页面加载时更新一次即可
-    document.addEventListener('DOMContentLoaded', updateMetrics);
-  </script>
-
-  <script>
-    function toggleAbstract(abstractId) {
-      const container = document.getElementById(abstractId);
-      const button = event.currentTarget;
-      
-      // 切换摘要显示状态
-      container.classList.toggle('show');
-      button.classList.toggle('active');
-      
-      // 更新按钮文本
-      if (container.classList.contains('show')) {
-        button.innerHTML = '<i class="fas fa-align-left"></i> Hide Abstract';
-      } else {
-        button.innerHTML = '<i class="fas fa-align-left"></i> Abstract';
-      }
-    }
-  </script>
-
-  <script>
-    function toggleDeptHistory(historyId) {
-      const container = document.getElementById(historyId);
-      const button = event.currentTarget;
-      
-      // 切换显示状态
-      container.classList.toggle('show');
-      button.classList.toggle('active');
-      
-      // 更新按钮文本
-      if (container.classList.contains('show')) {
-        button.innerHTML = '<i class="fas fa-search"></i> Hide';
-      } else {
-        button.innerHTML = '<i class="fas fa-search"></i> History';
-      }
-    }
-  </script>
-
-  <script>
-    function toggleNews() {
-      const hiddenNews = document.querySelector('.hidden-news');
-      const toggleBtn = document.getElementById('news-toggle-btn');
-      
-      hiddenNews.classList.toggle('expanded');
-      toggleBtn.classList.toggle('expanded');
-    }
-  </script>
-
-  <style>
-    /* Education 时间轴样式 */
-    .section-card#education table {
-      position: relative;
-    }
-    
-    .section-card#education table::before {
-      content: '';
-      position: absolute;
-      left: 10px;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, 
-        rgba(0, 115, 177, 0), 
-        rgba(0, 115, 177, 0.2),
-        rgba(0, 115, 177, 0)
-      );
-    }
-    
-    .section-card#education tr {
-      position: relative;
-    }
-    
-    .section-card#education tr::before {
-      content: '';
-      position: absolute;
-      left: 6px;
-      top: 50%;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #0073b1;
-      transform: translateY(-50%);
-      transition: all 0.3s ease;
-    }
-    
-    /* 当前学历的点会更大一些 */
-    .section-card#education tr:first-child::before {
-      width: 14px;
-      height: 14px;
-      left: 4px;
-      background: #0073b1;
-      box-shadow: 0 0 0 4px rgba(0, 115, 177, 0.2);
-    }
-    
-    /* 为 Education 的 logo 添加左边距 */
-    .section-card#education .logo-cell {
-      padding-left: 30px;
-    }
-  </style>
-
-  <script>
-    // Email copy to clipboard functionality
-    function copyEmail() {
-      const email = "yangchenghao@mail.ustc.edu.cn";
-      navigator.clipboard.writeText(email)
-        .then(() => {
-          const btn = document.querySelector('.email-copy-btn');
-          const originalText = btn.innerHTML;
-          btn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
-          
-          setTimeout(() => {
-            btn.innerHTML = originalText;
-          }, 2000);
-        })
-        .catch(err => {
-          console.error('Failed to copy: ', err);
-          alert('Failed to copy email. Please try again manually.');
-        });
-    }
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
