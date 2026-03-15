@@ -222,7 +222,6 @@ pre {
 
 .site-nav-list,
 .rail-links,
-.rail-nav,
 .meta-list,
 .news-list,
 .pub-list,
@@ -240,8 +239,7 @@ pre {
   gap: 0.2rem;
 }
 
-.nav-link,
-.rail-nav a {
+.nav-link {
   display: inline-flex;
   align-items: center;
   min-height: 2.3rem;
@@ -344,9 +342,8 @@ pre {
 }
 
 .meta-list-inline {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.8rem;
+  display: grid;
+  gap: 0.42rem;
 }
 
 .meta-list li,
@@ -388,21 +385,6 @@ pre {
 .pub-links a:focus-visible,
 .trend-links a:focus-visible {
   border-bottom-color: currentColor;
-}
-
-.rail-nav {
-  display: grid;
-  gap: 0.18rem;
-}
-
-.rail-nav a {
-  min-height: auto;
-  padding: 0.24rem 0;
-}
-
-.rail-nav a.is-active,
-.rail-nav a[aria-current="page"] {
-  color: var(--text);
 }
 
 .main-column {
@@ -807,6 +789,7 @@ pre {
 }
 
 .status-message {
+  margin: 0.8rem 0 0;
   color: var(--text-muted);
   font-size: 0.95rem;
 }
@@ -966,10 +949,6 @@ pre {
 
   .rail-photo {
     width: 144px;
-  }
-
-  .rail-nav.desktop-only {
-    display: none;
   }
 
   .mobile-only {
