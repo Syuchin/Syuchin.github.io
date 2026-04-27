@@ -44,6 +44,13 @@
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15182188776743263834",
       "citation_id": "8RnQ3EEAAAAJ:Tyk-4Ss8FVUC"
     },
+    "When Agents Look the Same: Quantifying Distillation-Induced Similarity in Tool-Use Behaviors": {
+      "citations": 0,
+      "year": 2026,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:eQOLeE2rZwMC",
+      "citation_url": "",
+      "citation_id": "8RnQ3EEAAAAJ:eQOLeE2rZwMC"
+    },
     "WorldTravel: A Realistic Multimodal Travel-Planning Benchmark with Tightly Coupled Constraints": {
       "citations": 0,
       "year": 2026,
@@ -53,7 +60,7 @@
     }
   },
   "citation_summary": {
-    "total_papers": 7,
+    "total_papers": 8,
     "total_citations": 142,
     "highly_cited_papers": [
       {
@@ -68,6 +75,11 @@
       }
     ],
     "recent_papers": [
+      {
+        "title": "When Agents Look the Same: Quantifying Distillation-Induced Similarity in Tool-Use Behaviors",
+        "citations": 0,
+        "year": 2026
+      },
       {
         "title": "WorldTravel: A Realistic Multimodal Travel-Planning Benchmark with Tightly Coupled Constraints",
         "citations": 0,
@@ -206,5 +218,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 16
   },
-  "last_updated": "2026-04-26T19:25:53.385131"
+  "last_updated": "2026-04-27T05:08:15.471156"
 }
