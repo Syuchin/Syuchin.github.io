@@ -639,6 +639,17 @@ pre {
   opacity: 0.68;
 }
 
+.pub-legend {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+.pub-legend .pub-title-marker {
+  font-size: 0.72em;
+  vertical-align: baseline;
+  margin-right: 0.15em;
+}
+
 .pub-title-link,
 .pub-title-text {
   min-width: 0;
