@@ -57,10 +57,17 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:YsMSGLbcyi4C",
       "citation_url": "",
       "citation_id": "8RnQ3EEAAAAJ:YsMSGLbcyi4C"
+    },
+    "Beyond Score: A Multi-Agent System to Discover Capability and Behavioral Weaknesses in LLMs": {
+      "citations": 0,
+      "year": 2026,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:LkGwnXOMwfcC",
+      "citation_url": "",
+      "citation_id": "8RnQ3EEAAAAJ:LkGwnXOMwfcC"
     }
   },
   "citation_summary": {
-    "total_papers": 8,
+    "total_papers": 9,
     "total_citations": 227,
     "highly_cited_papers": [
       {
@@ -92,6 +99,11 @@
       },
       {
         "title": "WorldTravel: A Realistic Multimodal Travel-Planning Benchmark with Tightly Coupled Constraints",
+        "citations": 0,
+        "year": 2026
+      },
+      {
+        "title": "Beyond Score: A Multi-Agent System to Discover Capability and Behavioral Weaknesses in LLMs",
         "citations": 0,
         "year": 2026
       },
@@ -243,10 +255,10 @@
     }
   ],
   "github_stars": {
-    "leolee99/LD-Agent": 83,
+    "leolee99/LD-Agent": 84,
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 3,
-    "randomtutu/FinSearchComp": 19
+    "randomtutu/FinSearchComp": 20
   },
-  "last_updated": "2026-09-07T07:03:09.979172"
+  "last_updated": "2026-09-10T07:03:01.960540"
 }
