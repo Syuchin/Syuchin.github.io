@@ -1,9 +1,9 @@
 {
-  "total_citations": 243,
-  "h_index": 4,
+  "total_citations": 254,
+  "h_index": 5,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 195,
+      "citations": 201,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15635492636491334896",
@@ -29,6 +29,13 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:u-x6o8ySG0sC",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6500763536884533109",
       "citation_id": "8RnQ3EEAAAAJ:u-x6o8ySG0sC"
+    },
+    "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning, 2025a": {
+      "citations": 5,
+      "year": 2026,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:roLk4NBRz8UC",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2617473517591552622",
+      "citation_id": "8RnQ3EEAAAAJ:roLk4NBRz8UC"
     },
     "Mme-cc: A challenging multi-modal evaluation benchmark of cognitive capacity": {
       "citations": 3,
@@ -67,12 +74,12 @@
     }
   },
   "citation_summary": {
-    "total_papers": 9,
-    "total_citations": 243,
+    "total_papers": 10,
+    "total_citations": 254,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 195,
+        "citations": 201,
         "year": 2025
       },
       {
@@ -89,9 +96,19 @@
         "title": "Cryptox: Compositional reasoning evaluation of large language models",
         "citations": 5,
         "year": 2025
+      },
+      {
+        "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning, 2025a",
+        "citations": 5,
+        "year": 2026
       }
     ],
     "recent_papers": [
+      {
+        "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning, 2025a",
+        "citations": 5,
+        "year": 2026
+      },
       {
         "title": "When Agents Look the Same: Quantifying Distillation-Induced Similarity in Tool-Use Behaviors",
         "citations": 0,
@@ -109,7 +126,7 @@
       },
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 195,
+        "citations": 201,
         "year": 2025
       },
       {
@@ -140,7 +157,7 @@
     ],
     "citation_distribution": {
       "20+": 2,
-      "5-9": 2,
+      "5-9": 3,
       "1-4": 2
     }
   },
@@ -255,7 +272,7 @@
     },
     {
       "date": "2026-10",
-      "citations": 243
+      "citations": 254
     }
   ],
   "github_stars": {
@@ -264,5 +281,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 20
   },
-  "last_updated": "2026-10-01T22:48:38.620166"
+  "last_updated": "2026-10-04T07:49:37.500413"
 }
