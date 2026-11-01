@@ -285,6 +285,10 @@
     {
       "date": "2026-10",
       "citations": 276
+    },
+    {
+      "date": "2026-11",
+      "citations": 276
     }
   ],
   "github_stars": {
@@ -293,5 +297,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 20
   },
-  "last_updated": "2026-10-31T21:46:08.638616"
+  "last_updated": "2026-11-01T08:47:32.041633"
 }
