@@ -1,5 +1,5 @@
 {
-  "total_citations": 276,
+  "total_citations": 280,
   "h_index": 5,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
@@ -10,7 +10,7 @@
       "citation_id": "8RnQ3EEAAAAJ:d1gkVwhDpl0C"
     },
     "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning": {
-      "citations": 39,
+      "citations": 43,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:zYLM7Y9cAGgC",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6089271650791707487,14375694688195350503",
@@ -82,7 +82,7 @@
   },
   "citation_summary": {
     "total_papers": 11,
-    "total_citations": 276,
+    "total_citations": 280,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
@@ -91,7 +91,7 @@
       },
       {
         "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 39,
+        "citations": 43,
         "year": 2025
       },
       {
@@ -143,7 +143,7 @@
       },
       {
         "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 39,
+        "citations": 43,
         "year": 2025
       },
       {
@@ -288,7 +288,7 @@
     },
     {
       "date": "2026-11",
-      "citations": 276
+      "citations": 280
     }
   ],
   "github_stars": {
@@ -297,5 +297,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 20
   },
-  "last_updated": "2026-11-01T22:14:09.033235"
+  "last_updated": "2026-11-04T08:41:13.987625"
 }
