@@ -1,9 +1,9 @@
 {
-  "total_citations": 280,
+  "total_citations": 283,
   "h_index": 5,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 216,
+      "citations": 218,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15635492636491334896",
@@ -37,6 +37,13 @@
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2617473517591552622",
       "citation_id": "8RnQ3EEAAAAJ:roLk4NBRz8UC"
     },
+    "DiscoX: Benchmarking Discourse-Level Translation task in Expert Domains": {
+      "citations": 3,
+      "year": 2025,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:Y0pCki6q_DkC",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9078801583975100296,8812026178794854108,6035406420111091772",
+      "citation_id": "8RnQ3EEAAAAJ:Y0pCki6q_DkC"
+    },
     "Mme-cc: A challenging multi-modal evaluation benchmark of cognitive capacity": {
       "citations": 3,
       "year": 2025,
@@ -44,12 +51,12 @@
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15182188776743263834",
       "citation_id": "8RnQ3EEAAAAJ:Tyk-4Ss8FVUC"
     },
-    "DiscoX: Benchmarking Discourse-Level Translation task in Expert Domains": {
-      "citations": 2,
-      "year": 2025,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:Y0pCki6q_DkC",
-      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=8812026178794854108,9078801583975100296,6035406420111091772",
-      "citation_id": "8RnQ3EEAAAAJ:Y0pCki6q_DkC"
+    "DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects": {
+      "citations": 0,
+      "year": 2026,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:UebtZRa9Y70C",
+      "citation_url": "",
+      "citation_id": "8RnQ3EEAAAAJ:UebtZRa9Y70C"
     },
     "Agent4Weakness: An Agentic Framework for In-Depth Model Weakness Discovery": {
       "citations": 0,
@@ -81,12 +88,12 @@
     }
   },
   "citation_summary": {
-    "total_papers": 11,
-    "total_citations": 280,
+    "total_papers": 12,
+    "total_citations": 283,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 216,
+        "citations": 218,
         "year": 2025
       },
       {
@@ -117,6 +124,11 @@
         "year": 2026
       },
       {
+        "title": "DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects",
+        "citations": 0,
+        "year": 2026
+      },
+      {
         "title": "Agent4Weakness: An Agentic Framework for In-Depth Model Weakness Discovery",
         "citations": 0,
         "year": 2026
@@ -138,7 +150,7 @@
       },
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 216,
+        "citations": 218,
         "year": 2025
       },
       {
@@ -157,13 +169,13 @@
         "year": 2025
       },
       {
-        "title": "Mme-cc: A challenging multi-modal evaluation benchmark of cognitive capacity",
+        "title": "DiscoX: Benchmarking Discourse-Level Translation task in Expert Domains",
         "citations": 3,
         "year": 2025
       },
       {
-        "title": "DiscoX: Benchmarking Discourse-Level Translation task in Expert Domains",
-        "citations": 2,
+        "title": "Mme-cc: A challenging multi-modal evaluation benchmark of cognitive capacity",
+        "citations": 3,
         "year": 2025
       }
     ],
@@ -288,7 +300,7 @@
     },
     {
       "date": "2026-11",
-      "citations": 280
+      "citations": 283
     }
   ],
   "github_stars": {
@@ -297,5 +309,5 @@
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 20
   },
-  "last_updated": "2026-11-04T08:41:13.987625"
+  "last_updated": "2026-11-06T23:21:33.138321"
 }
