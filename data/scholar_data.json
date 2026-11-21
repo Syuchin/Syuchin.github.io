@@ -1,16 +1,16 @@
 {
-  "total_citations": 294,
+  "total_citations": 299,
   "h_index": 5,
   "papers": {
     "Hello again! llm-powered personalized agent for long-term dialogue": {
-      "citations": 225,
+      "citations": 226,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:d1gkVwhDpl0C",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15635492636491334896",
       "citation_id": "8RnQ3EEAAAAJ:d1gkVwhDpl0C"
     },
     "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning": {
-      "citations": 47,
+      "citations": 50,
       "year": 2025,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:zYLM7Y9cAGgC",
       "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6089271650791707487,14375694688195350503",
@@ -52,10 +52,10 @@
       "citation_id": "8RnQ3EEAAAAJ:Tyk-4Ss8FVUC"
     },
     "DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects": {
-      "citations": 0,
+      "citations": 1,
       "year": 2026,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8RnQ3EEAAAAJ&citation_for_view=8RnQ3EEAAAAJ:UebtZRa9Y70C",
-      "citation_url": "",
+      "citation_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13309915152607497026",
       "citation_id": "8RnQ3EEAAAAJ:UebtZRa9Y70C"
     },
     "Agent4Weakness: An Agentic Framework for In-Depth Model Weakness Discovery": {
@@ -89,16 +89,16 @@
   },
   "citation_summary": {
     "total_papers": 12,
-    "total_citations": 294,
+    "total_citations": 299,
     "highly_cited_papers": [
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 225,
+        "citations": 226,
         "year": 2025
       },
       {
         "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 47,
+        "citations": 50,
         "year": 2025
       },
       {
@@ -125,7 +125,7 @@
       },
       {
         "title": "DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects",
-        "citations": 0,
+        "citations": 1,
         "year": 2026
       },
       {
@@ -150,12 +150,12 @@
       },
       {
         "title": "Hello again! llm-powered personalized agent for long-term dialogue",
-        "citations": 225,
+        "citations": 226,
         "year": 2025
       },
       {
         "title": "Finsearchcomp: Towards a realistic, expert-level evaluation of financial search and reasoning",
-        "citations": 47,
+        "citations": 50,
         "year": 2025
       },
       {
@@ -182,7 +182,7 @@
     "citation_distribution": {
       "20+": 2,
       "5-9": 3,
-      "1-4": 2
+      "1-4": 3
     }
   },
   "citation_trend": [
@@ -300,14 +300,14 @@
     },
     {
       "date": "2026-11",
-      "citations": 294
+      "citations": 299
     }
   ],
   "github_stars": {
-    "leolee99/LD-Agent": 86,
+    "leolee99/LD-Agent": 87,
     "multimodal-art-projection/CryptoX": 6,
     "Syuchin/MARS-Bench": 3,
     "randomtutu/FinSearchComp": 20
   },
-  "last_updated": "2026-11-19T09:56:09.723368"
+  "last_updated": "2026-11-21T23:30:15.218817"
 }
