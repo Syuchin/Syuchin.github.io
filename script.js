@@ -55,9 +55,13 @@ function setupSectionObserver() {
   }
 
   const navLinks = Array.from(document.querySelectorAll("[data-section-link]"));
-  const sections = navLinks
-    .map((link) => document.querySelector(link.getAttribute("href")))
-    .filter(Boolean);
+  const sections = Array.from(
+    new Set(
+      navLinks
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean)
+    )
+  );
 
   if (!navLinks.length || !sections.length || !("IntersectionObserver" in window)) {
     return;
@@ -76,6 +80,34 @@ function setupSectionObserver() {
   };
 
   const visible = new Map();
+  const syncActiveSection = () => {
+    if (window.scrollY < 80) {
+      setActive(sections[0].id);
+      return;
+    }
+
+    const nearBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24;
+    if (nearBottom) {
+      setActive(sections[sections.length - 1].id);
+      return;
+    }
+
+    let activeId = null;
+    let bestRatio = -1;
+
+    visible.forEach((ratio, id) => {
+      if (ratio > bestRatio) {
+        bestRatio = ratio;
+        activeId = id;
+      }
+    });
+
+    if (activeId) {
+      setActive(activeId);
+    }
+  };
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -86,31 +118,52 @@ function setupSectionObserver() {
         }
       });
 
-      if (window.scrollY < 80) {
-        setActive(sections[0].id);
-        return;
-      }
-
-      let activeId = sections[0].id;
-      let bestRatio = -1;
-
-      visible.forEach((ratio, id) => {
-        if (ratio > bestRatio) {
-          bestRatio = ratio;
-          activeId = id;
-        }
-      });
-
-      setActive(activeId);
+      syncActiveSection();
     },
     {
-      rootMargin: "-20% 0px -55% 0px",
+      rootMargin: "-15% 0px -55% 0px",
       threshold: [0.05, 0.2, 0.35, 0.5],
     }
   );
 
   sections.forEach((section) => observer.observe(section));
+  window.addEventListener("scroll", syncActiveSection, { passive: true });
   setActive(sections[0].id);
+}
+
+function setupPublicationFilters() {
+  const buttons = Array.from(document.querySelectorAll("[data-pub-filter]"));
+  const pubSection = document.getElementById("publications");
+
+  if (!buttons.length || !pubSection) {
+    return;
+  }
+
+  const rows = Array.from(pubSection.querySelectorAll(".pub-row"));
+  const groups = Array.from(pubSection.querySelectorAll("[data-pub-group]"));
+
+  const applyFilter = (mode) => {
+    buttons.forEach((button) => {
+      const active = button.dataset.pubFilter === mode;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+
+    rows.forEach((row) => {
+      row.hidden = mode === "lead" && row.dataset.lead !== "true";
+    });
+
+    groups.forEach((group) => {
+      const hasVisible = Boolean(group.querySelector(".pub-row:not([hidden])"));
+      group.hidden = !hasVisible;
+    });
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      applyFilter(button.dataset.pubFilter || "all");
+    });
+  });
 }
 
 function formatDate(value) {
@@ -166,7 +219,8 @@ function buildTrendRow(title, info) {
 
   const meta = document.createElement("p");
   meta.className = "trend-meta";
-  meta.textContent = `${formatNumber(info.citations)} citations`;
+  const count = info.citations || 0;
+  meta.textContent = `${formatNumber(count)} ${count === 1 ? "citation" : "citations"}`;
   main.appendChild(meta);
 
   row.appendChild(main);
@@ -365,5 +419,6 @@ async function initTrendsPage() {
 document.addEventListener("DOMContentLoaded", () => {
   setupHeader();
   setupSectionObserver();
+  setupPublicationFilters();
   initTrendsPage();
 });
